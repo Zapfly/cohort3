@@ -30,24 +30,61 @@ lookup key to retrieve value
 
 */
 
-const conjunctionsAndDisjunctions = {
-    myNot: (x) => {
-    if (x === true) return false
-    return true
+const functions = {
+    // variables
+    variables: (a) => {
+        if (a === "variable") return "var is a variable that is accessible anywhere"
+        if (a === "let") return "let is a variable that is only accessible within its respective scope";
+        if (a === "constant") return "a constant is a variable that can not be overwritten later"
+        return "Sorry, that is not a kind of variable"
     },
-    myOr: (a, b) => {
-        if (a == false && b == false) return false;
-        if (a == true && b == false) return true;
-        if (a == false && b ==true) return true;
-        return false
+    //number
+    number: (a) => {
+        if (Number.isInteger(a)) return "This is a number"  
+        return "This is not a number"      
     },
-    myAnd: (a, b) => {
-        if (a == true && b == true) return true;
-        return false
+    // string
+    xstring: () => {
+        return "a string is always between single quotes or double quotes";
     },
+    //boolean
+    //see not-or.js and not-or.test.js
+
+    array: (a) => {
+        let ar1 = [1, 2, 3, 4, a, "12", {obj: "one"}]
+        return ar1[4];
+    },
+
+    //dictionary / objects
+
+    obj: (a) => {
+        let object = {
+            name: "john",
+            password: "dogsname",
+            email: "john@dogsname.ca",
+        }
+        if (a == name) return object.name;
+        return undefined
+    },
+    // undefined
+    xundefined: () => {
+
+    },
+    //sample if/else statement
+
+    ifElse: (a, b, c) => {
+        let biggest = a;
+        if (biggest < b) biggest = b;
+        if (biggest < c) biggest = c;
+        return biggest
+    },
+    //functions
+
+    functions: () => {
+        
+    }
 }
 
 
 
-
-export default conjunctionsAndDisjunctions;
+export default functions;
