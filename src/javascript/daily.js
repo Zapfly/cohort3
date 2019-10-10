@@ -14,7 +14,7 @@
 
 // Write the function after this comment ---
 
-const assertEquals = (p1, p2) =>{
+export const assertEquals = (p1, p2) =>{
         if (p1 === p2) return true
         console.log(false)
         console.log("*** the two values are not the same” and also log the two parameters as follows:");
@@ -31,4 +31,9 @@ assertEquals(2,2);
 assertEquals("2",2);
 assertEquals("This value","This value");
 
-export default assertEquals;
+export const functions = {
+     makeEmailArr: (x) => {
+        return x[0].toLowerCase() + "." + x[1].toLowerCase() + "@evolveu.ca";
+    }
+}
+

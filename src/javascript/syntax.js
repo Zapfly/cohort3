@@ -15,7 +15,7 @@ returns
 arrays
 add to the front
 add to the end
-update values
+update values??
 loops 
 for
 for/in
@@ -83,7 +83,49 @@ const functions = {
     xfunctions: (a, b) => {
         let add = a + b;
         return add;
+    },
+    // parameters
+    // Parameters go in the brackets when
+    //  establishing or calling a function.
+
+    //returns
+    returns: () => {
+        return "return"
+    },
+    //ARRAYS
+    
+        basicArray: [0],
+    //add to front
+
+    addToFront: (x) => {
+        functions.basicArray.unshift(x)
+        return functions.basicArray;
+    },
+
+    // add to end
+
+    addToBack: (x) => {
+        functions.basicArray.push(x)
+        return functions.basicArray;
+    },
+
+    // update values??
+
+    //LOOPS
+    //for
+    xfor: (x) => {
+        let i = 0;
+        for (i = 0; i < 1; i++) {
+            return x;
+        }
     }
+    //for/in
+    //while
+    //do while
+    //forEach (with array and function)
+    //Objects / Dictionaries
+    //declare object
+    //lookup key to retrieve value
 }
 
 

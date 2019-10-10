@@ -25,6 +25,10 @@ test('Check the script', () => {
 
     expect(functions.xfunctions(1, 2)).toBe(3);
 
+    expect(functions.returns()).toBe("return");
 
+    expect(functions.addToFront(1)).toEqual([1, 0]);
+    expect(functions.addToFront(1)).toEqual([1, 1, 0]);
 
+    expect(functions.xfor(6)).toBe(6);
 })
