@@ -23,6 +23,7 @@ test('Check the script', () => {
     expect(functions.ifElse(3, 2, 1)).toBe(3);
     expect(functions.ifElse(2, 1, 3)).toBe(3);
 
+    expect(functions.xfunctions(1, 2)).toBe(3);
 
 
 

@@ -80,10 +80,12 @@ const functions = {
     },
     //functions
 
-    functions: () => {
-        
+    xfunctions: (a, b) => {
+        let add = a + b;
+        return add;
     }
 }
+
 
 
 
