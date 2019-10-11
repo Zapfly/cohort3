@@ -46,7 +46,7 @@ const conjunctions = {
         return false
     },
     newAnd: (a, b) => {
-        conjunctions.myNot(conjunctions.myOr(a, b))
+        return conjunctions.myOr(conjunctions.myNot(a), b);
     },
 }
 

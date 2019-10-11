@@ -1,4 +1,4 @@
-import conjunctions from './syntax.js'
+import conjunctions from './not-or.js'
 
 test('Check the script', () => {
     expect(conjunctions.myNot(true)).toBe(false);
@@ -15,8 +15,8 @@ test('Check the script', () => {
     expect(conjunctions.myAnd(false, false)).toBe(false);
 
     expect(conjunctions.newAnd(true, true)).toBe(true); 
-    expect(conjunctions.myAnd(true, false)).toBe(false);
-    expect(conjunctions.myAnd(false, true)).toBe(false);   
-    expect(conjunctions.myAnd(false, false)).toBe(false);
+    expect(conjunctions.newAnd(true, false)).toBe(false);
+    expect(conjunctions.newAnd(false, true)).toBe(false);   
+    expect(conjunctions.newAnd(false, false)).toBe(false);
 
 });
