@@ -7,7 +7,7 @@ test('Check the script', () => {
     expect(conjunctions.myOr(false, false)).toBe(false); 
     expect(conjunctions.myOr(false, true)).toBe(true); 
     expect(conjunctions.myOr(true, false)).toBe(true); 
-    expect(conjunctions.myOr(true, true)).toBe(false); 
+    expect(conjunctions.myOr(true, true)).toBe(true); 
 
     expect(conjunctions.myAnd(true, true)).toBe(true); 
     expect(conjunctions.myAnd(true, false)).toBe(false);

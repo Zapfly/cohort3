@@ -30,7 +30,7 @@ lookup key to retrieve value
 
 */
 
-const functions = {
+export const functions = {
     // variables
     variables: (a) => {
         if (a === "variable") return "var is a variable that is accessible anywhere"
@@ -130,5 +130,3 @@ const functions = {
 
 
 
-
-export default functions;

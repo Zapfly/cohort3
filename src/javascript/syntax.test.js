@@ -1,4 +1,4 @@
-import functions from './syntax.js'
+import {functions, Taxes} from './syntax.js'
 
 test('Check the script', () => {
     expect(functions.variables("variable")).toBe("var is a variable that is accessible anywhere");
@@ -32,3 +32,4 @@ test('Check the script', () => {
 
     expect(functions.xfor(6)).toBe(6);
 })
+
