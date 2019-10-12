@@ -76,3 +76,12 @@ html {
         min-height: 400px;
     }
 }
+
+/*Calculator css*/
+#calculator {
+    display: grid;
+    grid-column-start: 2;
+    grid-column-end: five;
+    grid-row-start: row1-start;
+    grid-row-end: 3;
+}
