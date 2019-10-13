@@ -1,5 +1,5 @@
 import functions from './functions.js';
-import {myCalculator, taxes} from './Comp100.js';
+import {myCalculator, taxes, arrays} from './Comp100.js';
 
 
 //MY CALCULATOR//
@@ -44,6 +44,31 @@ const taxOutput = () => {
     document.getElementById("taxPayable").textContent = b
 }
 
+// ARRAY MANIPULATOR
+
+const arrayButtons = {
+    add: () => {
+        let x = document.getElementById("array-number")
+        arrays.add(Number(x.value));
+        console.log(Number(x.value));
+        x.value = 0;
+    },
+    show: () => {
+        let x = arrays.show();
+        document.getElementById("array-output").textContent = x
+        console.log(x);
+    },
+    total: () => {
+        let x = arrays.total();
+        document.getElementById("array-output").textContent = x
+        console.log(x);
+    },
+    clear: () => {
+        let x = arrays.clear();
+        document.getElementById("array-output").textContent = "Message Area"
+    }
+    
+}
 
 // **********
 //
@@ -61,5 +86,8 @@ document.getElementById("divideButton").addEventListener("click", divideStep2);
 
 document.getElementById("taxButton").addEventListener("click", taxOutput)
 
-
+document.getElementById("array-add").addEventListener("click", arrayButtons.add)
+document.getElementById("array-show").addEventListener("click", arrayButtons.show)
+document.getElementById("array-total").addEventListener("click", arrayButtons.total)
+document.getElementById("array-clear").addEventListener("click", arrayButtons.clear)
 

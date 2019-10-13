@@ -105,7 +105,7 @@ html {
     margin: 10px;
 }
 
-#textOut {
+.textOut {
     display: flex;
     justify-content: center;
     background-color: darkgray;
@@ -117,6 +117,15 @@ html {
 
 .bgimg-4 {
     background-image: url(./images/euro-870758_1920.jpg);
+    min-height: 400px;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+}
+
+/*Array Manipulator CSS */
+
+.bgimg-5 {
+    background-image: url(./images/sunlight-2569153_1920.jpg);
     min-height: 400px;
     background-repeat: no-repeat;
     opacity: 0.5;
