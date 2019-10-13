@@ -52,6 +52,8 @@ html {
     opacity: 0.5;
 }
 
+
+
 .w3-wide {
     letter-spacing: 10px;
 }
@@ -78,10 +80,44 @@ html {
 }
 
 /*Calculator css*/
-#calculator {
+
+.bgimg-3 {
+    background-image: url(./images/tablet-254581_1920.jpg);
+    min-height: 400px;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+}
+
+.calcContainer {
     display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+.calculator {
+    display: grid;
+    grid-gap: 2px;
+    grid-template-rows: 1fr 1fr 1fr;
+    justify-items: center;
     grid-column-start: 2;
-    grid-column-end: five;
-    grid-row-start: row1-start;
-    grid-row-end: 3;
+
+}
+.text-field {
+    margin: 10px;
+}
+
+#textOut {
+    display: flex;
+    justify-content: center;
+    background-color: darkgray;
+    width: 300px;
+    margin: 10px;
+}
+
+/*Tax Calculator CSS */
+
+.bgimg-4 {
+    background-image: url(./images/euro-870758_1920.jpg);
+    min-height: 400px;
+    background-repeat: no-repeat;
+    opacity: 0.5;
 }

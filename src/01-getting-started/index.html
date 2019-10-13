@@ -95,25 +95,43 @@
         <input id="idNumber" type="number"> is a <span id="idNumberSize">unknown</span> number?
         <p id="idNumberSizexx"></p>
     </div>
+
     <!--My Calculator-->
-
-    <div id="calculator">
-        <div>            
-            <input type="number" name="num1" id="input1">
-            <input type="number" name="num2" id="input2">
+    <div class="bgimg-3 w3-display-container w3-opacity-min">
+        <div class="w3-display-middle">
+            <span class="w3-xxlarge w3-text-white w3-wide">MY CALCULATOR</span>
         </div>
-        <div>
-                <button id="addButton">+</button>
-                <button id="subractButton">-</button>
-                <button id="multiplyButton">*</button>
-                <button id="divideButton">/</button>    
-        </div>
-        <div>
-                <p id="output"></p>
-        </div>
-
-
     </div>
+
+    <div class="calcContainer">
+        <div class="calculator">
+            <div>            
+                <input class="text-field" type="number" name="num1" id="input1">
+                <input class="text-field" type="number" name="num2" id="input2">
+            </div>
+            <div id="buttons">
+                    <button id="addButton">+</button>
+                    <button id="subractButton">-</button>
+                    <button id="multiplyButton">*</button>
+                    <button id="divideButton">/</button>    
+            </div>
+            <div id="textOut">
+                    <p id="output"></p>
+            </div>
+        </div>
+    </div>
+     <!--Tax Calculator-->
+     <div class="bgimg-4 w3-display-container w3-opacity-min">
+        <div class="w3-display-middle">
+            <span class="w3-xxlarge w3-text-black w3-wide">TAX CALCULATOR</span>
+        </div>
+    </div>
+     <div class="calculator">
+         <input id="income" class="text-field" type="number">
+         <button id="taxButton">Calculate</button>
+         <div class="text-field" id="taxPayable">Taxes Payable</div>
+     </div>
+
 
     <!-- Footer -->
     <footer class="w3-center w3-black w3-padding-64 w3-opacity w3-hover-opacity-off">
@@ -157,7 +175,6 @@
             }
         }
     </script>
-    <script type="text/javascript" src="/scripts/Comp100.js"></script>
 
 </body>
 
