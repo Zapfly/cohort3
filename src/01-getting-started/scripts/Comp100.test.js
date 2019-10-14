@@ -1,4 +1,4 @@
-import {myCalculator, taxes, arrays} from './Comp100.js'
+import {myCalculator, taxes, arrays, provinces} from './Comp100.js'
 
 test('Check Calculator', () => {
     expect(myCalculator.add(1, 2)).toBe(3);
@@ -32,3 +32,19 @@ test('Check Arrays', () => {
     expect(arrays.clear()).toEqual([]);    
 })
 
+test('Check Province Lookup', () => {
+    expect(provinces.lookup()).toEqual("Unknown");        
+    expect(provinces.lookup("nl")).toEqual("Newfoundland and Labrador");        
+    expect(provinces.lookup("pei")).toEqual("Prince Edward Island");        
+    expect(provinces.lookup("ns")).toEqual("Nova Scotia");        
+    expect(provinces.lookup("nb")).toEqual("New Brunswick");        
+    expect(provinces.lookup("qc")).toEqual("Quebec");        
+    expect(provinces.lookup("ont")).toEqual("Ontario");        
+    expect(provinces.lookup("man")).toEqual("Manitoba");        
+    expect(provinces.lookup("sk")).toEqual("Saskatchewan");        
+    expect(provinces.lookup("ab")).toEqual("Alberta");        
+    expect(provinces.lookup("bc")).toEqual("British Columbia");        
+    expect(provinces.lookup("yt")).toEqual("Yukon");        
+    expect(provinces.lookup("nwt")).toEqual("Northwest Territories");        
+    expect(provinces.lookup("nvt")).toEqual("Nunavut");        
+})

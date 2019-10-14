@@ -77,22 +77,52 @@ const arrays = {
 }
 
 const provinces = {
-    nl: "Newfoundland and Labrador",
-    pei: "Prince Edward Island",
-    ns: "Nova Scotia",
-    nb: "New Brunswick",
-    qc: "Quebec",
-    ont: "Ontario",
-    man: "Manitoba",
-    sk: "Saskatchewan",
-    ab: "Alberta",
-    bc: "British Columbia",
-    yt: "Yukon",
-    nwt: "Nortwest Territories",
-    nvt: "Nunavut"
-    
-
+    lookup: (call) => {
+        switch (call) {
+            case "nl":
+                return  "Newfoundland and Labrador"
+                break;
+            case "pei":
+                return  "Prince Edward Island"
+                break;
+            case "ns":
+                return  "Nova Scotia"
+                break;
+            case "nb":
+                return  "New Brunswick"
+                break;
+            case "qc":
+                return  "Quebec"
+                break;
+            case "ont":
+                return  "Ontario"
+                break;
+            case "man":
+                return  "Manitoba"
+                break;
+            case "sk":
+                return  "Saskatchewan"
+                break;
+            case "ab":
+                return  "Alberta"
+                break;
+            case "bc":
+                return  "British Columbia"
+                break;
+            case "yt":
+                return  "Yukon"
+                break;
+            case "nwt":
+                return  "Northwest Territories"
+                break;
+            case "nvt":
+                return  "Nunavut"
+                break;
+            default:
+                return "Unknown"
+        }
+    },   
 }
 
 
-export {myCalculator, taxes, arrays};
+export {myCalculator, taxes, arrays, provinces};

@@ -130,3 +130,12 @@ html {
     background-repeat: no-repeat;
     opacity: 0.5;
 }
+
+/*Dictionary CSS */
+
+.bgimg-6 {
+    background-image: url(./images/sunlight-2569153_1920.jpg);
+    min-height: 400px;
+    background-repeat: no-repeat;
+    opacity: 0.5;
+}

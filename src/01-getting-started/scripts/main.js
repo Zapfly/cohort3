@@ -1,5 +1,5 @@
 import functions from './functions.js';
-import {myCalculator, taxes, arrays} from './Comp100.js';
+import {myCalculator, taxes, arrays, provinces} from './Comp100.js';
 
 
 //MY CALCULATOR//
@@ -70,6 +70,14 @@ const arrayButtons = {
     
 }
 
+//PROVINCE LOOKUP
+
+const dictionary = () => {
+    let x = document.getElementById("search").value;
+    let y = provinces.lookup(x);
+    document.getElementById("dictionary-output").textContent = y;
+}
+
 // **********
 //
 // Add the event listeners
@@ -91,3 +99,4 @@ document.getElementById("array-show").addEventListener("click", arrayButtons.sho
 document.getElementById("array-total").addEventListener("click", arrayButtons.total)
 document.getElementById("array-clear").addEventListener("click", arrayButtons.clear)
 
+document.getElementById("lookup").addEventListener("click", dictionary)
