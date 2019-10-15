@@ -40,8 +40,8 @@ export const functions = {
     },
     //number
     number: (a) => {
-        if (Number.isInteger(a)) return "This is a number"  
-        return "This is not a number"      
+        if (Number.isInteger(a)) return "This is a number"
+        return "This is not a number"
     },
     // string
     xstring: () => {
@@ -51,7 +51,7 @@ export const functions = {
     //see not-or.js and not-or.test.js
 
     array: (a) => {
-        let ar1 = [1, 2, 3, 4, a, "12", {obj: "one"}]
+        let ar1 = [1, 2, 3, 4, a, "12", { obj: "one" }]
         return ar1[4];
     },
 
@@ -93,8 +93,8 @@ export const functions = {
         return "return"
     },
     //ARRAYS
-    
-        basicArray: [0],
+
+    basicArray: [0],
     //add to front
 
     addToFront: (x) => {
@@ -118,11 +118,46 @@ export const functions = {
         for (i = 0; i < 1; i++) {
             return x;
         }
-    }
+    },
     //for/in
+    xforin: () => {
+        var string1 = "";
+        var object1 = { a: 1, b: 2, c: 3 };
+
+        for (var property1 in object1) {
+            string1 += object1[property1];
+        }
+
+        return string1;
+    },
     //while
+    xwhile: () => {
+        let x = 0;
+        while (x < 10) {
+            x++
+        }
+        return x;
+    },
     //do while
+    xdowhile: (x) => {
+        do {
+            x++
+        } while (x < 10);
+        return x;
+    },
+    array2: [1, 3, 5, 6],
     //forEach (with array and function)
+    xforEach: () => {
+        let emptyArr = [];
+        functions.array2.forEach(
+            (x) => {
+                x + 2
+            }
+        );
+        
+    }
+
+
     //Objects / Dictionaries
     //declare object
     //lookup key to retrieve value

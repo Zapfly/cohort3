@@ -15,12 +15,12 @@ const myCalculator = {
     divide: (a, b) => {
         return a / b;
     },
-    
- }
+
+}
 
 //---------CANADIAN TAXES---------//
- 
- const taxes = {
+
+const taxes = {
     taxStub: (line1) => {
         let line4 = 0;
         let line2 = 0;
@@ -28,13 +28,13 @@ const myCalculator = {
         if (line1 < 47630) {
             line4 = 0.15;
         } else if (line1 <= 95259) {
-             line4 = 0.205;
-             line2 = 47630;
-             line6 = 7144.5
+            line4 = 0.205;
+            line2 = 47630;
+            line6 = 7144.5
         } else if (line1 <= 147667) {
             line4 = 0.26;
             line2 = 95259;
-            line6 = 16908;            
+            line6 = 16908;
         } else if (line1 <= 210371) {
             line4 = 0.29;
             line2 = 147667;
@@ -46,11 +46,11 @@ const myCalculator = {
         }
         let line3 = line1 - line2;
         let line5 = line4 * line3;
-        let line7 = line5 + line6;        
+        let line7 = line5 + line6;
         /*
         if (line1 <= 147667) line4 = 0.26;
         if (line1 <= 210371) line4 = 0.29;
-        if (line1 > 210371) line4 = 0.33;*/            
+        if (line1 > 210371) line4 = 0.33;*/
 
         return line7;
     }
@@ -66,7 +66,7 @@ const arrays = {
     show: () => {
         return myArray;
     },
-    total: () => {        
+    total: () => {
         let newTotal = myArray.reduce((acc, cur) => acc + cur);
         return newTotal;
     },
@@ -80,49 +80,49 @@ const provinces = {
     lookup: (call) => {
         switch (call) {
             case "nl":
-                return  "Newfoundland and Labrador"
+                return "Newfoundland and Labrador"
                 break;
             case "pei":
-                return  "Prince Edward Island"
+                return "Prince Edward Island"
                 break;
             case "ns":
-                return  "Nova Scotia"
+                return "Nova Scotia"
                 break;
             case "nb":
-                return  "New Brunswick"
+                return "New Brunswick"
                 break;
             case "qc":
-                return  "Quebec"
+                return "Quebec"
                 break;
             case "ont":
-                return  "Ontario"
+                return "Ontario"
                 break;
             case "man":
-                return  "Manitoba"
+                return "Manitoba"
                 break;
             case "sk":
-                return  "Saskatchewan"
+                return "Saskatchewan"
                 break;
             case "ab":
-                return  "Alberta"
+                return "Alberta"
                 break;
             case "bc":
-                return  "British Columbia"
+                return "British Columbia"
                 break;
             case "yt":
-                return  "Yukon"
+                return "Yukon"
                 break;
             case "nwt":
-                return  "Northwest Territories"
+                return "Northwest Territories"
                 break;
             case "nvt":
-                return  "Nunavut"
+                return "Nunavut"
                 break;
             default:
                 return "Unknown"
         }
-    },   
+    },
 }
 
 
-export {myCalculator, taxes, arrays, provinces};
+export { myCalculator, taxes, arrays, provinces };

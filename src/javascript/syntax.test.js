@@ -31,5 +31,16 @@ test('Check the script', () => {
     expect(functions.addToFront(1)).toEqual([1, 1, 0]);
 
     expect(functions.xfor(6)).toBe(6);
+
+    expect(functions.xforin()).toBe("123");
+
+    expect(functions.xwhile()).toBe(10);
+
+    expect(functions.xdowhile(0)).toBe(10);
+    expect(functions.xdowhile(11)).toBe(12);
+
+    expect(functions.xforEach(11)).toBe(11);
+
+
 })
 
