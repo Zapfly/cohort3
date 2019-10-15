@@ -39,7 +39,7 @@ test('Check the script', () => {
     expect(functions.xdowhile(0)).toBe(10);
     expect(functions.xdowhile(11)).toBe(12);
 
-    expect(functions.xforEach(11)).toBe(11);
+    expect(functions.xforEach(11)).toEqual([3, 5, 7, 8]);
 
 
 })

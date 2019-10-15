@@ -2,13 +2,13 @@
 
 const conjunctions = {
     myNot: (x) => {
-        if (x === true) return false
-        return true
+    if (x === true) return false
+    return true
     },
     myOr: (a, b) => {
         if (a == false && b == false) return false;
         if (a == true && b == false) return true;
-        if (a == false && b == true) return true;
+        if (a == false && b ==true) return true;
         return true
     },
     myAnd: (a, b) => {
@@ -16,10 +16,11 @@ const conjunctions = {
         return false
     },
     newAnd: (a, b) => {
-        return conjunctions.myOr(
-            conjunctions.myNot(a), conjunctions.myNot(b)
-        )
-
+        return conjunctions.myNot(
+            conjunctions.myOr(
+                conjunctions.myNot(a),conjunctions.myNot(b)
+                )
+            );
     },
 }
 

@@ -151,14 +151,19 @@ export const functions = {
         let emptyArr = [];
         functions.array2.forEach(
             (x) => {
-                x + 2
+                let y = x + 2
+                emptyArr.push(y);
             }
         );
-        
+        return emptyArr        
+    },
+    //Objects / Dictionaries
+    xdictionary = () => {
+        return 0;
     }
 
 
-    //Objects / Dictionaries
+    
     //declare object
     //lookup key to retrieve value
 }

@@ -1,4 +1,4 @@
-import {functions, assertEquals} from './daily'
+import {functions, assertEquals, basics} from './daily'
 
 
 test("Check script", () => {
@@ -21,3 +21,12 @@ test('email builder from an array', () => {
     expect(functions.makeEmailArr(["Bill", "Smith"]))
         .toEqual("bill.smith@evolveu.ca");
 });
+
+//OCT 15
+
+test('Prepare Array Work', () => {
+    const testArray = [1, 2, 5, 7, 5];
+    expect(basics.xfor(testArray))
+    .toEqual(0);
+
+})
