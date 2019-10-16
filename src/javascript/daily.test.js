@@ -26,7 +26,8 @@ test('email builder from an array', () => {
 
 test('Prepare Array Work', () => {
     const testArray = [1, 2, 5, 7, 5];
-    expect(basics.xfor(testArray))
-    .toEqual(0);
+    expect(basics.xfor(testArray)).toEqual([3, 4, 7, 9, 7]);
+    
+    expect(basics.xwhile(testArray, (-2))).toEqual([3, 4, 7, 9, 7]);
 
 })
