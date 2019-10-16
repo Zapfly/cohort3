@@ -42,22 +42,26 @@ let emptyArray = [];
 
 export const basics = {
     xfor: (y) => {
+        console.log(y)
         let i = 0;
         emptyArray = []
         for (i = 0; i < y.length; i++) {
             let x = y[i] + 2;
             emptyArray.push(x);
         }
+        console.log(y)
         return emptyArray;
     },
-    xwhile: (a, b) => {
-        let i = 0;
-        emptyArray = []
-        while (i < a.length) {
-            let x = a[i] + b;
-            emptyArray.push(x)
-            i++
+
+    confuse: (y) => {
+        return y
+    },
+    xwhile: (a) => {
+        let i = 7
+        while (i < 4) {
+            a.push(2);
+            i = i++
         }
-        return emptyArray;
+        return a;
     },
 }
