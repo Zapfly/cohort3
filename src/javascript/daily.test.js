@@ -1,6 +1,6 @@
 import {functions, assertEquals, basics} from './daily'
 
-
+/*
 test("Check script", () => {
     expect(assertEquals(1, 1)).toBe(true);
     expect(assertEquals("a", "b")).toBe("the two values are not the same");
@@ -9,9 +9,9 @@ test("Check script", () => {
 }); 
 
 /*
-    Write a function to format an email based on an array.
+ //   Write a function to format an email based on an array.
 */
-
+/*
 test('email builder from an array', () => {
     const name = ["first", "last"];
     expect(functions.makeEmailArr(name))
@@ -21,14 +21,13 @@ test('email builder from an array', () => {
     expect(functions.makeEmailArr(["Bill", "Smith"]))
         .toEqual("bill.smith@evolveu.ca");
 });
+*/
 
 //OCT 15
 
 test('Prepare Array Work', () => {
-    const testArray = [1, 2, 5, 7, 5];
-    expect(basics.xfor(testArray)).toEqual([3, 4, 7, 9, 7]);
-    expect(basics.confuse(testArray)).toEqual([3, 4, 7, 9, 7]);
-    
-    expect(basics.xwhile((testArray))).toEqual([3, 4, 7, 9, 7]);
+    expect(basics.xfor()).toEqual([3, 4, 7, 9, 7]);
+    expect(basics.xwhile()).toEqual([ 1, 2, 5, 7, 5, 2, 2, 2, 2, 2, 2 ]);
+    expect(basics.xdoWhile()).toEqual([ 1, 2, 5, 7, 5, 3, 3, 3, 3, 3, 3 ]);
 
 })

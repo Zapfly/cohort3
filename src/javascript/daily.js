@@ -38,30 +38,37 @@ export const functions = {
 }
 
 //OCT 15
-let emptyArray = [];
+
 
 export const basics = {
-    xfor: (y) => {
-        console.log(y)
+    xfor: () => {
+        let testArray = [1, 2, 5, 7, 5];
+        console.log(testArray)
         let i = 0;
-        emptyArray = []
-        for (i = 0; i < y.length; i++) {
-            let x = y[i] + 2;
+        let emptyArray = [];
+        for (i = 0; i < testArray.length; i++) {
+            let x = testArray[i] + 2;
             emptyArray.push(x);
         }
-        console.log(y)
+        console.log(testArray);
         return emptyArray;
     },
-
-    confuse: (y) => {
-        return y
-    },
-    xwhile: (a) => {
-        let i = 7
-        while (i < 4) {
-            a.push(2);
-            i = i++
+    xwhile: () => {
+        let testArray = [1, 2, 5, 7, 5];
+        let i = 0;
+        while (i < 6) {
+            testArray.push(2);
+            i++
         }
-        return a;
+        return testArray;
+    },
+    xdoWhile: () => {
+        let testArray = [1, 2, 5, 7, 5];
+        let i = 0;
+        do{
+            testArray.push(3);
+            i++
+        } while (i < 6);
+        return testArray;
     },
 }
