@@ -72,3 +72,51 @@ export const basics = {
         return testArray;
     },
 }
+
+//OCT 16
+
+let animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+export const farm = {
+    xslice: () => {
+       return animals.slice(2)
+    },
+    xsplice: () => {
+        animals.splice(3, 2, 'horse');
+        return animals
+    },
+    array2: [1, 3, 5, 6],
+    xforEach: () => {
+        let emptyArr = [];
+        farm.array2.forEach(
+            (x) => {
+                let y = x + 2
+                emptyArr.push(y);
+            }
+        );
+        return emptyArr
+    },
+    xmap: () => {
+        let dairyFarm = animals.map(x => x + " milk")
+        return dairyFarm
+    },
+    xreduce: () => {
+        let reducedArray = [1, 2, 12, 44];
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        return reducedArray.reduce(reducer)
+    },
+    xfilter: () => {
+        console.log(animals);
+        const bigEnough = (x) => {
+            if (x.length > 3) return true
+            return false
+        }
+        const result = animals.filter(bigEnough);
+        return result
+    },
+    xsort: () => {
+        animals.push("aardvark");
+        animals.push("cocaroach");
+        animals.push("beaver");
+        return animals.sort();
+    }
+}
