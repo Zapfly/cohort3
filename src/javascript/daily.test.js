@@ -21,6 +21,8 @@ test('Prepare Array Work', () => {
     expect(basics.xfor()).toEqual([3, 4, 7, 9, 7]);
     expect(basics.xwhile()).toEqual([ 1, 2, 5, 7, 5, 2, 2, 2, 2, 2, 2 ]);
     expect(basics.xdoWhile()).toEqual([ 1, 2, 5, 7, 5, 3, 3, 3, 3, 3, 3 ]);
+    expect(basics.xforin()).toEqual("123");
+    expect(basics.xforOf()).toEqual("a");
 })
 
 //second daily

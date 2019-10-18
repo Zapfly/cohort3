@@ -41,6 +41,8 @@ test('Check the script', () => {
 
     expect(functions.xforEach(11)).toEqual([3, 5, 7, 8]);
 
+    //expect(functions.xdictionary(1)).toEqual([3, 5, 7, 8]);
+
 
 })
 

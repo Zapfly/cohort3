@@ -3,7 +3,7 @@
 let animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
 export const farm = {
     xslice: () => {
-       return animals.slice(2)
+        return animals.slice(2)
     },
     xsplice: () => {
         animals.splice(3, 2, 'horse');
@@ -45,17 +45,6 @@ export const farm = {
         return animals.sort();
     }
 }
-
-
-//SECOND DAILY
-
-
-export const functions = {
-    makeEmailArr: (x) => {
-        return x[0].toLowerCase() + "." + x[1].toLowerCase() + "@evolveu.ca";
-    }
-}
-
 //OCT 15
 
 
@@ -84,13 +73,39 @@ export const basics = {
     xdoWhile: () => {
         let testArray = [1, 2, 5, 7, 5];
         let i = 0;
-        do{
+        do {
             testArray.push(3);
             i++
         } while (i < 6);
         return testArray;
     },
+    xforin: () => {
+        var string1 = "";
+        var object1 = { a: 1, b: 2, c: 3 };
+        for (var property1 in object1) {
+            string1 += object1[property1];
+        }
+        return string1;
+    },
+    xforOf: () => {
+        const array1 = ['a', 'b', 'c'];
+        for (const element of array1) {
+            return element;
+        }
+    }
 }
+
+
+//SECOND DAILY
+
+
+export const functions = {
+    makeEmailArr: (x) => {
+        return x[0].toLowerCase() + "." + x[1].toLowerCase() + "@evolveu.ca";
+    }
+}
+
+
 
 
 //FIRST DAILY
