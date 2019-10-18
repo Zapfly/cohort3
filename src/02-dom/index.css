@@ -1,0 +1,39 @@
+button,
+h1,
+h2,
+h3,
+ol,
+li {
+    margin: 5px;  
+    margin-left: 30px;  
+}
+
+body {
+    display: grid;
+    grid-auto-columns: 33%;
+    justify-items: center;
+}
+#container {
+    background-color: aliceblue;
+    border-style: solid;
+    min-height: 250px;
+    width: 250px;
+    grid-column-start: 2;
+    display: grid;
+    grid-gap: 20 px;
+    grid-auto-columns: 1fr, 1fr, 1fr;
+
+}
+
+div {
+    margin: 10 px;
+}
+
+button {
+    grid-column: span 1;
+
+
+}
+
+
+
