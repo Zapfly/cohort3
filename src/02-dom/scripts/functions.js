@@ -1,14 +1,14 @@
 const functions = {
-    makeDIV: () => {
-        return document.createElement("div")    
+    countElementByTagName: (x) => {
+        return document.body.querySelectorAll(x).length
     },
-    makeOL: () => {
-        let x = document.createElement("ol");
-        x.setAttribute("id", "list");    
+
+    makeElement: (x) => {
+        let y = document.createElement(x);
+        y.setAttribute("id", x + functions.countElementByTagName(x))
+        return y
     },
-    makeLI: () => {
-        document.createElement("li")    
-    },
+
 }
 
 export { functions }
