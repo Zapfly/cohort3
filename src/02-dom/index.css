@@ -8,12 +8,13 @@ li {
     margin-left: 30px;  
 }
 
-body {
-    display: grid;
-    grid-auto-columns: 33%;
-    justify-items: center;
-}
 #container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+}
+#basic-dom {
     background-color: aliceblue;
     border-style: solid;
     min-height: 250px;
@@ -31,8 +32,16 @@ div {
 
 button {
     grid-column: span 1;
+}
 
-
+#cards-exercise {
+    border-style: solid;
+    border-color: black;
+    grid-row-start: 2;
+    grid-column-start: 1;
+    grid-column-end: span 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
 }
 
 

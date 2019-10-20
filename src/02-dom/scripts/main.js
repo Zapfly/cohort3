@@ -8,7 +8,7 @@ const addButton = (x) => {
     console.log(id)
     document.getElementById("list").appendChild(li1);
     console.log(id)
-    document.getElementById("li" + (id - 1)).textContent("Item " + (id - 1))
+    document.getElementById("li" + (id)).textContent = "Item " + id
 }
 
 /* trying to find a way to get it to add a list item above 
