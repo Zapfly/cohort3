@@ -1,5 +1,44 @@
 import {functions, assertEquals, basics, farm} from './daily'
 
+//OCT 21
+/*
+    Sample data for the next few exercises.
+*/
+
+
+
+
+/*	
+	Write the function to build email addresses for the company.
+*/
+
+
+test('email builder for company', () => {
+    const data = {
+        staff: [
+            { fname: "Jane", lname: "Smith", balance: 10 },
+            { fname: "Liam", lname: "Henry", balance: 1000 },
+            { fname: "Emma", lname: "Jones", balance: 1330 },
+            { fname: "Olivia", lname: "Notly", balance: 310 },
+            { fname: "Noah", lname: "Ho", balance: 503 },
+            { fname: "William", lname: "Lee", balance: 520 },
+            { fname: "Benjamin", lname: "Amis", balance: 150 },
+        ],
+        company: "EvolveU",
+        city: "Calgary",
+        prov: "Alberta"
+    };
+
+    const staffEmail = functions.loopStaff(data.staff);
+
+    expect(staffEmail[0])
+        .toEqual("jane.smith@evolveu.ca");
+    expect(staffEmail[3])
+        .toEqual("olivia.notly@evolveu.ca");
+    expect(staffEmail[6])
+        .toEqual("benjamin.amis@evolveu.ca");
+});
+
 
 //OCT 16
 
@@ -24,6 +63,19 @@ test('Prepare Array Work', () => {
     expect(basics.xforin()).toEqual("123");
     expect(basics.xforOf()).toEqual("a");
 })
+
+//OCT 11
+
+test('email builder from an object / map', () => {
+    const name = { fname: 'first', lname: 'last' };
+    expect(functions.makeEmailObj(name))
+        .toEqual("first.last@evolveu.ca");
+    expect(functions.makeEmailObj({ fname: 'First', lname: 'Last' }))
+        .toEqual("first.last@evolveu.ca");
+    expect(functions.makeEmailObj({ fname: "Bill", lname: "Smith" }))
+        .toEqual("bill.smith@evolveu.ca");
+});
+
 
 //second daily
 /*

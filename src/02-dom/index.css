@@ -37,12 +37,19 @@ button {
 #cards-exercise {
     border-style: solid;
     border-color: black;
-    grid-row-start: 2;
     grid-column-start: 1;
     grid-column-end: span 4;
     display: grid;
     grid-template-columns: 1fr 1fr;
 }
 
+.scrollable {
+    height: 400px;
+    overflow: auto;
+}
+
+.w3-card {
+    height: 200px;
+} 
 
 

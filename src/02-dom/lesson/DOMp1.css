@@ -1,0 +1,23 @@
+body {
+    grid-template-columns: 1fr 1fr 1fr;
+}
+
+#container {
+    grid-column-start: 2;
+}
+
+.box {
+    border-style: solid;
+    margin: 20px;
+    padding: 20px;
+    display: grid;
+    
+}
+
+
+.card {
+    border-style: solid;
+    margin: 20px;
+    padding: 20px;
+    display: grid;
+}

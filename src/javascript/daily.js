@@ -1,3 +1,10 @@
+//OCT 21 (scroll down to "functions.loopStaff")
+
+
+
+
+
+
 //OCT 16
 
 let animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
@@ -100,9 +107,29 @@ export const basics = {
 
 
 export const functions = {
+
+    // OCT 21
+    loopStaff: (a) => {
+        let mtArray = [];
+        a.forEach(item => {
+            mtArray.push(functions.makeEmailObj(item));
+        })
+        return mtArray;      
+    },
+    //OCT 11
+
+    makeEmailObj: (name) => {
+        
+        return String(name.fname.toLowerCase() + "." + name.lname.toLowerCase() + "@evolveu.ca");
+    },
+    //Second Daily
+
+
     makeEmailArr: (x) => {
         return x[0].toLowerCase() + "." + x[1].toLowerCase() + "@evolveu.ca";
-    }
+    },
+
+
 }
 
 
