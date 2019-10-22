@@ -1,23 +1,26 @@
 import {functions} from "./functions.js"
 
-test('DOM test', () => {
-    let div1 = functions.makeElement("div");
-    document.body.appendChild(div1);
+
+
+test('Card checking', () => {
+    const myDiv = document.createElement("div");
+    myDiv.setAttribute("id", "play");
+    functions.addCard(myDiv, 1);
+})
+
+test('Card checking', () => {
+    const group = document.createElement("div")
+    group.setAttribute("id", "houseOfCards")
+    document.body.appendChild(group)
+
     
-    expect(functions.countElementByTagName("div")).toEqual(1);
-    expect(String(document.querySelector("#div0"))).toEqual("[object HTMLDivElement]");
+    functions.addCard(group, 1);
+    functions.addCard(group, 2);
+    functions.addCard(group, 3);
+    expect(functions.whatCards(group)).toEqual([1, 2, 3])
+    functions.addCard(group, 1)
+    expect(functions.whatCards(document.getElementById("houseOfCards"))).toEqual([1, 2, 3, 4])
+
     
-    let ol1 = functions.makeElement("ol");
-    document.getElementById("div0").appendChild(ol1);
 
-    expect(functions.countElementByTagName("ol")).toEqual(1);
-    expect(String(document.querySelector("#ol0"))).toEqual("[object HTMLOListElement]");
-
-    let li1 = functions.makeElement("li");
-    document.getElementById("ol0").appendChild(li1);
-
-    expect(functions.countElementByTagName("li")).toEqual(1);
-    expect(String(document.querySelector("#li0"))).toEqual("[object HTMLLIElement]");
-
-
-});
+})

@@ -14,6 +14,7 @@ li {
     grid-template-rows: 1fr 1fr;
 
 }
+
 #basic-dom {
     background-color: aliceblue;
     border-style: solid;
@@ -32,6 +33,9 @@ div {
 
 button {
     grid-column: span 1;
+    margin: 50px;
+    height: 30px;
+
 }
 
 #cards-exercise {
@@ -50,6 +54,13 @@ button {
 
 .w3-card {
     height: 200px;
+    display: flex;
+    justify-content: center;
+
 } 
+
+.w3-teal{
+    height: 400px;    
+}
 
 
