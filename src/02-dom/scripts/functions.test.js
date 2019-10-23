@@ -17,9 +17,9 @@ test('Card checking', () => {
     functions.addCard(group, 1);
     functions.addCard(group, 2);
     functions.addCard(group, 3);
-    expect(functions.whatCards(group)).toEqual([1, 2, 3])
+    expect(functions.whatCards(group)).toEqual(["1", "2", "3"])
     functions.addCard(group, 1)
-    expect(functions.whatCards(document.getElementById("houseOfCards"))).toEqual([1, 2, 3, 4])
+    expect(functions.whatCards(document.getElementById("houseOfCards"))).toEqual(["1", "2", "3", "1"])
 
     
 

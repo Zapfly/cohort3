@@ -10,9 +10,14 @@ const functions = {
     },
     whatCards: (x) => {
         let MTArr = []
-        let answer = x.children[0]
+        let i = 0;
+        for (i = 0; i < x.children.length; i++) {
+            MTArr.push((x.children[i].getAttribute("counter")));
+        }
+        
+        
 
-        return answer
+        return MTArr
 
     },
     deleteCard: () => {
