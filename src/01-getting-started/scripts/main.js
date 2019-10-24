@@ -1,5 +1,4 @@
-import functions from './functions.js';
-import {myCalculator, taxes, arrays, provinces} from './Comp100.js';
+import {myCalculator, taxes, arrays, provinces, functions} from './functions.js';
 
 
 //MY CALCULATOR//

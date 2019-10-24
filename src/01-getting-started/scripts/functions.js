@@ -103,43 +103,30 @@ const provinces = {
         switch (call) {
             case "nl":
                 return "Newfoundland and Labrador"
-                break;
             case "pei":
                 return "Prince Edward Island"
-                break;
             case "ns":
                 return "Nova Scotia"
-                break;
             case "nb":
                 return "New Brunswick"
-                break;
             case "qc":
                 return "Quebec"
-                break;
             case "ont":
                 return "Ontario"
-                break;
             case "man":
                 return "Manitoba"
-                break;
             case "sk":
                 return "Saskatchewan"
-                break;
             case "ab":
                 return "Alberta"
-                break;
             case "bc":
                 return "British Columbia"
-                break;
             case "yt":
                 return "Yukon"
-                break;
             case "nwt":
                 return "Northwest Territories"
-                break;
             case "nvt":
                 return "Nunavut"
-                break;
             default:
                 return "Unknown"
         }

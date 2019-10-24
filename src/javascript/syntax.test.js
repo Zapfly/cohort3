@@ -30,6 +30,9 @@ test('Check the script', () => {
     expect(functions.addToFront(1)).toEqual([1, 0]);
     expect(functions.addToFront(1)).toEqual([1, 1, 0]);
 
+    expect(functions.addToBack(1)).toEqual([1, 1, 0, 1]);
+    expect(functions.addToBack([1, 2, 3])).toEqual([1, 1, 0, 1, [1, 2, 3]]);
+
     expect(functions.xfor(6)).toBe(6);
 
     expect(functions.xforin()).toBe("123");
@@ -41,7 +44,7 @@ test('Check the script', () => {
 
     expect(functions.xforEach(11)).toEqual([3, 5, 7, 8]);
 
-    //expect(functions.xdictionary(1)).toEqual([3, 5, 7, 8]);
+    // expect(functions.xdictionary("nl")).toEqual("Newfoundland and Labrodon't");
 
 
 })
