@@ -1,27 +1,25 @@
 const functions = {
-    addCard: (x, y) => {
-        console.log("I am in the card");
+    addCard: (x) => {
+        let cardCount = document.querySelectorAll("div").length;
         let div = document.createElement("div");
         div.setAttribute("class", "w3-card");
-        div.setAttribute("counter", y);
-        div.textContent = y
+        div.setAttribute("counter", cardCount);
+        div.textContent = "Card Number" + cardCount;
         x.appendChild(div);
                 
     },
     whatCards: (x) => {
         let MTArr = []
         let i = 0;
-        for (i = 0; i < x.children.length; i++) {
-            MTArr.push((x.children[i].getAttribute("counter")));
+        let obj = x.children
+        // MTArr.push(obj[1].getAttribute("counter"))
+        for (i = 0; i < obj.length; i++) {            
+            MTArr.push(obj[i].getAttribute("counter"))
         }
-        
-        
-
         return MTArr
-
     },
     deleteCard: () => {
-
+        
     },
 }
 
