@@ -28,7 +28,15 @@ test('forIn loop', () => {
 })
 const staffEmailOf = functions.loopStaffOf(data.staff);
 // Write your tests here
-
+test('forOf loop', () => {
+    console.log("from test " + staffEmailIn[0])
+    expect(staffEmailOf[0])
+        .toEqual("jane.smith@evolveu.ca");
+    expect(staffEmailOf[1])
+        .toEqual("liam.henry@evolveu.ca");
+    expect(staffEmailOf[6])
+        .toEqual("benjamin.amis@evolveu.ca");
+})
 
 
 

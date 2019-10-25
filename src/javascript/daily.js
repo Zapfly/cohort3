@@ -113,8 +113,15 @@ export const functions = {
         }
         return emptyArr
     },
-    loopStaffOf: () => {
-        return ["jane.smith@evolveu.ca"]
+    loopStaffOf: (array1) => {
+        let emptyArr = []
+        for (const element of array1) {
+            let email = functions.makeEmailObj(element)
+            emptyArr.push(email);
+          }
+
+
+        return emptyArr
     },
 
     // OCT 21
