@@ -1,9 +1,8 @@
+//OCT 24 (scroll down to "functions.loopStaff")
+
+
+
 //OCT 21 (scroll down to "functions.loopStaff")
-
-
-
-
-
 
 //OCT 16
 
@@ -107,11 +106,21 @@ export const basics = {
 
 
 export const functions = {
+    loopStaffIn: (array1) => {
+        let emptyArr = []
+        for (var object in array1) {
+            emptyArr.push(functions.makeEmailObj(array1[object]));                   
+        }
+        return emptyArr
+    },
+    loopStaffOf: () => {
+        return ["jane.smith@evolveu.ca"]
+    },
 
     // OCT 21
-    loopStaff: (a) => {
+    loopStaff: (array) => {
         let mtArray = [];
-        a.forEach(item => {
+        array.forEach(item => {
             mtArray.push(functions.makeEmailObj(item));
         })
         return mtArray;      

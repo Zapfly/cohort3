@@ -1,4 +1,36 @@
 import {functions, assertEquals, basics, farm} from './daily'
+const data = {
+    staff: [
+        { fname: "Jane", lname: "Smith", balance: 10 },
+        { fname: "Liam", lname: "Henry", balance: 1000 },
+        { fname: "Emma", lname: "Jones", balance: 1330 },
+        { fname: "Olivia", lname: "Notly", balance: 310 },
+        { fname: "Noah", lname: "Ho", balance: 503 },
+        { fname: "William", lname: "Lee", balance: 520 },
+        { fname: "Benjamin", lname: "Amis", balance: 150 },
+    ],
+    company: "EvolveU",
+    city: "Calgary",
+    prov: "Alberta"
+};
+
+//OCT 24
+
+const staffEmailIn = functions.loopStaffIn(data.staff);
+// Write your tests here
+test('forIn loop', () => {
+    console.log("from test " + staffEmailIn[0])
+    expect(staffEmailIn[0]).toEqual("jane.smith@evolveu.ca");
+    expect(staffEmailIn[1]).toEqual("liam.henry@evolveu.ca");
+    expect(staffEmailIn[6])
+        .toEqual("benjamin.amis@evolveu.ca");
+
+})
+const staffEmailOf = functions.loopStaffOf(data.staff);
+// Write your tests here
+
+
+
 
 //OCT 21
 /*
@@ -14,20 +46,7 @@ import {functions, assertEquals, basics, farm} from './daily'
 
 
 test('email builder for company', () => {
-    const data = {
-        staff: [
-            { fname: "Jane", lname: "Smith", balance: 10 },
-            { fname: "Liam", lname: "Henry", balance: 1000 },
-            { fname: "Emma", lname: "Jones", balance: 1330 },
-            { fname: "Olivia", lname: "Notly", balance: 310 },
-            { fname: "Noah", lname: "Ho", balance: 503 },
-            { fname: "William", lname: "Lee", balance: 520 },
-            { fname: "Benjamin", lname: "Amis", balance: 150 },
-        ],
-        company: "EvolveU",
-        city: "Calgary",
-        prov: "Alberta"
-    };
+
 
     const staffEmail = functions.loopStaff(data.staff);
 
