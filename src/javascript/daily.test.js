@@ -14,28 +14,40 @@ const data = {
     prov: "Alberta"
 };
 
+const emailTest = (x) => {
+    expect(x[0])
+        .toEqual("jane.smith@evolveu.ca");
+    expect(x[1])
+        .toEqual("liam.henry@evolveu.ca");
+    expect(x[6])
+        .toEqual("benjamin.amis@evolveu.ca");
+}
+
+//OCT 25
+const staffEmailMap = functions.loopStaffMap(data.staff)
+test('Map loop', () => {
+    emailTest(staffEmailMap)
+
+})
+
+const staffEmailForEach = functions.loopStaffForEach(data.staff)
+test('forEach loop', () => {
+    emailTest(staffEmailForEach)
+
+})
 //OCT 24
 
 const staffEmailIn = functions.loopStaffIn(data.staff);
 // Write your tests here
 test('forIn loop', () => {
-    console.log("from test " + staffEmailIn[0])
-    expect(staffEmailIn[0]).toEqual("jane.smith@evolveu.ca");
-    expect(staffEmailIn[1]).toEqual("liam.henry@evolveu.ca");
-    expect(staffEmailIn[6])
-        .toEqual("benjamin.amis@evolveu.ca");
+    emailTest(staffEmailIn)
 
 })
 const staffEmailOf = functions.loopStaffOf(data.staff);
 // Write your tests here
 test('forOf loop', () => {
-    console.log("from test " + staffEmailIn[0])
-    expect(staffEmailOf[0])
-        .toEqual("jane.smith@evolveu.ca");
-    expect(staffEmailOf[1])
-        .toEqual("liam.henry@evolveu.ca");
-    expect(staffEmailOf[6])
-        .toEqual("benjamin.amis@evolveu.ca");
+    emailTest(staffEmailOf)
+
 })
 
 
@@ -58,12 +70,8 @@ test('email builder for company', () => {
 
     const staffEmail = functions.loopStaff(data.staff);
 
-    expect(staffEmail[0])
-        .toEqual("jane.smith@evolveu.ca");
-    expect(staffEmail[3])
-        .toEqual("olivia.notly@evolveu.ca");
-    expect(staffEmail[6])
-        .toEqual("benjamin.amis@evolveu.ca");
+    emailTest(staffEmail)
+
 });
 
 

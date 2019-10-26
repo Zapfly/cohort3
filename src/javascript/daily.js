@@ -1,3 +1,5 @@
+//
+
 //OCT 24 (scroll down to "functions.loopStaff")
 
 
@@ -106,6 +108,21 @@ export const basics = {
 
 
 export const functions = {
+    //OCT 25
+    loopStaffMap: (array) => {
+        const mapped = array.map(x => (functions.makeEmailObj(x)))
+        return mapped
+    },
+
+    loopStaffForEach: (array) => {
+        let mtArray = [];
+        array.forEach(item => {
+            mtArray.push(functions.makeEmailObj(item));
+        })
+        return mtArray;
+    },
+
+    //OCT 24
     loopStaffIn: (array1) => {
         let emptyArr = []
         for (var object in array1) {
