@@ -10,13 +10,13 @@ export const functions = {
     },
 
     whatCards: (x) => {
-        let emptyArr = []
+        // let emptyArr = []
 
-        // x.forEach(
-        //     (element) => {
-        //         element.getAttribute("counter").push(emptyArr)
-        //     }
-        //  )
-        return x[0].getAttribute("counter")
+        // // x.forEach(
+        // //     (element) => {
+        // //         element.getAttribute("counter").push(emptyArr)
+        // //     }
+        // //  )
+        // return x[0].getAttribute("counter")
     }
 }

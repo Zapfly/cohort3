@@ -5,24 +5,26 @@ const functions = {
         div.setAttribute("class", "w3-card");
         div.setAttribute("counter", y);
         div.textContent = "Card Number" + y;
+        div.id = "Card" + y
         x.appendChild(div);
-        console.log("First count " + y)
         functions.cardCount = y + 1;
-        console.log("Second count " + y)
+        functions.createButton(div, "Add Above")
+        functions.createButton(div, "Add Below")
+        functions.createButton(div, "Delete")
+
                 
     },
-    whatCards: (x) => {
-        let MTArr = []
-        let i = 0;
-        let obj = x.children
-        for (i = 0; i < obj.length; i++) {            
-            MTArr.push(obj[i].getAttribute("counter"));
-        }
-        return MTArr
+
+    deleteCard: (element) => {
+        element.parentNode.removeChild(element);        
     },
-    deleteCard: () => {
-        
-    },
+    createButton: (parent, buttId) => {
+        const butt = document.createElement("button")
+        butt.textContent = String(buttId)
+        butt.id = buttId
+        parent.appendChild(butt)
+        console.log("butt test " + parent)
+    }
 }
 
 export { functions }
