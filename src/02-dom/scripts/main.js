@@ -11,6 +11,8 @@ const addButton = (x) => {
     document.getElementById("li" + (id)).textContent = "Item " + id
 }
 
+
+
 /* trying to find a way to get it to add a list item above 
 the list item that has been clicked. 
 
@@ -27,7 +29,24 @@ const showButton = () => {
     console.log(getList)        
 }
 
+const button = (x) => {
+    if (event.target.textContent == "Add Card") {
+        functions.addCard(leftSide, functions.cardCount)
+    }
+    if (event.target.textContent == "Delete") {
+        functions.deleteCard(event.target.parentNode)
+    }
+    if (event.target.textContent == "Add Above") {
+        functions.addAbove(event.target, functions.cardCount)
+    }
+    if (event.target.textContent == "Add Below") {
+        functions.addBelow(event.target, functions.cardCount)
+    }
+    
+    console.log(false)
+}
+
 //list.addEventListener("click", addAbove)
-document.getElementById("add-button").addEventListener("click", addButton);
+document.getElementById("leftSide").addEventListener("click", button);
 document.getElementById("show-button").addEventListener("click", showButton);
 

@@ -24,13 +24,9 @@ const whatCards =
 
 const whatButtons = (x) => {
     let myId = document.getElementById(x)
-    console.log(myId)
     let checkId = myId.getAttribute("id")
-    console.log(checkId)
     let mychildren = myId.children
-    console.log(mychildren)
     let text = mychildren.textContent
-    console.log(text)
 }
 
 test('Card checking', () => {
@@ -43,32 +39,47 @@ test('Card checking', () => {
     const group = document.createElement("div")
     group.setAttribute("id", "houseOfCards")
     document.body.appendChild(group)
-    
-    functions.addCard(group, functions.cardCount);
-    functions.addCard(group, functions.cardCount);
-    functions.addCard(group, functions.cardCount);
-    console.log(document.getElementById("houseOfCards"))
-    expect(whatCards(group)).toEqual(["1", "2", "3"])
-    
-    functions.addCard(group, functions.cardCount)    
-    expect(whatCards(document.getElementById("houseOfCards")))
-        .toEqual(["1", "2", "3", "4"]);
-    functions.addCard(group, functions.cardCount)
-    functions.deleteCard(houseOfCards.childNodes[3])
-    expect(whatCards(document.getElementById("houseOfCards")))
-        .toEqual(["1", "2", "3", "5"]);
-    
-        let idHouseOfCards = document.getElementById("houseOfCards");
+    let idHouseOfCards = document.getElementById("houseOfCards");
     let myCards = idHouseOfCards.children;
     let oneCard = (x) => {
         return myCards[x]
     }
+    
+    functions.addCard(group, functions.cardCount);
+    functions.addCard(group, functions.cardCount);
+    functions.addCard(group, functions.cardCount);
+    expect(whatCards(group)).toEqual(["2", "3", "4"])
+    
+    functions.addCard(group, functions.cardCount)    
+    expect(whatCards(document.getElementById("houseOfCards")))
+        .toEqual(["2", "3", "4", "5"]);
+    functions.addCard(group, functions.cardCount)
+    functions.deleteCard(houseOfCards.childNodes[3])
+    expect(whatCards(houseOfCards))
+        .toEqual(["2", "3", "4", "6"]);
+    
+    
     expect(oneCard(0).children[0].textContent)
         .toEqual("Add Above");
     expect(oneCard(0).children[1].textContent)
         .toEqual("Add Below");
     expect(oneCard(0).children[2].textContent)
         .toEqual("Delete");
+
+    functions.addAbove(oneCard(0).children[2], functions.cardCount)
+    expect(whatCards(houseOfCards))
+        .toEqual(["7", "2", "3", "4", "6"])
+
+    functions.addAbove(oneCard(3).children[2], functions.cardCount)
+    expect(whatCards(houseOfCards))
+        .toEqual(["7", "2", "3", "8", "4", "6"])
+
+    functions.addBelow(oneCard(3).children[2], functions.cardCount)
+    expect(whatCards(houseOfCards))
+        .toEqual(["7", "2", "3",  "8", "9", "4", "6"])
+
+    
+    
 
     
     

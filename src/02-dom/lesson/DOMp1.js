@@ -1,11 +1,11 @@
 export const functions = {
     addCard: (x, y) => {
-        console.log("I am in the card");
-        let div = document.createElement("div");
-        div.setAttribute("class", "card");
-        div.setAttribute("counter", y);
-        div.textContent = y
-        x.appendChild(div);
+        // console.log("I am in the card");
+        // let div = document.createElement("div");
+        // div.setAttribute("class", "card");
+        // div.setAttribute("counter", y);
+        // div.textContent = y
+        // x.appendChild(div);
                 
     },
 
