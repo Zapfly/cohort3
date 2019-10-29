@@ -1,0 +1,63 @@
+button,
+h1,
+h2,
+h3,
+ol,
+li {
+    margin: 5px;  
+    margin-left: 30px;  
+}
+
+#container {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+
+}
+
+#basic-dom {
+    background-color: aliceblue;
+    border-style: solid;
+    min-height: 250px;
+    width: 250px;
+    grid-column-start: 2;
+    display: grid;
+    grid-gap: 20 px;
+    grid-auto-columns: 1fr, 1fr, 1fr;
+
+}
+
+div {
+    margin: 10 px;
+}
+
+button {
+    margin-top: 60px;
+
+}
+
+#cards-exercise {
+    border-style: solid;
+    border-color: black;
+    grid-column-start: 1;
+    grid-column-end: span 4;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+.scrollable {
+    height: 400px;
+    overflow: auto;
+}
+
+.w3-card {
+    height: 200px;
+    margin: 10px;
+
+} 
+
+.w3-teal{
+    height: 400px;    
+}
+
+
