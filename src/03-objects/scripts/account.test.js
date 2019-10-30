@@ -1,4 +1,4 @@
-import { Account, AccountController } from './account.js';
+import { Account, AccountController, addAccount } from './account.js';
 
 const testAccount = new Account("Test Account", 0);
 
@@ -29,13 +29,17 @@ test('test Account balance', () => {
 
 
 test('test Account Controller add new account', () => {
-    const testAccountController = new AccountController([testAccount]);
-    expect(testAccountController.accountList[0])
-        .toEqual({"accountName": "Test Account", "startingBalance": 0});
-    testAccountController.accountList.push(testAccount);
-    expect(testAccountController.accountList[1])
-        .toEqual({"accountName": "Test Account", "startingBalance": 0});
-
-
-
+    const testAccountController = new AccountController("Sarah");
+    
+    expect(testAccountController)
+        .toEqual({"accountList": [], "userName": "Sarah"});
+    testAccountController.addAccount("checking", 50);
+    expect(testAccountController.accountList)
+        .toEqual([{"accountName": "checking", "startingBalance": 50}]);
+    testAccountController.addAccount("checking", 50);
+    expect(testAccountController.accountList)
+        .toEqual(
+            [{"accountName": "checking", "startingBalance": 50},
+            {"accountName": "checking", "startingBalance": 50}]);
+    
 });

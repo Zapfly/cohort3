@@ -23,7 +23,16 @@ export class Account {
 
 export class AccountController {
 
-    constructor(accountList) {
-        this.accountList = accountList;
-    }   
+    constructor(userName) {
+        this.userName = userName;
+        this.accountList = [];
+    }
+
+    addAccount(accountName, startingBalance) {
+        let account = new Account(accountName, startingBalance);
+        this.accountList.push(account)
+    }
+
 }
+
+
