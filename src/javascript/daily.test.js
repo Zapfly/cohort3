@@ -23,6 +23,24 @@ const emailTest = (x) => {
         .toEqual("benjamin.amis@evolveu.ca");
 }
 
+
+//OCT 29
+
+test('test getBalance', () => {
+    expect(functions.getBalance(data.staff[2])).toEqual(1330)
+})
+const staffBalances = functions.balanceTotal(data.staff);
+test('total staff balances', () => {
+    expect(staffBalances).toEqual(3823)
+    const avgBalances = functions.balanceAverage(data.staff);
+
+    expect(avgBalances).toEqual(546.1428571428571)
+
+})
+
+
+
+
 //OCT 25
 const staffEmailMap = functions.loopStaffMap(data.staff)
 test('Map loop', () => {

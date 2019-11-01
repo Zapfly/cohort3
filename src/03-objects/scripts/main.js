@@ -1,25 +1,49 @@
-import {functions} from "./card-functions.js"
-import {Account} from './account.js'
+import { AccountController, Account } from './account.js';
+import {functions} from './card-functions.js';
 
+export const accountList = new AccountController("Account List");
 
-
-const button = (x) => {
-    if (event.target.textContent == "Add Card") {
-        functions.addCard(leftSide, functions.cardCount)
-    }
-    if (event.target.textContent == "Delete") {
-        functions.deleteCard(event.target.parentNode)
-    }
-    if (event.target.textContent == "Add Above") {
-        functions.addAbove(event.target, functions.cardCount)
-    }
-    if (event.target.textContent == "Add Below") {
-        functions.addBelow(event.target, functions.cardCount)
-    }
-    
-    console.log(false)
+const accountCreateButton = () => {
+    functions.createAccountDiv(idAccountDisplay, idAccountNameInput.value, idAccountBalanceInput.value);
+    accountList.addAccount(idAccountNameInput.value, idAccountBalanceInput.value);
+    idAccountNameInput.value = "";
+    idAccountBalanceInput.value = "";
+    console.log(accountList.listArray)
+    idHighest.textContent = accountList.highestBalance();
+    idLowest.textContent = accountList.lowestBalance();
 }
 
-//list.addEventListener("click", addAbove)
-document.getElementById("leftSide").addEventListener("click", button);
-document.getElementById("show-button").addEventListener("click", showButton);
+const accountButtonSelector = (event) => {
+    if (event.target.textContent == "Deposit") {
+        let name = event.target.parentNode.children[0].textContent;
+        let index = accountList.findAccount(name);
+        let input = Number(event.target.parentNode.children[3].value);
+        accountList.listArray[index].accountDeposit(input);
+        let balance = event.target.parentNode.children[2]
+        balance.textContent = Number(accountList.listArray[index].accountBalance()).toFixed(2);
+        idHighest.textContent = accountList.highestBalance();
+        idLowest.textContent = accountList.lowestBalance();
+        event.target.parentNode.children[3].value = "";
+
+    } if (event.target.textContent == "Withdraw") {
+        let name = event.target.parentNode.children[0].textContent;
+        let index = accountList.findAccount(name);
+        let input = Number(event.target.parentNode.children[3].value);
+        accountList.listArray[index].accountWithdraw(input);
+        let balance = event.target.parentNode.children[2]
+        balance.textContent = Number(accountList.listArray[index].accountBalance()).toFixed(2);
+        idHighest.textContent = accountList.highestBalance();
+        idLowest.textContent = accountList.lowestBalance();
+        event.target.parentNode.children[3].value = "";
+
+    } if (event.target.textContent == "Delete") {
+        let name = event.target.parentNode.children[0].textContent;
+        accountList.deleteAccount(name);
+        functions.deleteAccountCard(event.target);
+        idHighest.textContent = accountList.highestBalance();
+        idLowest.textContent = accountList.lowestBalance();
+    }
+}
+
+idMiddleContainer.addEventListener("click", accountButtonSelector);
+idCreateAcctButton.addEventListener("click", accountCreateButton);

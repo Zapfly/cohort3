@@ -1,4 +1,6 @@
-//
+//OCT 29 (scroll down to "funcitons.balanceTotal")
+
+
 
 //OCT 24 (scroll down to "functions.loopStaff")
 
@@ -108,6 +110,25 @@ export const basics = {
 
 
 export const functions = {
+    //OCT 29
+    getBalance: (obj) => {
+        return obj.balance
+    },
+
+    balanceTotal: (array) => {
+        const map1 = array.map(x => functions.getBalance(x) );
+
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        return map1.reduce(reducer)
+    },
+
+    balanceAverage: (array) => {
+        let total = functions.balanceTotal(array);
+        return total / array.length;
+    },
+
+
+
     //OCT 25
     loopStaffMap: (array) => {
         const mapped = array.map(x => (functions.makeEmailObj(x)))

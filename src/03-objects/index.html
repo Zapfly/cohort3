@@ -8,24 +8,43 @@
     <link rel="stylesheet" href="index.css">
 </head>
 <body>
-    <div>
-        <div>
-            <h1>Welcome to your Accounts</h1>
-            <div id="cards-exercise">
-                <div id="leftSide" class="scrollable"> 
-                    <button>Add Card</button>               
-                  
-                </div>
-                <div class="scrollable">
-                    <div class="w3-card w3-teal">
-                        <h1>Right Side</h1>
-                    </div>
-                    <div class="w3-card w3-teal">
-                        <h1>Right Side</h1>
-                    </div>
-                </div>
+    <div class="wrapper">
+        <div class="header">
+            <h1>Welcome to Calgary Domestic Bank</h1>
+        </div>
+        <div class="container left">
+            <span class="create-account-display-header">Create New Account</span>
+            <div class="create-account-display">
+                <br><span class="create-account-text">Account Name:</span>
+                <input type="text" class="create-account-input" id="idAccountNameInput">
+                <br><span class="create-account-text">Opening Balance:</span>
+                <input type="number" class="create-account-input" id="idAccountBalanceInput">
+                <br><input type="submit" value="Create Account" class="button create-account-button"
+                    id="idCreateAcctButton">
             </div>
         </div>
-    <script type="module" src="./scripts/main.js"></script>    
+        <div class="container middle" id="idMiddleContainer">
+            <span class="account-display-header">Accounts</span>
+            <div class="account-display" id="idAccountDisplay">
+
+            </div>
+        </div>
+        <div class="container right">
+            <span class="container-right-display-header">Accounts Information</span>
+            <div class="balances-display top-display" id="idHighestDisplay">
+                <span class="container-right-display-text">Highest Account Balance:</span>
+                </br>
+                <span class="container-right-display-output" id="idHighest">Value Display</span>
+            </div>
+            <div class="balances-display bottom-display" id="idLowestDisplay">
+                <span class="container-right-display-text">Lowest Account Balance:</span>
+                </br>
+                <span class="container-right-display-output" id="idLowest">Value Display</span>
+            </div>
+        </div>
+
+        <div class="footer">Footer</div>
+    </div>
+    <script type="module" src="./scripts/main.js"></script>   
 </body>
 </html>
