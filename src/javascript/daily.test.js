@@ -23,6 +23,13 @@ const emailTest = (x) => {
         .toEqual("benjamin.amis@evolveu.ca");
 }
 
+// NOV 6
+// 2019-11-6
+
+test("find the balance >= 1000",() => {
+    expect(functions.bigBalances(data.staff)).toEqual([1000, 1330]);
+    });
+
 
 //OCT 29
 

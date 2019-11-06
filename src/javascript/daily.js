@@ -1,3 +1,5 @@
+//NOV 6 
+
 //OCT 29 (scroll down to "funcitons.balanceTotal")
 
 
@@ -10,106 +12,22 @@
 
 //OCT 16
 
-let animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
-export const farm = {
-    xslice: () => {
-        return animals.slice(2)
-    },
-    xsplice: () => {
-        animals.splice(3, 2, 'horse');
-        return animals
-    },
-    array2: [1, 3, 5, 6],
-    xforEach: () => {
-        let emptyArr = [];
-        farm.array2.forEach(
-            (x) => {
-                let y = x + 2
-                emptyArr.push(y);
-            }
-        );
-        return emptyArr
-    },
-    xmap: () => {
-        let dairyFarm = animals.map(x => x + " milk")
-        return dairyFarm
-    },
-    xreduce: () => {
-        let reducedArray = [1, 2, 12, 44];
-        const reducer = (accumulator, currentValue) => accumulator + currentValue;
-        return reducedArray.reduce(reducer)
-    },
-    xfilter: () => {
-        console.log(animals);
-        const bigEnough = (x) => {
-            if (x.length > 3) return true
-            return false
-        }
-        const result = animals.filter(bigEnough);
-        return result
-    },
-    xsort: () => {
-        animals.push("aardvark");
-        animals.push("cocaroach");
-        animals.push("beaver");
-        return animals.sort();
-    }
-}
-//OCT 15
-
-
-export const basics = {
-    xfor: () => {
-        let testArray = [1, 2, 5, 7, 5];
-        console.log(testArray)
-        let i = 0;
-        let emptyArray = [];
-        for (i = 0; i < testArray.length; i++) {
-            let x = testArray[i] + 2;
-            emptyArray.push(x);
-        }
-        console.log(testArray);
-        return emptyArray;
-    },
-    xwhile: () => {
-        let testArray = [1, 2, 5, 7, 5];
-        let i = 0;
-        while (i < 6) {
-            testArray.push(2);
-            i++
-        }
-        return testArray;
-    },
-    xdoWhile: () => {
-        let testArray = [1, 2, 5, 7, 5];
-        let i = 0;
-        do {
-            testArray.push(3);
-            i++
-        } while (i < 6);
-        return testArray;
-    },
-    xforin: () => {
-        var string1 = "";
-        var object1 = { a: 1, b: 2, c: 3 };
-        for (var property1 in object1) {
-            string1 += object1[property1];
-        }
-        return string1;
-    },
-    xforOf: () => {
-        const array1 = ['a', 'b', 'c'];
-        for (const element of array1) {
-            return element;
-        }
-    }
-}
 
 
 //SECOND DAILY
 
 
 export const functions = {
+
+    // 2019-11-6
+
+    bigBalances: (staffArray) => {
+        const balanceArr = staffArray.map(elem => elem.balance);
+        const over1k = balanceArr.filter(balance => balance >= 1000)
+
+
+        return over1k;
+    },
     //OCT 29
     getBalance: (obj) => {
         return obj.balance
@@ -223,3 +141,98 @@ assertEquals(2, 2);
 assertEquals("2", 2);
 assertEquals("This value", "This value");
 
+
+let animals = ['ant', 'bison', 'camel', 'duck', 'elephant'];
+export const farm = {
+    xslice: () => {
+        return animals.slice(2)
+    },
+    xsplice: () => {
+        animals.splice(3, 2, 'horse');
+        return animals
+    },
+    array2: [1, 3, 5, 6],
+    xforEach: () => {
+        let emptyArr = [];
+        farm.array2.forEach(
+            (x) => {
+                let y = x + 2
+                emptyArr.push(y);
+            }
+        );
+        return emptyArr
+    },
+    xmap: () => {
+        let dairyFarm = animals.map(x => x + " milk")
+        return dairyFarm
+    },
+    xreduce: () => {
+        let reducedArray = [1, 2, 12, 44];
+        const reducer = (accumulator, currentValue) => accumulator + currentValue;
+        return reducedArray.reduce(reducer)
+    },
+    xfilter: () => {
+        console.log(animals);
+        const bigEnough = (x) => {
+            if (x.length > 3) return true
+            return false
+        }
+        const result = animals.filter(bigEnough);
+        return result
+    },
+    xsort: () => {
+        animals.push("aardvark");
+        animals.push("cocaroach");
+        animals.push("beaver");
+        return animals.sort();
+    }
+}
+//OCT 15
+
+
+export const basics = {
+    xfor: () => {
+        let testArray = [1, 2, 5, 7, 5];
+        console.log(testArray)
+        let i = 0;
+        let emptyArray = [];
+        for (i = 0; i < testArray.length; i++) {
+            let x = testArray[i] + 2;
+            emptyArray.push(x);
+        }
+        console.log(testArray);
+        return emptyArray;
+    },
+    xwhile: () => {
+        let testArray = [1, 2, 5, 7, 5];
+        let i = 0;
+        while (i < 6) {
+            testArray.push(2);
+            i++
+        }
+        return testArray;
+    },
+    xdoWhile: () => {
+        let testArray = [1, 2, 5, 7, 5];
+        let i = 0;
+        do {
+            testArray.push(3);
+            i++
+        } while (i < 6);
+        return testArray;
+    },
+    xforin: () => {
+        var string1 = "";
+        var object1 = { a: 1, b: 2, c: 3 };
+        for (var property1 in object1) {
+            string1 += object1[property1];
+        }
+        return string1;
+    },
+    xforOf: () => {
+        const array1 = ['a', 'b', 'c'];
+        for (const element of array1) {
+            return element;
+        }
+    }
+}
