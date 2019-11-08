@@ -1,32 +1,27 @@
-//NOV 6 
-
-//OCT 29 (scroll down to "funcitons.balanceTotal")
-
-
-
-//OCT 24 (scroll down to "functions.loopStaff")
-
-
-
-//OCT 21 (scroll down to "functions.loopStaff")
-
-//OCT 16
-
-
-
-//SECOND DAILY
 
 
 export const functions = {
+    //2019-11-08
+
+    provLoop: (array) => {
+
+        const abBc = array.filter(elem => 
+            {return elem.province == "AB" || elem.province == "BC"});
+        const mapArr = abBc.map(elem => 
+            {return `${elem.fname} ${elem.lname}`}
+        );
+        return mapArr
+
+    },
 
     // 2019-11-6
 
     bigBalances: (staffArray) => {
-        const balanceArr = staffArray.map(elem => elem.balance);
-        const over1k = balanceArr.filter(balance => balance >= 1000)
+        const over1k = staffArray.filter(elem => elem.balance >= 1000)
+        const balanceArr = over1k.map(elem => elem.balance);
 
 
-        return over1k;
+        return balanceArr;
     },
     //OCT 29
     getBalance: (obj) => {
