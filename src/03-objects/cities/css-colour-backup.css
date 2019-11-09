@@ -5,7 +5,7 @@ body {
 .header,
 .footer {
       color: white;
-      background-color: #F1D900;
+      background-color: #33076E;
       padding: 2%;
 }
 
@@ -29,7 +29,7 @@ body {
       'header header header header' 
       'left  middle middle right' 
       'footer footer footer footer';
-      background-image: url("https://image.shutterstock.com/image-photo/oklahoma-city-highlighted-push-pin-600w-400498315.jpg");
+      background-image: url("https://cdn.pixabay.com/photo/2017/08/25/06/54/street-map-2679271_960_720.jpg");
       background-size: cover;
 
 }
@@ -39,8 +39,8 @@ body {
 .container-right {
     margin: 2%;
     padding: 2%;
-    border: solid 3px #91F100;
-    background-color: #F1D900;
+    border: solid 1px #33076E;
+    background-color: #076E33;
     opacity: 90%;
 
 }
@@ -52,7 +52,7 @@ body {
 .create-city-display,
 .city-display,
 .balances-display {
-    border: solid 3px #91F100;
+    border: solid 1px #33076E;
     margin: 5%;
     padding: 2%;
 }
@@ -122,7 +122,7 @@ body {
     
 }
 
-.city-card:nth-child(odd) {background-color:  #91F100;}
+.city-card:nth-child(odd) {background-color:  #33076E;}
 
 .city-input {
     margin: 0px 5px 0px 15px;
