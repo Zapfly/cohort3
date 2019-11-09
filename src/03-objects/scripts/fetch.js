@@ -7,23 +7,23 @@ export const functions = {
 
     url: 'https://uinames.com/api/?amount=10',
 
-    getFirstName(data) {
+    getFirstName: (data) => {
         return (data[0].name);
     },
 
-    getAllFirstNames(data) {
+    getAllFirstNames: (data) => {
         return data.map((d, i, x) => d.name);
     },
 
-    showDelayProblem() {
+    showDelayProblem: () => {
         console.log('One');
         setTimeout(() => {          // Simulates a fetch
             console.log("Two");
         }, 1 * 1000);
-        console.log('Three');       // We have a problem Huston
+        console.log('Three');       // Huston, we have a problem 
     },
 
-    async showDelaySolution() {
+    async showDelaySolution () {
         try {
             console.log('One');
             const value = await                 // Simulate fetch
@@ -60,6 +60,19 @@ export const functions = {
 
 
 //--------------------------------
+
+//SENDING DATA TO AN API
+
+const me = {
+    "name": "lucas",
+    "surname": "seeger",
+    "gender": "male",
+    "region": "canada"
+}
+
+const sMe = JSON.stringify(me);
+console.log(sMe);
+
 
 
 
