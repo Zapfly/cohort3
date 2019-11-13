@@ -1,6 +1,6 @@
 const functions = {
 
-    createCityDiv: (parent, name, latitude, longitude, population, key) => {
+    createCityDiv: (parent, name, key) => {
         const newCityCard = document.createElement("div");
         newCityCard.id = `id-${key}`.toLowerCase();
         newCityCard.setAttribute("class", "city-card");
@@ -45,6 +45,12 @@ const functions = {
         newHowBigButton.id = `id-${key}-how-big-button`;
         newHowBigButton.setAttribute("class", "how-big-button city-button");
         newCityCard.appendChild(newHowBigButton);
+
+        const newWhichSphereButton = document.createElement("button");
+        newWhichSphereButton.textContent = "Show Hemisphere"
+        newWhichSphereButton.setAttribute("class", "hemisphere-show");
+        newWhichSphereButton.id = `id-${key}-which-sphere-button`;
+        newCityCard.appendChild(newWhichSphereButton);
 
         const newDeleteButton = document.createElement("button");
         newDeleteButton.textContent = "Delete City";
