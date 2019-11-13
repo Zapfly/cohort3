@@ -2,29 +2,7 @@ import { Community } from './classes.js'
 import functions from './cities.js'
 import { serverFunctions } from './api.js'
 
-const obj = { key: "1", dummy: "object", toomany: "strings" }
-serverFunctions.get()
 
-const justdoit = async () => {
-    const url = 'http://localhost:5000/';
-
-    try {
-        const response = await fetch(url + 'add', {
-            method: 'POST', // or 'PUT'
-            body: JSON.stringify(obj), // data can be `string` or {object}!
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
-        const json = await response.json();
-        console.log('Success:', JSON.stringify(json));
-    } catch (error) {
-        console.error('Error:', error);
-    }
-    await serverFunctions.get()
-}
-
-justdoit()
 
 const community = new Community("The Greater Area");
 const parent = document.getElementById("idCityDisplay");
@@ -43,7 +21,7 @@ const createCity = () => {
         return alert("Longitude must be a number between -180 and 180");
     } else {
         community.createCity(parent, newName, newLat, newLong, newPop);
-        console.log(community);
+        console.log(JSON.stringify(community));
         // mostNorthernCity = community.mostNorthern();
         // mostSouthernCity = community.mostSouthern();
         // totalPop = community.totalPopulation();
