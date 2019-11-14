@@ -27,6 +27,18 @@ export const serverFunctions = {
     json.statusText = response.statusText;
     // console.log(json, typeof(json));
     return json;
+  },
+
+  getData: async () => {
+    const response = await fetch('http://localhost:5000/all');
+    const myJson = await response.json();
+    // console.log(JSON.stringify(myJson))
+    return myJson;
+  },
+
+  getDataOnStart: async () => {
+    const server = await serverFunctions.getData()
+    server.forEach()    // server.forEach( () => { console.log(this)})
   }
 }
 

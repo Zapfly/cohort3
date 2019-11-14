@@ -2,6 +2,7 @@ import { Community } from './classes.js'
 import functions from './cities.js'
 import { serverFunctions } from './api.js'
 
+serverFunctions.getDataOnStart();
 
 
 const community = new Community("The Greater Area");
