@@ -2,11 +2,11 @@ import { Community } from './classes.js'
 import functions from './cities.js'
 import { serverFunctions } from './api.js'
 
-serverFunctions.getDataOnStart();
-
-
 const community = new Community("The Greater Area");
 const parent = document.getElementById("idCityDisplay");
+
+serverFunctions.getDataOnStart(community, parent);
+
 const createCity = () => {
     let newName = document.getElementById("idCityNameInput").value;
     let newLat = Number(document.getElementById("idCityLatInput").value);

@@ -1,4 +1,5 @@
 import { City, Community } from './classes.js'
+import functions from './cities.js'
 
 const url = 'http://localhost:5000/';
 
@@ -36,9 +37,25 @@ export const serverFunctions = {
     return myJson;
   },
 
-  getDataOnStart: async () => {
+  getDataOnStart: async (community, parent) => {
     const server = await serverFunctions.getData()
-    server.forEach()    // server.forEach( () => { console.log(this)})
+    let biggest = 0;
+    server.forEach((element) => {
+      if (biggest < element.key) {
+        biggest = element.key;
+      }
+    })  
+    server.forEach((element) => {
+      const name = element.name;
+      const lat = element.latitude;
+      const long = element.longitude;
+      const pop = element.population;
+      const key = element.key;
+      functions.createCityDiv(parent, name, key);
+      const a = new City(name, lat, long, pop, key);
+      community.cities[`key${key}`] = a;
+    })
+    community.counter = biggest;
   }
 }
 

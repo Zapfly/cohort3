@@ -1,4 +1,5 @@
 import {serverFunctions} from './api.js'
+import { Community } from './classes.js';
 
 global.fetch = require('node-fetch');
 
@@ -89,10 +90,32 @@ test('test that the fetch works?', async () => {
 test('get Data', async () => {
     let data = await serverFunctions.postData(url + 'clear');
 
+    data = await serverFunctions.getData()
+    expect(data[0]).toEqual(undefined)
+
     data = await serverFunctions.postData(url + 'add', community[0]);
     data = await serverFunctions.postData(url + 'add', community[1]);
     data = await serverFunctions.getData()
 
     expect(data[0].name).toEqual("Calgary")
+
+})
+
+test('get Data on start', async () => {
+    const myDiv = document.createElement("div");
+    const testCommunity = new Community("test Community")
+    await serverFunctions.postData(url + 'clear');
+
+    await serverFunctions.getDataOnStart(testCommunity, myDiv);
+    expect(testCommunity.counter).toEqual(0);
+    expect(myDiv.childElementCount).toEqual(0);
+
+    await serverFunctions.postData(url + 'add', community[0]);
+    await serverFunctions.postData(url + 'add', community[1]);
+    await serverFunctions.getDataOnStart(testCommunity, myDiv);
+
+    expect(testCommunity.counter).toEqual(2);
+    expect(myDiv.childElementCount).toEqual(2);
+    expect(myDiv.childNodes[1].getAttribute("key")).toEqual("key2");
 
 })
