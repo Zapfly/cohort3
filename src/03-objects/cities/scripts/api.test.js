@@ -119,3 +119,25 @@ test('get Data on start', async () => {
     expect(myDiv.childNodes[1].getAttribute("key")).toEqual("key2");
 
 })
+
+
+test('deleting', async () => {
+    let data = await serverFunctions.postData(url + 'clear');
+
+    data = await serverFunctions.getData()
+    expect(data[0]).toEqual(undefined)
+
+    await serverFunctions.postData(url + 'add', community[0]);
+    await serverFunctions.postData(url + 'add', community[1]);
+    data = await serverFunctions.getData()
+
+    expect(data.length).toEqual(2)
+
+    await serverFunctions.postData(url + "delete", {key:1})
+    data = await serverFunctions.getData()
+
+    expect(data[0].key).toEqual(2)
+
+
+
+})

@@ -1,5 +1,9 @@
 import { City, Community } from './classes.js'
 import functions from './cities.js'
+import { serverFunctions } from './api.js';
+
+global.fetch = require('node-fetch');
+
 
 test('testing createCityDiv', () => {
     let myDiv = document.createElement("div");
@@ -124,3 +128,14 @@ test('test deleteCity object', () => {
 
 //     expect(cityList.mostNorthern()).toBe("three");
 // })
+
+test('createCity serverside', async () => {
+    await serverFunctions.postData('http://localhost:5000/' + 'clear');
+    let myDiv = document.createElement("div");
+    const cityList10 = new Community("FarFarAway");
+
+    cityList10.createCity(myDiv, "Detroit", 10, 12, 1)
+
+    let data = await serverFunctions.getData()
+    expect(data[0].name).toEqual("Detroit")
+})

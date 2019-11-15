@@ -59,6 +59,11 @@ const cardButtons = () => {
         const cardKey = targetCard.getAttribute('key')
         functions.deleteCityCard(event.target);
         community.deleteCity(cardKey);
+        serverFunctions.postData(
+            'http://localhost:5000/delete', 
+            {key: Number(cardKey.slice(3))}
+        )
+
     }
 
 

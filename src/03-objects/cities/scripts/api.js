@@ -56,7 +56,13 @@ export const serverFunctions = {
       community.cities[`key${key}`] = a;
     })
     community.counter = biggest;
-  }
+  },
+
+  
+
+
+
+
 }
 
 

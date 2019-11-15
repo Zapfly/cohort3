@@ -1,4 +1,6 @@
 import functions from './cities.js'
+import {serverFunctions} from './api.js'
+
 
 export class City {
     constructor(name, latitude, longitude, population, key) {
@@ -56,6 +58,7 @@ export class Community {
         const a = new City(name, lat, long, pop, this.counter);
         this.cities[`key${this.counter}`] = a;
         functions.createCityDiv(parent, name, this.counter);
+        serverFunctions.postData('http://localhost:5000/add', a)
     }
 
     deleteCity(key) {
