@@ -119,15 +119,49 @@ test('test deleteCity object', () => {
     expect(cityList9.key1).toEqual(undefined);
 })
 
-// test('test mostNorthern', () => {
-//     let myDiv = document.createElement("div");
-//     const cityList = new Community("pittsburge")
-//     cityList.createCity(myDiv, "one", -50, 10, 500)
-//     cityList.createCity(myDiv, "two", 0, 10, 500)
-//     cityList.createCity(myDiv, "three", 50, 10, 500)
+test('test mostNorthern', () => {
+    let myDiv = document.createElement("div");
+    const cityList11 = new Community("pittsburge")
+    cityList11.createCity(myDiv, "one", -10, 10, 500)
+    expect(cityList11.mostNorthern()).toBe("one");
 
-//     expect(cityList.mostNorthern()).toBe("three");
-// })
+    cityList11.createCity(myDiv, "two", 0, 10, 500)
+    expect(cityList11.mostNorthern()).toBe("two");
+
+    cityList11.createCity(myDiv, "three", -25, 10, 500)
+    expect(cityList11.mostNorthern()).toBe("two");
+
+    cityList11.createCity(myDiv, "four", 40, 10, 500)
+    expect(cityList11.mostNorthern()).toBe("four");
+})
+
+test('test mostSouthern', () => {
+    let myDiv = document.createElement("div");
+    const cityList11 = new Community("pittsburge")
+    cityList11.createCity(myDiv, "one", -10, 10, 500)
+    expect(cityList11.mostSouthern()).toBe("one");
+
+    cityList11.createCity(myDiv, "two", 0, 10, 500)
+    expect(cityList11.mostSouthern()).toBe("one");
+
+    cityList11.createCity(myDiv, "three", -25, 10, 500)
+    expect(cityList11.mostSouthern()).toBe("three");
+
+    cityList11.createCity(myDiv, "four", 40, 10, 500)
+    expect(cityList11.mostSouthern()).toBe("three");
+})
+
+test('change text display', () => {
+    let myDiv = document.createElement("div");
+    const testSpan = document.createElement("span");
+    myDiv.appendChild(testSpan);
+
+    testSpan.innerText = "Original Text"
+    expect(testSpan.innerText).toEqual("Original Text")
+
+    functions.changeTextOnDisplay(testSpan, "New Text")
+    expect(testSpan.innerText).toEqual("New Text")
+})
 
 test('createCity serverside', async () => {
     await serverFunctions.postData('http://localhost:5000/' + 'clear');

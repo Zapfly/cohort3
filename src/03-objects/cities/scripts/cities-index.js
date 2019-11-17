@@ -41,11 +41,14 @@ const cardButtons = () => {
         const cardKey = targetCard.getAttribute('key')
         const input = Number(targetCard.children[2].value)
         community.cities[cardKey].movedIn(input);
+        serverFunctions.moveIn(community.cities[cardKey])
     }
     if (event.target.textContent == "Move Out") {
         const cardKey = targetCard.getAttribute('key')
         const input = Number(targetCard.children[2].value)
         community.cities[cardKey].movedOut(input);
+        serverFunctions.moveIn(community.cities[cardKey])
+
     }
     if (event.target.textContent == "How Big") {
         const cardKey = targetCard.getAttribute('key')

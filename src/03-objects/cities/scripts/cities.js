@@ -61,6 +61,11 @@ const functions = {
 
     deleteCityCard: (button) => {
         return button.parentNode.parentNode.removeChild(button.parentNode);
+    },
+
+    changeTextOnDisplay: (span, text) => {
+        span.innerText = `${text}`
+        console.log(span.innerText)
     }
 };
 

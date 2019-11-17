@@ -63,29 +63,37 @@ export class Community {
 
     deleteCity(key) {
         delete this.cities[key];
-        // console.log(this);
     }
 
-    // mostNorthern() {
-    //     const obj = this.cities;
+    mostNorthern() {
+        const obj = this.cities;
 
-    //     Object.keys(obj).forEach(function(key) {
+        let key
+        let biggest = {latitude: (-1*Infinity)};
 
-    //         // console.log(obj[key])
-    //         let biggest = 0;
-    //         let next = obj[key];
 
-    //         if (next > biggest) {
-    //             next = biggest
-    //             console.log(biggest);
-    //         }
+        for (key in obj) {
+            let next = obj[key];
 
-    //         return biggest;
+            if (next.latitude > biggest.latitude) {
 
-    //     });
-    // }
+                biggest = next
+            }
+        }
+        return biggest.name
+    }
 
-    // mostSouthern() {
-    //     return this.cities.reduce((min, p) => p.latitude < min ? p.latitude : min, this.cities[0].latitude);
-    // }
+    mostSouthern() {
+        const obj = this.cities;
+        let key
+        let smallest = {latitude: (Infinity)};
+        for (key in obj) {
+            let next = obj[key];
+
+            if (next.latitude < smallest.latitude) {
+
+                smallest = next
+            }
+        }
+        return smallest.name    }
 }

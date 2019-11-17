@@ -19,7 +19,7 @@ const community =  [
         "key":1,
         "name":"Calgary",
         "latitude":51.05,
-        "longitude":114.05,
+        "longitude":-114.05,
         "population":1400000
     },
     {
@@ -137,7 +137,48 @@ test('deleting', async () => {
     data = await serverFunctions.getData()
 
     expect(data[0].key).toEqual(2)
+})
 
+test('update server', async () => {
+    let data = await serverFunctions.postData(url + 'clear');
 
+    data = await serverFunctions.getData()
+    expect(data[0]).toEqual(undefined)
 
+    await serverFunctions.postData(url + 'add', community[0]);
+    await serverFunctions.postData(url + 'add', community[1]);
+
+    data = await serverFunctions.getData()
+    expect(data[0].population).toEqual(1400000)
+    expect(data[0].name).toEqual('Calgary')
+    expect(data[0].latitude).toEqual(51.05)
+    expect(data[0].longitude).toEqual(-114.05)
+
+    expect(data[1].population).toEqual(981280)
+    expect(data[1].name).toEqual('Edmonton')
+    expect(data[1].latitude).toEqual(53.55)
+    expect(data[1].longitude).toEqual(-113.49)
+
+    const newPopulation = {
+        "key":1,
+        "name":"Calgary",
+        "latitude":51.05,
+        "longitude":-114.05,
+        "population":1400200
+    }
+    
+    await serverFunctions.update(newPopulation);
+    data = await serverFunctions.getData();
+
+    expect(data[0].population).toEqual(1400200)
+    expect(data[0].name).toEqual('Calgary')
+    expect(data[0].latitude).toEqual(51.05)
+    expect(data[0].longitude).toEqual(-114.05)
+
+    expect(data[1].population).toEqual(981280)
+    expect(data[1].name).toEqual('Edmonton')
+    expect(data[1].latitude).toEqual(53.55)
+    expect(data[1].longitude).toEqual(-113.49)
+
+    
 })

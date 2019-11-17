@@ -58,6 +58,17 @@ export const serverFunctions = {
     community.counter = biggest;
   },
 
+  update: async (obj) => {
+    await serverFunctions.postData(url + 'update', {
+      key: obj.key,
+      population: obj.population,
+      name: obj.name,
+      latitude: obj.latitude,
+      longitude: obj.longitude
+      })
+  }
+  
+
   
 
 
