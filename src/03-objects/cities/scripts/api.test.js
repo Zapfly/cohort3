@@ -28,8 +28,26 @@ const community =  [
         "latitude":53.55,
         "longitude":-113.49,
         "population":981280
-        }
+    },
+    
+    {
+        "key":3,
+        "name":"Red Deer",
+        "latitude":52.26,
+        "longitude":113.81,
+        "population":103588
+    },
 ]
+
+test('server setup', async () => {
+    let data = await serverFunctions.postData(url + 'clear');
+
+    data = await serverFunctions.postData(url + 'add', community[0]);
+    data = await serverFunctions.postData(url + 'add', community[1]);
+    data = await serverFunctions.postData(url + 'add', community[2]);
+
+})
+
 
 test('test that the fetch works?', async () => {
 
@@ -179,6 +197,8 @@ test('update server', async () => {
     expect(data[1].name).toEqual('Edmonton')
     expect(data[1].latitude).toEqual(53.55)
     expect(data[1].longitude).toEqual(-113.49)
+    data = await serverFunctions.postData(url + 'clear');
 
     
 })
+

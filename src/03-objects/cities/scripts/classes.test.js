@@ -121,35 +121,71 @@ test('test deleteCity object', () => {
 
 test('test mostNorthern', () => {
     let myDiv = document.createElement("div");
+    const testSpan = document.createElement("span");
+    myDiv.appendChild(testSpan);
+    testSpan.innerText = "Original Text"
+    expect(testSpan.innerText).toEqual("Original Text")
     const cityList11 = new Community("pittsburge")
     cityList11.createCity(myDiv, "one", -10, 10, 500)
-    expect(cityList11.mostNorthern()).toBe("one");
+    cityList11.mostNorthern(testSpan)
+    expect(testSpan.innerText).toEqual("one")
 
     cityList11.createCity(myDiv, "two", 0, 10, 500)
-    expect(cityList11.mostNorthern()).toBe("two");
+    cityList11.mostNorthern(testSpan)
+    expect(testSpan.innerText).toEqual("two")
 
     cityList11.createCity(myDiv, "three", -25, 10, 500)
-    expect(cityList11.mostNorthern()).toBe("two");
+    cityList11.mostNorthern(testSpan)
+    expect(testSpan.innerText).toEqual("two")
 
     cityList11.createCity(myDiv, "four", 40, 10, 500)
-    expect(cityList11.mostNorthern()).toBe("four");
+    cityList11.mostNorthern(testSpan)
+    expect(testSpan.innerText).toEqual("four")
 })
+
+
 
 test('test mostSouthern', () => {
     let myDiv = document.createElement("div");
+    const testSpan = document.createElement("span");
+    myDiv.appendChild(testSpan);
+    testSpan.innerText = "Original Text"
+    expect(testSpan.innerText).toEqual("Original Text")
     const cityList11 = new Community("pittsburge")
     cityList11.createCity(myDiv, "one", -10, 10, 500)
-    expect(cityList11.mostSouthern()).toBe("one");
+    cityList11.mostSouthern(testSpan)
+    expect(testSpan.innerText).toEqual("one")
 
     cityList11.createCity(myDiv, "two", 0, 10, 500)
-    expect(cityList11.mostSouthern()).toBe("one");
+    cityList11.mostSouthern(testSpan)
+    expect(testSpan.innerText).toEqual("one")
 
     cityList11.createCity(myDiv, "three", -25, 10, 500)
-    expect(cityList11.mostSouthern()).toBe("three");
+    cityList11.mostSouthern(testSpan)
+    expect(testSpan.innerText).toEqual("three")
 
     cityList11.createCity(myDiv, "four", 40, 10, 500)
-    expect(cityList11.mostSouthern()).toBe("three");
+    cityList11.mostSouthern(testSpan)
+    expect(testSpan.innerText).toEqual("three")
+    
 })
+
+test('test totalPopulation', () => {
+    let myDiv = document.createElement("div");
+    const testSpan = document.createElement("span");
+    myDiv.appendChild(testSpan);
+    testSpan.innerText = "Original Text"
+    expect(testSpan.innerText).toEqual("Original Text")
+    const cityList11 = new Community("pittsburge")
+    cityList11.createCity(myDiv, "one", -10, 10, 500)
+    cityList11.totalPopulation(testSpan)
+    expect(testSpan.innerText).toEqual("500")
+
+    cityList11.createCity(myDiv, "two", 0, 10, 500)
+    cityList11.totalPopulation(testSpan)
+    expect(testSpan.innerText).toEqual("1000")    
+})
+
 
 test('change text display', () => {
     let myDiv = document.createElement("div");
@@ -172,4 +208,18 @@ test('createCity serverside', async () => {
 
     let data = await serverFunctions.getData()
     expect(data[0].name).toEqual("Detroit")
+})
+
+test('test 130E', async () => {
+
+    const myCity = new City("myCity", 49, 0, 500, "key1");
+    const myFav = myCity;
+
+    expect(myCity.population).toEqual(500)
+    expect(myFav.population).toEqual(500)
+
+    myCity.population = 700
+
+    expect(myCity.population).toEqual(700)
+    expect(myFav.population).toEqual(700)
 })

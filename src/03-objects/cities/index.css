@@ -100,7 +100,7 @@ body {
     grid-template-rows: 1fr 1fr 1fr 1fr;
     height: fit-content;
     width: 1fr;
-    padding: 10px 10px 0px 10px;
+    padding: 10px 10px 5px 10px;
     align-items: center;
     margin: 2px;
     align-self: stretch;
@@ -174,18 +174,27 @@ body {
 }
 
 .right-display {
-    display: flex;
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+
     border-style: solid;
     border-color: #78cf50;
     height: 29vh;
     width: auto;
     margin: 2px;
-    justify-content: center;
 }
 
 .right-display-text {
+    display: grid;
+    justify-self: center;
+    align-self: center;
     font-size: 20px;
     margin:10px;
+}
+
+.right-display-output {
+    display: grid;
+    justify-self: center;
 }
 
 

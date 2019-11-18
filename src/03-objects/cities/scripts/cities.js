@@ -65,7 +65,6 @@ const functions = {
 
     changeTextOnDisplay: (span, text) => {
         span.innerText = `${text}`
-        console.log(span.innerText)
     }
 };
 

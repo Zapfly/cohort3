@@ -51,6 +51,7 @@ export const serverFunctions = {
       const long = element.longitude;
       const pop = element.population;
       const key = element.key;
+
       functions.createCityDiv(parent, name, key);
       const a = new City(name, lat, long, pop, key);
       community.cities[`key${key}`] = a;
@@ -66,7 +67,8 @@ export const serverFunctions = {
       latitude: obj.latitude,
       longitude: obj.longitude
       })
-  }
+  },
+
   
 
   

@@ -1,5 +1,5 @@
 import functions from './cities.js'
-import {serverFunctions} from './api.js'
+import { serverFunctions } from './api.js'
 
 
 export class City {
@@ -65,35 +65,51 @@ export class Community {
         delete this.cities[key];
     }
 
-    mostNorthern() {
+    mostNorthern(span) {
+        let key
+        let biggest = { latitude: (-90), name: "biggest value" };
+
         const obj = this.cities;
 
-        let key
-        let biggest = {latitude: (-1*Infinity)};
+        let i = 0;
 
-
-        for (key in obj) {
-            let next = obj[key];
-
-            if (next.latitude > biggest.latitude) {
-
-                biggest = next
+        for (key in this.cities) {
+            if (obj.hasOwnProperty(key)) {
+                let next = obj[key];
+                if (next.latitude > biggest.latitude) {
+                    biggest = next
+                }
             }
+
         }
-        return biggest.name
+        functions.changeTextOnDisplay(span, String(biggest.name))
     }
 
-    mostSouthern() {
-        const obj = this.cities;
+    mostSouthern(span) {
         let key
-        let smallest = {latitude: (Infinity)};
-        for (key in obj) {
-            let next = obj[key];
-
-            if (next.latitude < smallest.latitude) {
-
-                smallest = next
+        let smallest = { latitude: (Infinity), name: "smallest value" };
+        const obj = this.cities;
+        for (key in this.cities) {
+            if (obj.hasOwnProperty(key)) {
+                let next = obj[key];
+                if (next.latitude < smallest.latitude) {
+                    smallest = next
+                }
             }
         }
-        return smallest.name    }
+        functions.changeTextOnDisplay(span, String(smallest.name))
+    }
+
+    totalPopulation(span) {
+        let total = 0;
+        const obj = this.cities;
+        let key
+
+        for (key in this.cities) {
+            total += obj[key].population
+        }
+        functions.changeTextOnDisplay(span, total)
+
+
+    }
 }
