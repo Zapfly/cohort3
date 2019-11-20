@@ -1,5 +1,6 @@
 import React from 'react';
 
+
 class MyComponent extends React.Component {
 
 	render() {
@@ -9,6 +10,8 @@ class MyComponent extends React.Component {
 				</div>
 			)
 		}
+
+
 }
 
 export default MyComponent;

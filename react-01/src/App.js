@@ -2,6 +2,8 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import MyComponent from './components/MyComponent';
+import EvenComponent from './components/EvenComponent';
+import OddComponent from './components/OddComponent';
 
 class App extends React.Component {
 
@@ -17,7 +19,8 @@ class App extends React.Component {
     this.counter ++
     this.setState({
       myState: "now:" + this.counter
-    });  }
+    });
+  }
 
   render() {
     return (
@@ -28,8 +31,13 @@ class App extends React.Component {
           <button onClick={this.onPushMe}>
             Push Me
           </button>
-          <MyComponent 
+          <MyComponent whatToSay="What Ever" 
           />
+          { this.counter %2===0
+        ? <EvenComponent />
+        : <OddComponent />
+          }
+          <EvenComponent num={this.counter}/>
                     
           <p>
             Edit <code>src/App.js</code> and save to reload.
