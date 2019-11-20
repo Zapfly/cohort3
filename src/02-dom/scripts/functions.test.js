@@ -11,23 +11,8 @@ const whatCards =
     return MTArr
     }
 
-    const whatCards2 = 
-    (x) => {
-    let MTArr = []
-    let i = 0;
-    let obj = x.children
-    for (i = 0; i < obj.length; i++) {            
-        MTArr.push(obj[i].textContent);
-    }
-    return MTArr
-    }
 
-const whatButtons = (x) => {
-    let myId = document.getElementById(x)
-    let checkId = myId.getAttribute("id")
-    let mychildren = myId.children
-    let text = mychildren.textContent
-}
+
 
 test('Card checking', () => {
     const myDiv = document.createElement("div");
