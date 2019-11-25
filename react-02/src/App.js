@@ -5,26 +5,12 @@ import Image from "./components/image"
 import Game from "./components/tick-tack-toe"
 
 
-let counter = 0
-
-let imgArr = [
-    "https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Round-Tower-2.png",
-    "https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Windmill-1.png",
-    "https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Tower-Square-2.png",
-    "https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Statue-1.png",
-    "https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Fortress-2.png",
-    "https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Cathedral-2.png"
-]
-
-
 
 
 class App extends React.Component {
 
   constructor() {
     super()
-    this.imgCounter = 0
-
     this.page = {
       startPage: (
         <div className="App-header">
@@ -46,23 +32,36 @@ class App extends React.Component {
         <Game />
       )
     }
-      this.state = { page: this.page.startPage }
 
+      this.imgArr = [
+        {key:1, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Round-Tower-2.png", action:this.startPage},
+        {key:2, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Windmill-1.png", action:this.gameStart},
+        {key:3, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Tower-Square-2.png",action:null},
+        {key:4, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Statue-1.png", action: null},
+        {key:5, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Fortress-2.png", action: null},
+        {key:6, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Cathedral-2.png", action: null}
+    ];
+    this.state = { page: this.page.startPage };
   }
 
   gameStart = () => {
-    console.log("heyo")
-    this.setState({page: this.page.gamePage }) 
+    this.setState({page: this.page.gamePage });
+  }
+
+  startPage = () => {
+    this.setState({page: this.page.startPage });
   }
 
   renderImages = () => {
     return (
 
-      imgArr.map((x, index) => {
+      this.imgArr.map((x, index) => {
       return (
         <Image 
+        key={index}
         imageId={index}
-        src={imgArr[index]} 
+        src={x.src}
+        onClick={x.action} 
       />
       )
     })
@@ -72,8 +71,6 @@ class App extends React.Component {
   }
 
   render() {
-    Image.counter = 0
-
     return (
       <div className="App">
         <header>

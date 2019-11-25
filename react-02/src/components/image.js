@@ -5,10 +5,7 @@ import React from 'react';
 
 
 class Image extends React.Component {
-    constructor() {
-        super();
-        
-    }
+
 
 
     picture () {
@@ -23,7 +20,9 @@ class Image extends React.Component {
                 <img 
                     id={"idImg" + this.props.imageId} 
                     src={this.props.src} 
-                    tabIndex={0} alt=""
+                    tabIndex={0}
+                    alt=""
+                    onClick={this.props.onClick}
                 />
             </div>
             )
