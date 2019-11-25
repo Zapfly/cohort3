@@ -30,7 +30,12 @@ img {
   height: 100px;
   width: auto;
   margin: 10px;
+}
 
+img:hover {
+  filter: grayscale(75%) sepia(25%);
+  cursor: pointer;
+  outline: 0;
 }
 
 #idImg0 {
