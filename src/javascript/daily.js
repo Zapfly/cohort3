@@ -1,22 +1,52 @@
 
 
 export const functions = {
+    // 2019-11-26
+    /*this is my code from my react-02 app
+    it lets me assign my image source and id based off of an array called 
+    imgArr.
+    This is inside my App class but here I've had to specify that it is in
+    funcitons.imgArr for the code to work instead of this.imgArr.
+    I also had to convert the JSX/Component syntax to an object*/
+    renderImages: () => {
+        return (
+            functions.imgArr.map((x, index) => {
+                return ({
+                        key:index,
+                        imageId:index,
+                        src:x.src,
+                        onClick:x.action
+                }
+                    
+                )
+            })
+        )
+    },
+    /* This is the array.*/
+    imgArr : [
+        {key:1, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Round-Tower-2.png", action:"startPage function"},
+        {key:2, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Windmill-1.png", action:"gameStart function"},
+        {key:3, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Tower-Square-2.png",action:null},
+        {key:4, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Statue-1.png", action: null},
+        {key:5, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Fortress-2.png", action: null},
+        {key:6, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Cathedral-2.png", action: null}
+    ],
 
     //2019-11-21
     population: (array) => {
         let counter = 0;
-        array.forEach(()=> {counter ++})
-        return counter        
+        array.forEach(() => { counter++ })
+        return counter
     },
 
     totalAge: (array) => {
         let counter = 0;
-        array.forEach((element) => { counter += element.age})
-        return counter       
+        array.forEach((element) => { counter += element.age })
+        return counter
     },
 
     averageAge: (array) => {
-        const avg = functions.totalAge(array)/functions.population(array);
+        const avg = functions.totalAge(array) / functions.population(array);
         return avg
     },
 
@@ -35,10 +65,8 @@ export const functions = {
 
     provLoop: (array) => {
 
-        const abBc = array.filter(elem => 
-            {return elem.province == "AB" || elem.province == "BC"});
-        const mapArr = abBc.map(elem => 
-            {return `${elem.fname} ${elem.lname}`}
+        const abBc = array.filter(elem => { return elem.province == "AB" || elem.province == "BC" });
+        const mapArr = abBc.map(elem => { return `${elem.fname} ${elem.lname}` }
         );
         return mapArr
 
@@ -59,7 +87,7 @@ export const functions = {
     },
 
     balanceTotal: (array) => {
-        const map1 = array.map(x => functions.getBalance(x) );
+        const map1 = array.map(x => functions.getBalance(x));
 
         const reducer = (accumulator, currentValue) => accumulator + currentValue;
         return map1.reduce(reducer)
@@ -90,7 +118,7 @@ export const functions = {
     loopStaffIn: (array1) => {
         let emptyArr = []
         for (var object in array1) {
-            emptyArr.push(functions.makeEmailObj(array1[object]));                   
+            emptyArr.push(functions.makeEmailObj(array1[object]));
         }
         return emptyArr
     },
@@ -99,7 +127,7 @@ export const functions = {
         for (const element of array1) {
             let email = functions.makeEmailObj(element)
             emptyArr.push(email);
-          }
+        }
 
 
         return emptyArr
@@ -111,12 +139,12 @@ export const functions = {
         array.forEach(item => {
             mtArray.push(functions.makeEmailObj(item));
         })
-        return mtArray;      
+        return mtArray;
     },
     //OCT 11
 
     makeEmailObj: (name) => {
-        
+
         return String(name.fname.toLowerCase() + "." + name.lname.toLowerCase() + "@evolveu.ca");
     },
     //Second Daily
