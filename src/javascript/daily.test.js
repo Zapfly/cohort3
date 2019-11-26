@@ -4,11 +4,11 @@ import {functions, assertEquals, basics, farm} from './daily'
 //2019-11-26
 
 test('destructuring array', () => {
-    const testArray = functions.renderImages()
-    expect(testArray[0].key).toEqual(0)
-    expect(testArray[1].key).toEqual(1)
-    expect(testArray[2].key).toEqual(2)
-    expect(testArray[3].key).toEqual(3)
+    const [first, second, third, fourth] = functions.imgArr
+    expect(first.key).toEqual(1)
+    expect(second.key).toEqual(2)
+    expect(third.key).toEqual(3)
+    expect(fourth.key).toEqual(4)
 })
 
 const people = [

@@ -4,24 +4,7 @@ export const functions = {
     // 2019-11-26
     /*this is my code from my react-02 app
     it lets me assign my image source and id based off of an array called 
-    imgArr.
-    This is inside my App class but here I've had to specify that it is in
-    funcitons.imgArr for the code to work instead of this.imgArr.
-    I also had to convert the JSX/Component syntax to an object*/
-    renderImages: () => {
-        return (
-            functions.imgArr.map((x, index) => {
-                return ({
-                        key:index,
-                        imageId:index,
-                        src:x.src,
-                        onClick:x.action
-                }
-                    
-                )
-            })
-        )
-    },
+    imgArr.*/
     /* This is the array.*/
     imgArr : [
         {key:1, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Round-Tower-2.png", action:"startPage function"},
