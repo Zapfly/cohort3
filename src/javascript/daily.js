@@ -1,6 +1,36 @@
 
 
 export const functions = {
+
+    //2019-11-21
+    population: (array) => {
+        let counter = 0;
+        array.forEach(()=> {counter ++})
+        return counter        
+    },
+
+    totalAge: (array) => {
+        let counter = 0;
+        array.forEach((element) => { counter += element.age})
+        return counter       
+    },
+
+    averageAge: (array) => {
+        const avg = functions.totalAge(array)/functions.population(array);
+        return avg
+    },
+
+    stats: (array) => {
+        const obj = {
+            population: functions.population(array),
+            totalAge: functions.totalAge(array),
+            averageAge: functions.averageAge(array)
+        }
+        return obj
+
+        // return {population: 43, averageAge: 47.6744, totalAge: 2050}
+    },
+
     //2019-11-08
 
     provLoop: (array) => {
@@ -121,7 +151,6 @@ export const functions = {
 
 export const assertEquals = (p1, p2) => {
     if (p1 === p2) return true
-    console.log(false)
     /*console.log("*** the two values are not the same” and also log the two parameters as follows:");
     console.log('“p1-->”' + p1);
     console.log('“p2-->”' + p2);*/
@@ -167,7 +196,6 @@ export const farm = {
         return reducedArray.reduce(reducer)
     },
     xfilter: () => {
-        console.log(animals);
         const bigEnough = (x) => {
             if (x.length > 3) return true
             return false
@@ -188,14 +216,12 @@ export const farm = {
 export const basics = {
     xfor: () => {
         let testArray = [1, 2, 5, 7, 5];
-        console.log(testArray)
         let i = 0;
         let emptyArray = [];
         for (i = 0; i < testArray.length; i++) {
             let x = testArray[i] + 2;
             emptyArray.push(x);
         }
-        console.log(testArray);
         return emptyArray;
     },
     xwhile: () => {

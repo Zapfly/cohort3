@@ -1,6 +1,6 @@
 import {functions, assertEquals, basics, farm} from './daily'
 
-//2019-11-08
+
 
 
 const people = [
@@ -50,7 +50,20 @@ const people = [
 	{fname:"Tylor", lname:"Torres", province:"MN", age:98}
 ];
 
+//2019-11-21
 
+test('total province stats', () => {
+    expect(functions.population(people)).toEqual(44)
+    expect(functions.totalAge(people)).toEqual(2045)
+    expect(functions.averageAge(people)).toEqual(46.47727272727273)
+
+    const peopleStats = functions.stats(people)
+    expect(peopleStats.population).toEqual(44)
+    expect(peopleStats.totalAge).toEqual(2045)
+    expect(peopleStats.averageAge).toEqual(46.47727272727273)
+})
+
+//2019-11-08
 const prov = functions.provLoop(people);
 
 test('Albertans are better', () => {
@@ -59,13 +72,6 @@ test('Albertans are better', () => {
     expect(prov[1]).toEqual("Angela Jones")
     
 })
-
-
-
-
-
-
-
 
 const data = {
     staff: [
