@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Image from "./components/image"
-import Game from "./components/tick-tack-toe"
+import Game from "./components/Game"
 
 
 
