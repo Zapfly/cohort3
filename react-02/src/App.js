@@ -3,6 +3,10 @@ import logo from './logo.svg';
 import './App.css';
 import Image from "./components/image"
 import Game from "./components/Game"
+import house from './images/House14.svg'
+import money from './images/accounts.svg'
+import map from './images/city-map.svg'
+import play from './images/joystick_black_red_petri_01.svg'
 
 
 
@@ -32,14 +36,11 @@ class App extends React.Component {
         <Game />
       )
     }
-
       this.imgArr = [
-        {key:1, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Round-Tower-2.png", action:this.startPage},
-        {key:2, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Windmill-1.png", action:this.gameStart},
-        {key:3, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Tower-Square-2.png",action:null},
-        {key:4, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Statue-1.png", action: null},
-        {key:5, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Fortress-2.png", action: null},
-        {key:6, src:"https://publicdomainvectors.org/photos/nicubunu-RPG-map-symbols-Cathedral-2.png", action: null}
+        {key:1, src:house, action:this.startPage},
+        {key:2, src:play, action:this.gameStart},
+        {key:3, src:money,action:null},
+        {key:4, src:map, action: null},
     ];
     this.state = { page: this.page.startPage };
   }
