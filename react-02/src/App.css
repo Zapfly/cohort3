@@ -1,0 +1,93 @@
+.App {
+  text-align: center;
+}
+
+.App-logo {
+  height: 40vmin;
+}
+
+.App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App-link {
+  color: #09d3ac;
+}
+
+header {
+  display:grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+}
+
+img {
+  height: 100px;
+  width: auto;
+  margin: 10px;
+}
+
+img:hover {
+  filter: grayscale(75%) sepia(25%);
+  cursor: pointer;
+  outline: 0;
+}
+
+#idImg0 {
+  animation-duration: 10s;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-direction: normal;  
+}
+
+#idImg1 {
+  animation-duration: 5s;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-direction: reverse;  
+}
+
+#idImg2 {
+  animation-duration: 2s;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;  
+}
+
+#idImg3 {
+  animation-duration: 30s;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-direction: alternate-reverse;  
+}
+
+#idImg4 {
+  animation-duration: 0.5s;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-direction: inherit;  
+}
+
+#idImg5 {
+  animation-duration: 10s;
+  animation-name: rotate;
+  animation-iteration-count: infinite;
+  animation-direction: normal;  
+}
+
+
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);    
+  }
+
+  to {
+    transform: rotate(360deg);    
+  }
+}
+

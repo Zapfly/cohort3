@@ -20,7 +20,9 @@ test('Check Calculator', () => {
     expect(myCalculator.add(10, 4)).toBe(14);
     expect(myCalculator.add(-12, 16)).toBe(4);
 
-    expect(myCalculator.subtract(1, 2)).toBe(-1);
+    expect(functions.subtract(1, 2)).toBe(-1);
+    expect(myCalculator.subtract(100, 75)).toBe(25);
+    expect(myCalculator.subtract(50, 1500)).toBe(-1450);
 
     expect(myCalculator.multiply(9, 2)).toBe(18);
 

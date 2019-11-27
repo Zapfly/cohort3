@@ -158,13 +158,14 @@ export const functions = {
         return emptyArr        
     },
     //Objects / Dictionaries
-    xdictionary: (x) => {
-        let dic = {
-            nl: "Newfoundland and Labrodor",
-            pei: "Prince Edward Island"
-        }
-        return dic.x;
-    }
+    // xdictionary: (x) => {
+    //     let dic = {
+    //         "nl": "Newfoundland and Labrodor",
+    //         pei: "Prince Edward Island"
+    //     }
+    //     console.log(dic.x);
+    //     return dic.x;        
+    // }
 
 
     

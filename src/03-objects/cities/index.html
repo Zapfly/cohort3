@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <link rel="stylesheet" href="index.css">
+</head>
+
+<body>
+    <div class="wrapper">
+        <span class="header">
+            <h1>Community Management System</h1>
+        </span>
+        <div class="container-left">
+            <span class="container-left-header display-header">Add a City to the Community</span>
+            <div class="create-city-display">
+                <p class="create-city-text">City Name:</p>
+                <input type="text" class="create-city-name-input" id="idCityNameInput">
+                <p class="create-city-text"> Latitude:</p>
+                <input type="number" class="create-city-balance-input" id="idCityLatInput">
+                <p class="create-city-text"> Longitude:</p>
+                <input type="number" class="create-city-balance-input" id="idCityLongInput">
+                <p class="create-city-text"> Population:</p>
+                <input type="number" class="create-city-balance-input" id="idCityPopInput">
+                <br><button class="button create-city-button" id="idCreateCityButton">Add City</button>
+            </div>
+        </div>
+        <div class="container-middle" id="idMiddleContainer">
+            <span class="container-middle-header display-header">Cities</span>
+            <div class="city-display" id="idCityDisplay">
+                <!-- created city divs go here -->
+            </div>
+        </div>
+        <div class="container-right">
+            <span class="container-right-header display-header">Cities Information</span>
+            <div class="right-display" id="idMostNorthernDisplay">
+                <span class="right-display-text">Most Northern</span>
+                <p class="right-display-output" id="idMostNothern"></p>
+            </div>
+            <div class="right-display" id="idMostSouthernDisplay">
+                <span class="right-display-text">Most Southern</span>
+                <p class="right-display-output" id="idMostSouthern"></p>
+            </div>
+            <div class="right-display"  id="total-population">
+                <span class="right-display-text">Total Population</span>
+                <p class="right-display-output" id="idTotalPopDisplay"></p>
+            </div>
+        </div>
+
+        <div class="footer">Big brother is watching</div>
+    </div>
+    <script type="module" src="./scripts/cities-index.js"></script>
+</body>
+
+</html>
