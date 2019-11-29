@@ -8,12 +8,8 @@ class Image extends React.Component {
 
 
 
-    picture () {
-        this.counter++
-    }
 
     render() {
-        this.picture()
 
         return (
             <div onClick={this.props.onClick}>

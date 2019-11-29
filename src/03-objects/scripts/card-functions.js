@@ -6,14 +6,17 @@ export const functions = {
         newAccount.id = `id-${accountNameNoSpace}`;
         newAccount.setAttribute("class", "account-card");
         parent.appendChild(newAccount);
+
         const newSpanName = document.createElement("span");
         newSpanName.setAttribute("class", "account-name");
         newSpanName.textContent = accountName;
         newAccount.appendChild(newSpanName);
+
         const dollarSign = document.createElement("span");
         dollarSign.textContent = "$"
         dollarSign.setAttribute("class", "dollar")
         newAccount.appendChild(dollarSign);
+        
         const newSpanBalance = document.createElement("span");
         newSpanBalance.setAttribute("class", "account-balance");
         newSpanBalance.textContent = Number(startingBalance).toFixed(2);
