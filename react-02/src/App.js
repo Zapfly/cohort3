@@ -10,7 +10,6 @@ import play from './images/joystick_black_red_petri_01.svg'
 import AccountsPage from './components/AccountComp'
 
 
-
 class App extends React.Component {
 
   constructor() {
@@ -45,7 +44,12 @@ class App extends React.Component {
         {key:3, src:money,action:this.accountPage},
         {key:4, src:map, action: null},
     ];
-    this.state = { page: this.page.startPage };
+
+    //*********
+    this.state = { 
+      page: this.page.accountPage,
+    };
+    //******
   }
 
   gameStart = () => {
@@ -83,12 +87,6 @@ class App extends React.Component {
       <div className="App">
         <header>
           {this.renderImages()}
-          {/* <Image />
-          <Image />
-          <Image />
-          <Image />
-          <Image />
-          <Image /> */}
         </header>
 
         <div>{this.state.page}</div>

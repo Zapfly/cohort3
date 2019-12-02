@@ -1,4 +1,4 @@
-import { AccountController, Account } from './account.js';
+import { AccountController, Account } from '../components/account.js/index.js';
 import {functions} from './card-functions.js';
 
 export const accountList = new AccountController("Account List");

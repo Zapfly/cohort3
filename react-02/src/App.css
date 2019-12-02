@@ -188,7 +188,7 @@ footer {
 
 
 .container {
-  margin: 2%;
+  margin: 3px;
   padding: 2%;
   border: solid 3px #78cf50;
   background-color: #b0cc97;
@@ -210,7 +210,7 @@ footer {
 
 .left {
   grid-area: left;
-  height: 350px;
+  height: 150px;
 }
 
 .create-card-display {
@@ -238,23 +238,21 @@ footer {
 }
 
 .display {
-  display: grid;
   height: 450px;
   overflow-y: scroll;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: auto;
-  align-items: end;
+  /* grid-template-columns: repeat(3, 1fr); */
+  /* grid-template-rows: auto; */
+  /* align-items: end; */
 }
 
-.card {
-  display: grid;
+.account-card {
   grid-template-columns: 1fr 1fr;
-  grid-template-rows: 1fr 1fr 1fr 1fr;
+  grid-template-rows: 1fr;
   height: fit-content;
   width: 1fr;
-  padding: 10px 10px 5px 10px;
+  padding: 5px 5px 5px 5px;
   align-items: center;
-  margin: 2px;
+  margin: 5px;
   align-self: stretch;
 }
 
@@ -279,8 +277,8 @@ footer {
   
 }
 
-.card:nth-child(odd) {background-color:  grey;}
-.card:nth-child(even) {background-color:  #78cf50;}
+.account-card:nth-child(odd) {background-color:  grey;}
+.account-card:nth-child(even) {background-color:  #78cf50;}
 
 .card-input {
   margin: 0px 5px 0px 15px;
@@ -305,8 +303,7 @@ footer {
 
 .right {
   grid-area: right;
-  height: 50vh;
-  min-height: 250px;
+  height: 275px;
 }
 
 .balances-display {

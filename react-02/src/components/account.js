@@ -47,7 +47,7 @@ export class AccountController {
         let balanceArray = array.map(a => a.startingBalance);
         let lowestNumber = Math.min(...balanceArray);
         let searchedBalance = (balance) => {
-            return balance == lowestNumber;
+            return balance === lowestNumber;
         }
         let keyElement = balanceArray.findIndex(searchedBalance);
         return array[keyElement].accountName;
@@ -58,7 +58,7 @@ export class AccountController {
         let balanceArray = array.map(a => a.startingBalance);
         let highestNumber = Math.max(...balanceArray);
         let searchedBalance = (balance) => {
-            return balance == highestNumber;
+            return balance === highestNumber;
         }
         let keyElement = balanceArray.findIndex(searchedBalance);
         return array[keyElement].accountName;
@@ -68,7 +68,7 @@ export class AccountController {
         let array = this.listArray;
         let nameArrays = array.map(a => a.accountName);
         let searchedName = (name) => {
-            return name == search;
+            return name === search;
         }
         let keyElement = nameArrays.findIndex(searchedName);
         array.splice(keyElement, 1);
@@ -79,7 +79,7 @@ export class AccountController {
         let array = this.listArray;
         let nameArrays = array.map(a => a.accountName);
         let searchedName = (name) => {
-            return name == search;
+            return name === search;
         }
         let keyElement = nameArrays.findIndex(searchedName);
         return keyElement;
