@@ -177,7 +177,6 @@ footer {
   display: grid;
   grid-template-columns: 20% 30% 30% 20%;
   grid-template-areas: 
-    'header header header header' 
     'left  middle middle right' 
     'footer footer footer footer';
     background-image: url("https://image.shutterstock.com/image-photo/oklahoma-city-highlighted-push-pin-600w-400498315.jpg");
@@ -188,7 +187,7 @@ footer {
 
 
 .container {
-  margin: 3px;
+  margin: 10px 10px 0px 0px;
   padding: 2%;
   border: solid 3px #78cf50;
   background-color: #b0cc97;
@@ -307,7 +306,7 @@ footer {
 }
 
 .balances-display {
-  height: 10vh;
+  height: 15%;
   padding: 14%;
   text-align: center;
 }
