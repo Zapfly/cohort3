@@ -1,6 +1,5 @@
 import React from 'react';
-import { AccountController, Account } from './account';
-import {functions} from '../scripts/card-functions'
+import { AccountController } from './account';
 
 const bankAccounts = new AccountController("bankAccounts")
 
@@ -9,48 +8,68 @@ class AccountContainer extends React.Component {
     constructor() {
         super()
         this.state = {
-            // counter: 0,
-            accountArray: bankAccounts.listArray,
+            controller: bankAccounts,
+            accountArray: []
 
         }
     }
 
-    addAccount = () => {
 
-        bankAccounts.addAccount(
+
+    addAccount = () => {
+        let a = this.state.controller
+        console.log("Add")
+        a.addAccount(
             document.getElementById("idAccountNameInput").value,
             Number(document.getElementById("idAccountBalanceInput").value)
         )
-        this.setState({
-            accountArray: bankAccounts.listArray.map((x, i) => {
-                return(
-                <div className="account-card" key={i}>
-                <span className="account-name">{x.accountName}</span>
-                <span> $ {x.startingBalance} </span>
-                <input type="number"></input>
-                <button >Deposit</button>
-                <button>Withdraw</button>
-                <button onClick={(e)=>{
-                    
-                    // (e) => {
-                    //     return e.target.parentNode.parentNode.removeChild(e.target.parentNode)
-                    // }
-                    // (e) => {
-                    //     const search = e.target.getAttribute("class")
-                    //     return bankAccounts.deleteAccount(search)           
-                    // }
-                    // console.log(bankAccounts.listArray) 
-                }}>Delete</button>
-                </div>   
-                )             
-            })
-        })
+        console.log(a);
+        
+        this.setState({message : "Hi"})
         document.getElementById("idAccountNameInput").value = ""
         document.getElementById("idAccountBalanceInput").value = ""
     }
 
+    deleteCard = (e) => {
+        const search = e.target.parentNode.childNodes[0].value
+        this.state.controller.deleteAccount(search)
+        console.log(this.state.controller)
+        this.setState({
+            message: "hi"
+        })
+        }
+    
+    find = (event) => {
+        const search = event.target.parentNode.childNodes[0].textContent
+        return this.state.controller.findAccount(search)
+    }
+
+    withdraw = (event) => {
+        const index = this.find(event)
+        const obj = this.state.controller.listArray[index]
+        const withdrawal = event.target.parentNode.childNodes[2].value
+        obj.accountWithdraw(withdrawal)
+        // console.log(obj)
+        this.setState({ message: "low" })
+    }
+
+
+
+    
+
     render() {
-        console.log(this.state.controller1)
+        console.log(this.state.controller)
+        let cards = this.state.controller.listArray.map((object, i) => {
+            return( 
+                <AccountCard 
+                    key={i}
+                    account={object}
+                    delete={this.deleteCard}
+                    withdraw={this.withdraw}     
+                />
+            )
+        })
+
         return (
             <div className="wrapper">
                 <div className="container left">
@@ -69,7 +88,7 @@ class AccountContainer extends React.Component {
                         <span className="display-header">Accounts</span>
                         <div className="display" id="idAccountDisplay">
                             {/*///////////////////*/}
-                            {this.state.accountArray}
+                            {cards}
                             {/*///////////////////*/}
 
                         </div>
@@ -96,25 +115,23 @@ class AccountContainer extends React.Component {
 }
 
 class AccountCard extends React.Component {
-    constructor(props) {
-        super(props)
-        this.state = {
-            accountBalance: this.props.balance,
-            accountName: this.props.name,
-            key: this.props.key
-        }
-    }
     render() {
-        console.log(this.state.account)
+        console.log(this.props.name)
         return (
-            <div className="account-card" key={this.props.key}>
-                <span className="account-name">{this.props.name}</span>
-                <span> $ {this.props.balance} </span>
+            <div className="account-card" >
+                <span className="account-name">{this.props.account.accountName}</span>
+                <span> $ {this.props.account.startingBalance} </span>
                 <input type="number"></input>
-                <button>Deposit</button>
-                <button>Withdraw</button>
-                <button>Delete</button>
-            </div>
+                <button >Deposit</button>
+                <button onClick={(event) => {
+                    this.props.withdraw(event)
+                    console.log(this.props.account)
+                }
+                    }>Withdraw </button>
+                <button onClick={(e)=>{
+                    this.props.delete(e)
+                }}>Delete</button>
+            </div> 
         )
     }
 }
@@ -134,6 +151,7 @@ class Footer extends React.Component {
 
 
 class AccountsPage extends React.Component {
+
     render() {
         return (
             <div>
