@@ -9,10 +9,15 @@ class AccountContainer extends React.Component {
         super()
         this.state = {
             controller: bankAccounts,
-            accountArray: []
+            counter: 0,
+            value: null,
 
         }
     }
+
+    handleChange = (event) => {
+        this.setState({value: event.target.value});
+      }
 
 
 
@@ -24,10 +29,12 @@ class AccountContainer extends React.Component {
             Number(document.getElementById("idAccountBalanceInput").value)
         )
         console.log(a);
-        
-        this.setState({message : "Hi"})
+
+        this.setState({ message: "Hi" })
         document.getElementById("idAccountNameInput").value = ""
         document.getElementById("idAccountBalanceInput").value = ""
+        this.highest()
+        this.state.counter ++
     }
 
     deleteCard = (e) => {
@@ -37,12 +44,28 @@ class AccountContainer extends React.Component {
         this.setState({
             message: "hi"
         })
-        }
-    
+        this.highest()
+
+    }
+
     find = (event) => {
         const search = event.target.parentNode.childNodes[0].textContent
+        // this.highest()
+
         return this.state.controller.findAccount(search)
+
     }
+
+    deposit = (event) => {
+        const index = this.find(event)
+        const obj = this.state.controller.listArray[index]
+        const depositAmount = event.target.parentNode.childNodes[2].value
+        obj.accountDeposit(Number(depositAmount))
+        // console.log(obj)
+        this.setState({ message: "mid" })
+
+    }
+
 
     withdraw = (event) => {
         const index = this.find(event)
@@ -53,19 +76,25 @@ class AccountContainer extends React.Component {
         this.setState({ message: "low" })
     }
 
+    highest = () => {
+        this.setState({highest:this.state.controller.highestBalance()
+        })
+        }
 
 
-    
+
+
 
     render() {
         console.log(this.state.controller)
         let cards = this.state.controller.listArray.map((object, i) => {
-            return( 
-                <AccountCard 
+            return (
+                <AccountCard
                     key={i}
                     account={object}
                     delete={this.deleteCard}
-                    withdraw={this.withdraw}     
+                    deposit={this.deposit}
+                    withdraw={this.withdraw}
                 />
             )
         })
@@ -76,9 +105,9 @@ class AccountContainer extends React.Component {
                     <span className="create-card-display-header">Create New Account</span>
                     <div className="create-card-display">
                         <span className="create-card-text">Account Name:</span>
-                        <input type="text" className="create-card-input" id="idAccountNameInput"></input>
+                        <input type="text" className="create-card-input" id="idAccountNameInput" name={this.state.value} onChange={ this.handleChange}></input>
                         <span className="create-card-text">Opening Balance:</span>
-                        <input type="number" className="create-card-input" id="idAccountBalanceInput"></input>
+                        <input type="number" className="create-card-input" id="idAccountBalanceInput" name={this.state.value} onChange={ this.handleChange}></input>
                         <input type="submit" value="Create Account" className="button create-card-button"
                             id="idCreateAcctButton" onClick={this.addAccount}></input>
                     </div>
@@ -99,12 +128,17 @@ class AccountContainer extends React.Component {
                     <div className="balances-display top-display" id="idHighestDisplay">
                         <span className="container-right-display-text">Highest Account Balance:</span>
                         <br></br>
-                        <span className="container-right-display-output" id="idHighest">Value Display</span>
+        <span className="container-right-display-output" id="idHighest">{this.state.highest}</span>
                     </div>
-                    <div className="balances-display bottom-display" id="idLowestDisplay">
+                    <div className="balances-display middle-display" id="idLowestDisplay">
                         <span className="container-right-display-text">Lowest Account Balance:</span>
                         <br></br>
                         <span className="container-right-display-output" id="idLowest">Value Display</span>
+                    </div>
+                    <div className="balances-display bottom-display" id="idTotalDisplay">
+                        <span className="container-right-display-text">Total Account Balance:</span>
+                        <br></br>
+                        <span className="container-right-display-output" id="idTotal">Value Display</span>
                     </div>
                 </div>
             </div>
@@ -122,16 +156,22 @@ class AccountCard extends React.Component {
                 <span className="account-name">{this.props.account.accountName}</span>
                 <span> $ {this.props.account.startingBalance} </span>
                 <input type="number"></input>
-                <button >Deposit</button>
+                <button onClick={(event) => {
+                    this.props.deposit(event)
+                    console.log(this.props.account)
+
+                }
+                }>Deposit</button>
+
                 <button onClick={(event) => {
                     this.props.withdraw(event)
                     console.log(this.props.account)
-                }
-                    }>Withdraw </button>
-                <button onClick={(e)=>{
+                }}>Withdraw </button>
+
+                <button onClick={(e) => {
                     this.props.delete(e)
                 }}>Delete</button>
-            </div> 
+            </div>
         )
     }
 }

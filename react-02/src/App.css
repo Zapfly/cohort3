@@ -302,11 +302,11 @@ footer {
 
 .right {
   grid-area: right;
-  height: 275px;
+  height: 390px;
 }
 
 .balances-display {
-  height: 15%;
+  height: 11%;
   padding: 14%;
   text-align: center;
 }
