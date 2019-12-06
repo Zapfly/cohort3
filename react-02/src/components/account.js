@@ -68,7 +68,7 @@ export class AccountController {
         let array = this.listArray;
         let nameArrays = array.map(a => a.accountName);
         let searchedName = (name) => {
-            console.log(name)
+            // console.log(name)
             return name === search;
         }
         let keyElement = nameArrays.findIndex(searchedName);

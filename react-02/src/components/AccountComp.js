@@ -23,28 +23,28 @@ class AccountContainer extends React.Component {
 
     addAccount = () => {
         let a = this.state.controller
-        console.log("Add")
+        // console.log("Add")
         a.addAccount(
             document.getElementById("idAccountNameInput").value,
             Number(document.getElementById("idAccountBalanceInput").value)
         )
-        console.log(a);
+        // console.log(a);
 
         this.setState({ message: "Hi" })
         document.getElementById("idAccountNameInput").value = ""
         document.getElementById("idAccountBalanceInput").value = ""
-        this.highest()
+        // this.highest()
         this.state.counter ++
     }
 
     deleteCard = (e) => {
-        const search = e.target.parentNode.childNodes[0].value
+        const search = e.target.parentNode.childNodes[0].textContent
+        console.log(e.target.parentNode.childNodes[0].textContent)
         this.state.controller.deleteAccount(search)
-        console.log(this.state.controller)
         this.setState({
             message: "hi"
         })
-        this.highest()
+        // this.highest()
 
     }
 
@@ -76,17 +76,17 @@ class AccountContainer extends React.Component {
         this.setState({ message: "low" })
     }
 
-    highest = () => {
-        this.setState({highest:this.state.controller.highestBalance()
-        })
-        }
+    // highest = () => {
+    //     this.setState({highest:this.state.controller.highestBalance()
+    //     })
+    //     }
 
 
 
 
 
     render() {
-        console.log(this.state.controller)
+        // console.log(this.state.controller)
         let cards = this.state.controller.listArray.map((object, i) => {
             return (
                 <AccountCard
@@ -150,7 +150,7 @@ class AccountContainer extends React.Component {
 
 class AccountCard extends React.Component {
     render() {
-        console.log(this.props.name)
+        // console.log(this.props.name)
         return (
             <div className="account-card" >
                 <span className="account-name">{this.props.account.accountName}</span>
