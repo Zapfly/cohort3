@@ -301,12 +301,16 @@ footer {
 }
 
 .right {
+  display: grid;
   grid-area: right;
-  height: 390px;
+  grid-template-rows: 1fr, 3fr, 3fr, 3fr;
+  height: 60%;
+  min-height: 410px;
 }
 
 .balances-display {
-  height: 11%;
+  height: auto;
+  max-height:10% ;
   padding: 14%;
   text-align: center;
 }
