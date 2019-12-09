@@ -8,6 +8,7 @@ import money from './images/accounts.svg'
 import map from './images/city-map.svg'
 import play from './images/joystick_black_red_petri_01.svg'
 import AccountsPage from './components/AccountComp'
+import CityPage from './components/Cities'
 
 
 class App extends React.Component {
@@ -36,18 +37,21 @@ class App extends React.Component {
       ),
       accountPage: (
         <AccountsPage />
+      ),
+      cityPage: (
+        <CityPage />
       )
     }
       this.imgArr = [
         {key:1, src:house, action:this.startPage},
         {key:2, src:play, action:this.gameStart},
         {key:3, src:money,action:this.accountPage},
-        {key:4, src:map, action: null},
+        {key:4, src:map, action: this.cityPage},
     ];
 
     //*********
     this.state = { 
-      page: this.page.accountPage,
+      page: this.page.startPage,
     };
     //******
   }
@@ -63,6 +67,12 @@ class App extends React.Component {
   accountPage = () => {
     this.setState({page: this.page.accountPage})
   }
+
+  cityPage = () => {
+    this.setState({page: this.page.cityPage})
+  }
+
+  
 
   renderImages = () => {
     return (

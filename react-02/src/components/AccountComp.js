@@ -87,7 +87,6 @@ class AccountContainer extends React.Component {
         const obj = this.state.controller.listArray[index]
         const withdrawal = event.target.parentNode.childNodes[2].value
         obj.accountWithdraw(withdrawal)
-        // console.log(obj)
         this.setState({ message: "low" })
         event.target.parentNode.childNodes[2].textContent = 0
     }
@@ -193,7 +192,6 @@ class AccountCard extends React.Component {
     }
 
     render() {
-        // console.log(this.props.name)
         return (
             <div className="account-card" >
                 <span className="account-name">{this.props.account.accountName}</span>
