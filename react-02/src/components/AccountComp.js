@@ -1,5 +1,6 @@
 import React from 'react';
 import { AccountController } from './account';
+import { conditionalExpression } from '@babel/types';
 
 const bankAccounts = new AccountController("bankAccounts")
 
@@ -10,27 +11,31 @@ class AccountContainer extends React.Component {
         this.state = {
             controller: bankAccounts,
             counter: 0,
-            value: null,
+            newAccountName: '',
+            newAccountBallance: '',
 
         }
     }
 
     handleChange = (event) => {
-        this.setState({ value: event.target.value });
+        const target = event.target;
+        const name = target.name;
+        this.setState({ [name]: event.target.value });
     }
 
 
 
     addAccount = () => {
-        let a = this.state.controller
-        a.addAccount(
-            document.getElementById("idAccountNameInput").value,
-            Number(document.getElementById("idAccountBalanceInput").value)
-        )
+        const isTaken = this.state.controller.findAccount(this.state.newAccountName)
+        let accountList = this.state.controller
 
-        this.setState({ message: "Hi" })
-        document.getElementById("idAccountNameInput").value = ""
-        document.getElementById("idAccountBalanceInput").value = ""
+        isTaken === -1 
+        ? accountList.addAccount(this.state.newAccountName, this.state.newAccountBallance) 
+        : alert("That account name is already in use. Please choose another.")
+        this.setState({ 
+            newAccountName: "",
+            newAccountBallance: "",            
+        })
         this.highest()
         this.lowest()
         this.total()
@@ -128,9 +133,9 @@ class AccountContainer extends React.Component {
                     <span className="create-card-display-header">Create New Account</span>
                     <div className="create-card-display">
                         <span className="create-card-text">Account Name:</span>
-                        <input type="text" className="create-card-input" id="idAccountNameInput" name={this.state.value} onChange={this.handleChange}></input>
+                        <input type="text" className="create-card-input" id="idAccountNameInput" value={this.state.newAccountName} onChange={this.handleChange} name="newAccountName"></input>
                         <span className="create-card-text">Opening Balance:</span>
-                        <input type="number" className="create-card-input" id="idAccountBalanceInput" name={this.state.value} onChange={this.handleChange}></input>
+                        <input type="number" className="create-card-input" id="idAccountBalanceInput" value={this.state.newAccountBallance} onChange={this.handleChange} name="newAccountBallance"></input>
                         <input type="submit" value="Create Account" className="button create-card-button"
                             id="idCreateAcctButton" onClick={this.addAccount}></input>
                     </div>
