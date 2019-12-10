@@ -76,7 +76,6 @@ class AccountContainer extends React.Component {
         this.highest()
         this.lowest()
         this.total()
-        console.log(depositAmount)
 
 
     }
@@ -132,7 +131,13 @@ class AccountContainer extends React.Component {
                     <span className="create-card-display-header">Create New Account</span>
                     <div className="create-card-display">
                         <span className="create-card-text">Account Name:</span>
-                        <input type="text" className="create-card-input" id="idAccountNameInput" value={this.state.newAccountName} onChange={this.handleChange} name="newAccountName"></input>
+                        <input 
+                            type="text" 
+                            className="create-card-input" 
+                            id="idAccountNameInput" 
+                            value={this.state.newAccountName} 
+                            onChange={this.handleChange} 
+                            name="newAccountName"></input>
                         <span className="create-card-text">Opening Balance:</span>
                         <input type="number" className="create-card-input" id="idAccountBalanceInput" value={this.state.newAccountBallance} onChange={this.handleChange} name="newAccountBallance"></input>
                         <input type="submit" value="Create Account" className="button create-card-button"

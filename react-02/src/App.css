@@ -351,4 +351,207 @@ footer {
 }
 
 
+/*this is for cities*/
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.header,
+.footer {
+    color: white;
+    background-color: #78cf50;
+    padding: 2%;
+}
+
+.header {
+  grid-area: header;
+  text-align: left;
+  font-size: 100%;
+}
+
+.footer {
+  grid-area: footer;
+  text-align: center;
+  width: 100%;
+  bottom: 0;
+}
+
+.wrapper {
+  display: grid;
+  grid-template-columns: 20% 30% 30% 20%;
+  grid-template-areas: 
+    'header header header header' 
+    'left  middle middle right' 
+    'footer footer footer footer';
+    background-image: url("https://image.shutterstock.com/image-photo/oklahoma-city-highlighted-push-pin-600w-400498315.jpg");
+    background-size: cover;
+
+}
+
+.container-left,
+.container-middle,
+.container-right {
+  margin: 2%;
+  padding: 2%;
+  border: solid 3px #78cf50;
+  background-color: #b0cc97;
+  opacity: 90%;
+
+}
+
+.display-header {
+  font-size: 100%;
+}
+
+.create-city-display,
+.city-display,
+.balances-display {
+  border: solid 3px #78cf50;
+  margin: 5%;
+  padding: 2%;
+}
+
+.container-left {
+  grid-area: left;
+  height: 350px;
+}
+
+.create-city-display {
+  display: grid;
+  grid-template-columns: repeat(2, 50%);
+  height: fit-content;
+  opacity: 100%;
+}
+
+.create-city-text,
+.create-city-name-input,
+.create-city-balance-input {
+  margin: 5px;
+  padding: 5px;
+}
+
+.create-city-button {
+  margin: 10px 5px 5px 5px;
+}
+
+.container-middle {
+  grid-area: middle;
+  height: 550px;
+}
+
+.city-display {
+  display: grid;
+  height: 450px;
+  overflow-y: scroll;
+  grid-template-columns: repeat(3, 1fr);
+  grid-template-rows: auto;
+  align-items: end;
+}
+
+.city-card {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
+  height: fit-content;
+  width: 1fr;
+  padding: 10px 10px 5px 10px;
+  align-items: center;
+  margin: 2px;
+  align-self: stretch;
+}
+
+.city-name {
+  grid-column: 1 /span 2;
+}
+
+.city-show {
+  font-size: 12px;
+  grid-column: 1 /span 2;
+  height: 30 px; 
+}
+
+.city-input {
+  grid-column: 1 /span 2;
+  
+}
+
+.city-info {
+  border-style: solid;
+  grid-row-start: 2;
+  
+}
+
+.city-card:nth-child(odd) {background-color:  grey;}
+.city-card:nth-child(even) {background-color:  #78cf50;}
+
+.city-input {
+  margin: 0px 5px 0px 15px;
+}
+
+.city-button {
+  margin: 5px 5px 0px 5px;
+  font-size: 12px;
+}
+
+.create-city-text,
+.city-name,
+.city-balance {
+  float: left;
+  margin: 0px 5px 0px 5px;
+}
+
+.dollar {
+  justify-self: right;
+  margin: 0px 0px 0px 15px;
+}
+
+.container-right {
+  grid-area: right;
+  height: 94vh;
+}
+
+.balances-display {
+  height: 10vh;
+  padding: 14%;
+  text-align: center;
+}
+
+.balances-display-balance {
+  font-size: 75%;
+}
+
+.create-city-display-header,
+.city-display-header,
+.citys-information-display-header {
+  font-size: 75%;
+  margin: 2%;
+}
+
+.right-display {
+  display: grid;
+  grid-template-rows: 1fr 1fr;
+
+  border-style: solid;
+  border-color: #78cf50;
+  height: 29vh;
+  width: auto;
+  margin: 2px;
+}
+
+.right-display-text {
+  display: grid;
+  justify-self: center;
+  align-self: center;
+  font-size: 20px;
+  margin:10px;
+}
+
+.right-display-output {
+  display: grid;
+  justify-self: center;
+}
+
+
+
 

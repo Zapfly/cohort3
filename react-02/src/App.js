@@ -7,8 +7,8 @@ import house from './images/House14.svg'
 import money from './images/accounts.svg'
 import map from './images/city-map.svg'
 import play from './images/joystick_black_red_petri_01.svg'
-import AccountsPage from './components/AccountComp'
-import CityPage from './components/Cities'
+import AccountsPage from './components/accounts/AccountComp'
+import CityPage from './components/cities/cityPage'
 
 
 class App extends React.Component {
@@ -51,7 +51,7 @@ class App extends React.Component {
 
     //*********
     this.state = { 
-      page: this.page.startPage,
+      page: this.page.cityPage,
     };
     //******
   }
