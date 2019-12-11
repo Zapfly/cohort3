@@ -1,4 +1,4 @@
-import { City, Community } from './classes.js'
+import { City } from './classes.js'
 // import functions from './cities.js'
 
 const url = 'http://localhost:5000/';
@@ -30,16 +30,16 @@ export const serverFunctions = {
     return json;
   },
 
-  getData: async () => {
-    const response = await fetch('http://localhost:5000/all');
-    const myJson = await response.json();
-    // console.log(JSON.stringify(myJson))
-    return myJson;
-  },
+  // getData: async () => {
+  //   const response = await fetch('http://localhost:5000/all');
+  //   const myJson = await response.json();
+  //   // console.log(JSON.stringify(myJson))
+  //   return myJson;
+  // },
 
   getDataOnStart: async (community) => {
     // console.log("hello from getDataOnStart")
-    const server = await serverFunctions.getData()
+    const server = await serverFunctions.postData(url + "all")
     let biggest = 0;
     server.forEach((element) => {
       if (biggest < element.key) {

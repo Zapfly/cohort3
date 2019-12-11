@@ -29,8 +29,23 @@ class CityCard extends React.Component {
 
     cardMoveIn = (event) => {
         const cardKey= Number(event.target.parentNode.id)
-        this.props.moveIn(event, cardKey, this.state.value)
-        this.setState({value: ""})
+        this.props.moveIn(cardKey, this.state.value)
+        
+        this.setState({
+            value: "",
+            display: `${this.state.value} people moved in!`
+        })
+    }
+
+    cardMoveOut = (event) => {
+        const cardKey= Number(event.target.parentNode.id)
+        this.props.moveOut(cardKey, this.state.value)
+        
+        this.setState({
+            value: "",
+            display: `${this.state.value} people moved out!`
+
+        })
     }
 
     render() {
@@ -41,7 +56,7 @@ class CityCard extends React.Component {
                 <input className="city-input" name="value" value={this.state.value} onChange={this.handleChange}></input>
                 <button className="show-button city-button" onClick={this.show}>Show</button>
                 <button className="move-in-button city-button" onClick={this.cardMoveIn}>Move In</button>
-                <button className="move-out-button city-button">Move Out</button>
+                <button className="move-out-button city-button" onClick={this.cardMoveOut}>Move Out</button>
                 <button className="how-big-button city-button">How Big</button>
                 <button className="which-sphere city-button">Which Hemisphere</button>
                 <button className="delete city-button">Delete</button>
@@ -65,7 +80,7 @@ class CityPage extends React.Component {
         }
     }
     
-    componentWillMount = async () => {
+    componentDidMount = async () => {
         await serverFunctions.getDataOnStart(this.state.theGreaterArea)
         this.setState({message: "Will Mount"})
     }
@@ -87,9 +102,16 @@ class CityPage extends React.Component {
         this.setState({ message: "city added" })
     }
 
-    moveIn = (event, cardKey, num) => {
+    moveIn = (cardKey, num) => {
         const cityObj = this.state.theGreaterArea.cities[cardKey]
         cityObj.movedIn(Number(num))
+        serverFunctions.update(cityObj)
+
+    }
+
+    moveOut = (cardKey, num) => {
+        const cityObj = this.state.theGreaterArea.cities[cardKey]
+        cityObj.movedOut(Number(num))
         serverFunctions.update(cityObj)
 
     }
@@ -113,6 +135,7 @@ class CityPage extends React.Component {
                         key={comp.key}
                         object={comp}
                         moveIn={this.moveIn}
+                        moveOut={this.moveOut}
                     />
                     
                 )

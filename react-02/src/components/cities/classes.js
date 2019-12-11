@@ -39,7 +39,7 @@ export class City {
 
     whichSphere() {
         if (this.latitude > 0 && this.latitude <= 90) { return "Northern Hemisphere" };
-        if (this.latitude == 0) { return "On the Equator" };
+        if (this.latitude === 0) { return "On the Equator" };
         if (this.latitude >= -90 && this.latitude < 0) { return "Southern Hemisphere" };
         return "Invalid Latitude";
     }
@@ -69,8 +69,6 @@ export class Community {
 
         const obj = this.cities;
 
-        let i = 0;
-
         for (key in this.cities) {
             if (obj.hasOwnProperty(key)) {
                 let next = obj[key];
@@ -97,13 +95,13 @@ export class Community {
         }
     }
 
-    totalPopulation(span) {
-        let total = 0;
+    totalPopulation() {
+        let total;
         const obj = this.cities;
-        let key
+        let key;
 
         for (key in this.cities) {
-            total += obj[key].population
+            total = total + obj[key].population;
         }
 
 

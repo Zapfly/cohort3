@@ -1,6 +1,6 @@
 import React from 'react';
 import { AccountController } from './account';
-import { conditionalExpression } from '@babel/types';
+// import { conditionalExpression } from '@babel/types';
 
 const bankAccounts = new AccountController("bankAccounts")
 
@@ -41,7 +41,10 @@ class AccountContainer extends React.Component {
         this.total()
 
 
-        this.state.counter++
+        // this.state.counter++
+        this.setState({
+            counter: this.state.counter + 1
+        })
     }
 
     deleteCard = (e) => {
