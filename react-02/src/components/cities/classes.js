@@ -55,7 +55,7 @@ export class Community {
     createCity(name, lat, long, pop) {
         this.counter++;
         const a = new City(name, lat, long, pop, this.counter);
-        this.cities[`key${this.counter}`] = a;
+        this.cities[this.counter] = a;
         serverFunctions.postData('http://localhost:5000/add', a)
     }
 

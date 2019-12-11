@@ -76,8 +76,6 @@ class AccountContainer extends React.Component {
         this.highest()
         this.lowest()
         this.total()
-
-
     }
 
 
@@ -211,7 +209,7 @@ class AccountCard extends React.Component {
 
                 <button onClick={(event) => {
                     this.props.withdraw(event)
-                    console.log(this.props.account)
+                    // console.log(this.props.account)
                     this.handleClick()
 
                 }}>Withdraw</button>

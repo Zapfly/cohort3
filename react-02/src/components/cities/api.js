@@ -38,6 +38,7 @@ export const serverFunctions = {
   },
 
   getDataOnStart: async (community) => {
+    // console.log("hello from getDataOnStart")
     const server = await serverFunctions.getData()
     let biggest = 0;
     server.forEach((element) => {
@@ -47,14 +48,14 @@ export const serverFunctions = {
     })  
     server.forEach((element) => {
       const name = element.name;
-      const lat = element.latitude;
-      const long = element.longitude;
-      const pop = element.population;
+      const lat = Number(element.latitude);
+      const long = Number(element.longitude);
+      const pop = Number(element.population);
       const key = element.key;
 
       // functions.createCityDiv(parent, name, key);
       const a = new City(name, lat, long, pop, key);
-      community.cities[`key${key}`] = a;
+      community.cities[key] = a;
     })
     community.counter = biggest;
   },

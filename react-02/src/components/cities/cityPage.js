@@ -1,5 +1,6 @@
 import React from 'react'
 import { Community } from './classes'
+import {serverFunctions} from './api'
 
 const comm = new Community("theGreaterArea");
 
@@ -22,18 +23,24 @@ class CityCard extends React.Component {
 
     show = () => {
         this.setState({
-            display: `Latitude = ${this.props.latitude} Longtitude = ${this.props.longitude} Population = ${this.props.population}`
+            display: `Latitude = ${this.props.object.latitude} Longtitude = ${this.props.object.longitude} Population = ${this.props.object.population}`
         })
+    }
+
+    cardMoveIn = (event) => {
+        const cardKey= Number(event.target.parentNode.id)
+        this.props.moveIn(event, cardKey, this.state.value)
+        this.setState({value: ""})
     }
 
     render() {
         return (
-            <div className="city-card" >
-                <span className="city-name">{this.props.name}</span>
+            <div className="city-card" id={this.props.object.key}>
+                <span className="city-name">{this.props.object.name}</span>
                 <span className="city-show">{this.state.display}</span>
                 <input className="city-input" name="value" value={this.state.value} onChange={this.handleChange}></input>
                 <button className="show-button city-button" onClick={this.show}>Show</button>
-                <button className="move-in-button city-button">Move In</button>
+                <button className="move-in-button city-button" onClick={this.cardMoveIn}>Move In</button>
                 <button className="move-out-button city-button">Move Out</button>
                 <button className="how-big-button city-button">How Big</button>
                 <button className="which-sphere city-button">Which Hemisphere</button>
@@ -57,6 +64,11 @@ class CityPage extends React.Component {
             cityLong: "",
         }
     }
+    
+    componentWillMount = async () => {
+        await serverFunctions.getDataOnStart(this.state.theGreaterArea)
+        this.setState({message: "Will Mount"})
+    }
 
     handleChange = (event) => {
         const target = event.target;
@@ -75,8 +87,20 @@ class CityPage extends React.Component {
         this.setState({ message: "city added" })
     }
 
+    moveIn = (event, cardKey, num) => {
+        const cityObj = this.state.theGreaterArea.cities[cardKey]
+        cityObj.movedIn(Number(num))
+        serverFunctions.update(cityObj)
+
+    }
+
+
+
 
     render() {
+        console.log(this.state.theGreaterArea)
+        // serverFunctions.getDataOnStart(this.state.theGreaterArea)
+        // console.log(this.state.theGreaterArea)
         let item
         let cards = []
         let list = this.state.theGreaterArea.cities
@@ -86,11 +110,9 @@ class CityPage extends React.Component {
                 let comp = list[item];
                 cards.push(
                     <CityCard
-                        key={comp}
-                        name={comp.name}
-                        latitude={comp.latitude}
-                        longitude={comp.longitude}
-                        population={comp.population}
+                        key={comp.key}
+                        object={comp}
+                        moveIn={this.moveIn}
                     />
                     
                 )
