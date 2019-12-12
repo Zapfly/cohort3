@@ -49,7 +49,7 @@ class CityCard extends React.Component {
     }
     cardHowBig = (event) => {
         const cardKey= Number(event.target.parentNode.id)
-        this.props.howBig(cardKey)        
+        this.setState({display: `${this.props.object.name} is big enough to be a ${this.props.howBig(cardKey)}`})
     }
 
     render() {
@@ -61,7 +61,7 @@ class CityCard extends React.Component {
                 <button className="show-button city-button" onClick={this.show}>Show</button>
                 <button className="move-in-button city-button" onClick={this.cardMoveIn}>Move In</button>
                 <button className="move-out-button city-button" onClick={this.cardMoveOut}>Move Out</button>
-                <button className="how-big-button city-button">How Big</button>
+                <button className="how-big-button city-button" onClick={this.cardHowBig}>How Big</button>
                 <button className="which-sphere city-button">Which Hemisphere</button>
                 <button className="delete city-button">Delete</button>
             </div>
@@ -123,13 +123,14 @@ class CityPage extends React.Component {
         cityObj.movedOut(Number(num))
         serverFunctions.update(cityObj)
     }
-/** */
+
     howBig = (cardKey) => {
         const cityObj = this.state.theGreaterArea.cities[cardKey]
-        cityObj.howBig()
+        // console.log(cityObj)
+        return cityObj.howBig()
 
 
-    }/** */
+    }
 
     render() {
         console.log(this.state.theGreaterArea)
@@ -148,7 +149,7 @@ class CityPage extends React.Component {
                         object={comp}
                         moveIn={this.moveIn}
                         moveOut={this.moveOut}
-                        howbig={this.howBig}
+                        howBig={this.howBig}
                     />
                     
                 )
