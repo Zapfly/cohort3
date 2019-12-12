@@ -52,6 +52,12 @@ class CityCard extends React.Component {
         this.setState({display: `${this.props.object.name} is big enough to be a ${this.props.howBig(cardKey)}`})
     }
 
+    cardDelete = (event) => {
+        // console.log("hello from cardDelete in react child")
+        const cardKey= Number(event.target.parentNode.id)
+        this.props.delete(cardKey)
+    }
+
     render() {
         return (
             <div className="city-card" id={this.props.object.key}>
@@ -63,7 +69,7 @@ class CityCard extends React.Component {
                 <button className="move-out-button city-button" onClick={this.cardMoveOut}>Move Out</button>
                 <button className="how-big-button city-button" onClick={this.cardHowBig}>How Big</button>
                 <button className="which-sphere city-button">Which Hemisphere</button>
-                <button className="delete city-button">Delete</button>
+                <button className="delete city-button" onClick={this.cardDelete}>Delete</button>
             </div>
         )
     }
@@ -128,8 +134,16 @@ class CityPage extends React.Component {
         const cityObj = this.state.theGreaterArea.cities[cardKey]
         // console.log(cityObj)
         return cityObj.howBig()
+    }
 
-
+    delete = (cardKey) => {
+        // console.log("hello from React parent")
+        delete this.state.theGreaterArea.cities[cardKey]
+        serverFunctions.postData(
+            'http://localhost:5000/delete', 
+            {key: Number(cardKey)}
+        )
+        this.setState({message: `city number ${cardKey} has been deleted`})
     }
 
     render() {
@@ -150,6 +164,7 @@ class CityPage extends React.Component {
                         moveIn={this.moveIn}
                         moveOut={this.moveOut}
                         howBig={this.howBig}
+                        delete={this.delete}
                     />
                     
                 )
