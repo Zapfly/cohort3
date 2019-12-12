@@ -58,6 +58,12 @@ class CityCard extends React.Component {
         this.props.delete(cardKey)
     }
 
+    cardWhichHemisphere = (event) => {
+        const cardKey= Number(event.target.parentNode.id)
+
+        this.setState({display: `${this.props.object.name} is in the ${this.props.whichHemisphere(cardKey)}`})
+    }
+
     render() {
         return (
             <div className="city-card" id={this.props.object.key}>
@@ -68,7 +74,7 @@ class CityCard extends React.Component {
                 <button className="move-in-button city-button" onClick={this.cardMoveIn}>Move In</button>
                 <button className="move-out-button city-button" onClick={this.cardMoveOut}>Move Out</button>
                 <button className="how-big-button city-button" onClick={this.cardHowBig}>How Big</button>
-                <button className="which-sphere city-button">Which Hemisphere</button>
+                <button className="which-sphere city-button" onClick={this.cardWhichHemisphere}>Which Hemisphere</button>
                 <button className="delete city-button" onClick={this.cardDelete}>Delete</button>
             </div>
         )
@@ -87,6 +93,9 @@ class CityPage extends React.Component {
             cityPopulation: "",
             cityLat: "",
             cityLong: "",
+            mostNorther: "",
+            mostSouther: "",
+            totalPopulation: "",
         }
     }
     
@@ -146,10 +155,14 @@ class CityPage extends React.Component {
         this.setState({message: `city number ${cardKey} has been deleted`})
     }
 
+    whichHemisphere = (cardKey) => {
+        const obj = this.state.theGreaterArea.cities[cardKey]   
+        return obj.whichSphere()           
+    }
+
     render() {
-        console.log(this.state.theGreaterArea)
         // serverFunctions.getDataOnStart(this.state.theGreaterArea)
-        // console.log(this.state.theGreaterArea)
+        console.log(this.state.theGreaterArea)
         let item
         let cards = []
         let list = this.state.theGreaterArea.cities
@@ -165,6 +178,7 @@ class CityPage extends React.Component {
                         moveOut={this.moveOut}
                         howBig={this.howBig}
                         delete={this.delete}
+                        whichHemisphere={this.whichHemisphere}
                     />
                     
                 )
