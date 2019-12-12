@@ -47,6 +47,10 @@ class CityCard extends React.Component {
 
         })
     }
+    cardHowBig = (event) => {
+        const cardKey= Number(event.target.parentNode.id)
+        this.props.howBig(cardKey)        
+    }
 
     render() {
         return (
@@ -99,7 +103,12 @@ class CityPage extends React.Component {
             this.state.cityPopulation
         )
 
-        this.setState({ message: "city added" })
+        this.setState({
+            cityName: "",
+            cityPopulation: "",
+            cityLat: "",
+            cityLong: "",
+        })
     }
 
     moveIn = (cardKey, num) => {
@@ -113,11 +122,14 @@ class CityPage extends React.Component {
         const cityObj = this.state.theGreaterArea.cities[cardKey]
         cityObj.movedOut(Number(num))
         serverFunctions.update(cityObj)
-
     }
+/** */
+    howBig = (cardKey) => {
+        const cityObj = this.state.theGreaterArea.cities[cardKey]
+        cityObj.howBig()
 
 
-
+    }/** */
 
     render() {
         console.log(this.state.theGreaterArea)
@@ -136,6 +148,7 @@ class CityPage extends React.Component {
                         object={comp}
                         moveIn={this.moveIn}
                         moveOut={this.moveOut}
+                        howbig={this.howBig}
                     />
                     
                 )
