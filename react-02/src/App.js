@@ -44,7 +44,7 @@ class App extends React.Component {
         <CityPage />
       ),
       presentationPage: (
-        <presentationPage />
+        <PresentationPage />
       )
     }
       this.imgArr = [
@@ -57,9 +57,10 @@ class App extends React.Component {
 
     //*********
     this.state = { 
-      page: this.page.startPage,
+      page: this.page.presentationPage,
     };
     //******
+
   }
 
   gameStart = () => {
