@@ -1,6 +1,6 @@
 import React from 'react'
 import { Community } from './classes'
-import {serverFunctions} from './api'
+import { serverFunctions } from './api'
 
 const comm = new Community("theGreaterArea");
 
@@ -28,9 +28,9 @@ class CityCard extends React.Component {
     }
 
     cardMoveIn = (event) => {
-        const cardKey= Number(event.target.parentNode.id)
+        const cardKey = Number(event.target.parentNode.id)
         this.props.moveIn(cardKey, this.state.value)
-        
+
         this.setState({
             value: "",
             display: `${this.state.value} people moved in!`
@@ -38,9 +38,9 @@ class CityCard extends React.Component {
     }
 
     cardMoveOut = (event) => {
-        const cardKey= Number(event.target.parentNode.id)
+        const cardKey = Number(event.target.parentNode.id)
         this.props.moveOut(cardKey, this.state.value)
-        
+
         this.setState({
             value: "",
             display: `${this.state.value} people moved out!`
@@ -48,20 +48,19 @@ class CityCard extends React.Component {
         })
     }
     cardHowBig = (event) => {
-        const cardKey= Number(event.target.parentNode.id)
-        this.setState({display: `${this.props.object.name} is big enough to be a ${this.props.howBig(cardKey)}`})
+        const cardKey = Number(event.target.parentNode.id)
+        this.setState({ display: `${this.props.object.name} is big enough to be a ${this.props.howBig(cardKey)}` })
     }
 
     cardDelete = (event) => {
-        // console.log("hello from cardDelete in react child")
-        const cardKey= Number(event.target.parentNode.id)
+        const cardKey = Number(event.target.parentNode.id)
         this.props.delete(cardKey)
     }
 
     cardWhichHemisphere = (event) => {
-        const cardKey= Number(event.target.parentNode.id)
+        const cardKey = Number(event.target.parentNode.id)
 
-        this.setState({display: `${this.props.object.name} is in the ${this.props.whichHemisphere(cardKey)}`})
+        this.setState({ display: `${this.props.object.name} is in the ${this.props.whichHemisphere(cardKey)}` })
     }
 
     render() {
@@ -93,15 +92,17 @@ class CityPage extends React.Component {
             cityPopulation: "",
             cityLat: "",
             cityLong: "",
-            mostNorther: "",
-            mostSouther: "",
+            mostNorthern: "",
+            mostSouthern: "",
             totalPopulation: "",
         }
     }
-    
+
     componentDidMount = async () => {
         await serverFunctions.getDataOnStart(this.state.theGreaterArea)
-        this.setState({message: "Will Mount"})
+        this.citiesInformation()
+
+        this.setState({ message: "Will Mount" })
     }
 
     handleChange = (event) => {
@@ -141,28 +142,35 @@ class CityPage extends React.Component {
 
     howBig = (cardKey) => {
         const cityObj = this.state.theGreaterArea.cities[cardKey]
-        // console.log(cityObj)
         return cityObj.howBig()
     }
 
     delete = (cardKey) => {
-        // console.log("hello from React parent")
         delete this.state.theGreaterArea.cities[cardKey]
         serverFunctions.postData(
-            'http://localhost:5000/delete', 
-            {key: Number(cardKey)}
+            'http://localhost:5000/delete',
+            { key: Number(cardKey) }
         )
-        this.setState({message: `city number ${cardKey} has been deleted`})
+        this.setState({ message: `city number ${cardKey} has been deleted` })
     }
 
     whichHemisphere = (cardKey) => {
-        const obj = this.state.theGreaterArea.cities[cardKey]   
-        return obj.whichSphere()           
+        const obj = this.state.theGreaterArea.cities[cardKey]
+        return obj.whichSphere()
+    }
+
+    citiesInformation = () => {
+        const mostNorth = this.state.theGreaterArea.mostNorthern()
+        const mostSouth = this.state.theGreaterArea.mostSouthern()
+        const total = Number(this.state.theGreaterArea.totalPopulation())
+        this.setState({
+            mostNorthern: mostNorth.name,
+            mostSouthern: mostSouth.name,
+            totalPopulation: total
+         })
     }
 
     render() {
-        // serverFunctions.getDataOnStart(this.state.theGreaterArea)
-        console.log(this.state.theGreaterArea)
         let item
         let cards = []
         let list = this.state.theGreaterArea.cities
@@ -180,7 +188,7 @@ class CityPage extends React.Component {
                         delete={this.delete}
                         whichHemisphere={this.whichHemisphere}
                     />
-                    
+
                 )
                 console.log(comp.longitude)
             }
@@ -242,15 +250,15 @@ class CityPage extends React.Component {
                     <span className="container-right-header display-header">Cities Information</span>
                     <div className="right-display" id="idMostNorthernDisplay">
                         <span className="right-display-text">Most Northern</span>
-                        <p className="right-display-output" id="idMostNothern"></p>
+                        <p className="right-display-output" id="idMostNothern"> {this.state.mostNorthern}</p>
                     </div>
                     <div className="right-display" id="idMostSouthernDisplay">
                         <span className="right-display-text">Most Southern</span>
-                        <p className="right-display-output" id="idMostSouthern"></p>
+                        <p className="right-display-output" id="idMostSouthern">{this.state.mostSouthern}</p>
                     </div>
                     <div className="right-display" id="total-population">
                         <span className="right-display-text">Total Population</span>
-                        <p className="right-display-output" id="idTotalPopDisplay"></p>
+        <p className="right-display-output" id="idTotalPopDisplay">{this.state.totalPopulation}</p>
                     </div>
                 </div>
 

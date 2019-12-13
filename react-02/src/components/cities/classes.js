@@ -93,6 +93,7 @@ export class Community {
                 }
             }
         }
+        return smallest
     }
 
     totalPopulation() {
@@ -101,9 +102,9 @@ export class Community {
         let key;
 
         for (key in this.cities) {
-            total = total + obj[key].population;
+            total =+ obj[key].population;
         }
-
+        return total
 
     }
 }

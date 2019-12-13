@@ -7,8 +7,10 @@ import house from './images/House14.svg'
 import money from './images/accounts.svg'
 import map from './images/city-map.svg'
 import play from './images/joystick_black_red_petri_01.svg'
+import presentation from './images/playbutt.svg'
 import AccountsPage from './components/accounts/AccountComp'
 import CityPage from './components/cities/cityPage'
+import PresentationPage from './components/presentation'
 
 
 class App extends React.Component {
@@ -40,6 +42,9 @@ class App extends React.Component {
       ),
       cityPage: (
         <CityPage />
+      ),
+      presentationPage: (
+        <presentationPage />
       )
     }
       this.imgArr = [
@@ -47,11 +52,12 @@ class App extends React.Component {
         {key:2, src:play, action:this.gameStart},
         {key:3, src:money,action:this.accountPage},
         {key:4, src:map, action: this.cityPage},
+        {key:5, src:presentation, action: this.presentationPage}
     ];
 
     //*********
     this.state = { 
-      page: this.page.cityPage,
+      page: this.page.startPage,
     };
     //******
   }
@@ -70,6 +76,9 @@ class App extends React.Component {
 
   cityPage = () => {
     this.setState({page: this.page.cityPage})
+  }
+  presentationPage = () => {
+    this.setState({page: this.page.presentationPage})
   }
 
   
