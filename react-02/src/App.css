@@ -93,6 +93,7 @@ img:hover {
 
 
 /* ------------ */
+/* TICK TACK TOE*/
 
 
 body {
@@ -146,6 +147,9 @@ ol, ul {
   margin-left: 20px;
 }
 
+/*----------------*/
+/*ACCOUNTS AND CITIES */
+
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
@@ -154,7 +158,6 @@ body {
 footer {
     color: white;
     background-color: #78cf50;
-    padding: 2%;
 }
 
 .header {
@@ -552,6 +555,32 @@ body {
   justify-self: center;
 }
 
+/*---------------------------*/
+/*NETWORKING PRESENTATION*/
 
+.presentation h1{
+  font-size: 50px;
+}
+
+.presentation {
+  height: 85vh;
+  display: grid;
+  justify-items: center;
+  align-items: center;  
+  margin: 0px;
+  padding: 0%;
+}
+
+.presentation footer{
+  position:relative; 
+  right:28px;
+  top: 15vh;
+  width: 100vw;
+  margin: 0vh;
+}
+
+#previous-slide {
+  transform: rotate(180deg);
+}
 
 
