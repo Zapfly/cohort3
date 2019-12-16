@@ -7,6 +7,7 @@ import house from './images/House14.svg'
 import money from './images/accounts.svg'
 import map from './images/city-map.svg'
 import play from './images/joystick_black_red_petri_01.svg'
+import link from './images/link.svg'
 import presentation from './images/playbutt.svg'
 import AccountsPage from './components/accounts/AccountComp'
 import CityPage from './components/cities/cityPage'
@@ -52,12 +53,13 @@ class App extends React.Component {
         {key:2, src:play, action:this.gameStart},
         {key:3, src:money,action:this.accountPage},
         {key:4, src:map, action: this.cityPage},
-        {key:5, src:presentation, action: this.presentationPage}
+        {key:5, src:presentation, action: this.presentationPage},
+        {key:6, src:link, action: ''}
     ];
 
     //*********
     this.state = { 
-      page: this.page.presentationPage,
+      page: this.page.startPage,
     };
     //******
 
