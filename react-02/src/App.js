@@ -12,7 +12,7 @@ import presentation from './images/playbutt.svg'
 import AccountsPage from './components/accounts/AccountComp'
 import CityPage from './components/cities/cityPage'
 import PresentationPage from './components/presentation'
-// import Linklist from './components/link-lists/linkPages'
+// import Node from './components/link-lists/linkPages'
 
 class App extends React.Component {
 
