@@ -1,5 +1,5 @@
 import React from 'react';
-import { AccountController } from './account';
+import { AccountController } from './account-react';
 // import { conditionalExpression } from '@babel/types';
 
 const bankAccounts = new AccountController("bankAccounts")

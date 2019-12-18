@@ -1,4 +1,4 @@
-import { City, Community } from './classes.js'
+import { City, Community } from './react-classes.js'
 // import functions from './cities.js'
 import { serverFunctions } from './api.js';
 
@@ -19,11 +19,11 @@ test('testing createCity', () => {
     const cityList3 = new Community("pittsburge")
     cityList3.createCity("Bobville", 74, 58, 900)
 
-    expect(cityList3.cities.key1.key).toEqual(1);
-    expect(cityList3.cities.key1.latitude).toEqual(74);
-    expect(cityList3.cities.key1.longitude).toEqual(58);
-    expect(cityList3.cities.key1.name).toEqual("Bobville");
-    expect(cityList3.cities.key1.population).toEqual(900);
+    expect(cityList3.cities[1].key).toEqual(1);
+    expect(cityList3.cities[1].latitude).toEqual(74);
+    expect(cityList3.cities[1].longitude).toEqual(58);
+    expect(cityList3.cities[1].name).toEqual("Bobville");
+    expect(cityList3.cities[1].population).toEqual(900);
 })
 
 test('testing show', () => {
@@ -31,23 +31,23 @@ test('testing show', () => {
     cityList5.createCity("CruellaStevil", 7, 9000, 500)
 
 
-    expect(cityList5.cities.key1.show()).toEqual("Latitude: 7 Longitude: 9000 Population: 500");
+    expect(cityList5.cities[1].show()).toEqual("Latitude: 7 Longitude: 9000 Population: 500");
 })
 
 test('testing movedIn', () => {
     const cityList6 = new Community("pittsburge")
     cityList6.createCity("SonicTown", 7, 68, 600)
 
-    expect(cityList6.cities.key1.population).toEqual(600);
-    expect(cityList6.cities.key1.movedIn(900)).toEqual(1500);
+    expect(cityList6.cities[1].population).toEqual(600);
+    expect(cityList6.cities[1].movedIn(900)).toEqual(1500);
 })
 
 test('testing movedOut', () => {
     const cityList7 = new Community("pittsburge")
     cityList7.createCity("Testtown", 7, 68, 1000)
 
-    expect(cityList7.cities.key1.population).toEqual(1000);
-    expect(cityList7.cities.key1.movedOut(100)).toEqual(900);
+    expect(cityList7.cities[1].population).toEqual(1000);
+    expect(cityList7.cities[1].movedOut(100)).toEqual(900);
 })
 
 test('testing howBig', () => {
@@ -58,11 +58,11 @@ test('testing howBig', () => {
     cityList8.createCity("four", 7, 68, 20500)
     cityList8.createCity("five", 7, 68, 9999999)
 
-    expect(cityList8.cities.key1.howBig()).toEqual("Hamlet");
-    expect(cityList8.cities.key2.howBig()).toEqual("Village");
-    expect(cityList8.cities.key3.howBig()).toEqual("Town");
-    expect(cityList8.cities.key4.howBig()).toEqual("Large Town");
-    expect(cityList8.cities.key5.howBig()).toEqual("City");
+    expect(cityList8.cities[1].howBig()).toEqual("Hamlet");
+    expect(cityList8.cities[2].howBig()).toEqual("Village");
+    expect(cityList8.cities[3].howBig()).toEqual("Town");
+    expect(cityList8.cities[4].howBig()).toEqual("Large Town");
+    expect(cityList8.cities[5].howBig()).toEqual("City");
 })
 
 test('testing whichSphere', () => {
@@ -88,7 +88,7 @@ test('test deleteCity object', () => {
 
     cityList9.createCity("fatboy", 7, 68, 1)
     cityList9.createCity("fatboy", 7, 68, 1)
-    expect(cityList9.cities.key1.name).toEqual('fatboy');
+    expect(cityList9.cities[1].name).toEqual('fatboy');
     cityList9.deleteCity("key1");
     expect(cityList9.key1).toEqual(undefined);
 })
@@ -150,6 +150,8 @@ test('test totalPopulation', () => {
 
     cityList11.createCity("two", 0, 10, 500)
 
+    expect(cityList11.totalPopulation()).toEqual(500)
+
 })
 
 
@@ -159,8 +161,10 @@ test('createCity serverside', async () => {
 
     cityList10.createCity("Detroit", 10, 12, 1)
 
-    let data = await serverFunctions.getData()
-    expect(data[0].name).toEqual("Detroit")
+    let data = await serverFunctions.postData('http://localhost:5000/' + 'all')
+    await expect(data[0].name).toEqual("Detroit")
+    await serverFunctions.postData('http://localhost:5000/' + 'clear');
+
 })
 
 test('test 130E', async () => {
@@ -175,4 +179,6 @@ test('test 130E', async () => {
 
     expect(myCity.population).toEqual(700)
     expect(myFav.population).toEqual(700)
+    await serverFunctions.postData('http://localhost:5000/' + 'clear');
+
 })

@@ -1,5 +1,5 @@
 import React from 'react'
-import { Community } from './classes'
+import { Community } from './react-classes.js'
 import { serverFunctions } from './api'
 
 const comm = new Community("theGreaterArea");

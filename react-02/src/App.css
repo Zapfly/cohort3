@@ -570,6 +570,10 @@ body {
   margin: 0;
 }
 
+.presentation div {
+  display: grid;
+}
+
 .presentation {
   position:relative; 
   right:28px;
@@ -578,6 +582,7 @@ body {
   align-items: center;  
   margin: 40px 0px 0px 0px;
   padding: 0%;
+  height: 100vh;
   /* border-style: solid; */
 }
 
@@ -593,7 +598,9 @@ body {
 }
 
 .presentation .medium-size {
+  display: grid;
   font-size: 30px;
+  align-self: center;
 }
 
 .presentation .tight-frame {
@@ -623,6 +630,7 @@ body {
 }
 
 .presentation .letter-font {
+  align-self: end ;
   margin: 0px 10px 0px 10px;
   padding: 10px;
   text-align: left;

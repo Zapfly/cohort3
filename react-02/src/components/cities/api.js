@@ -1,4 +1,4 @@
-import { City } from './classes.js'
+import { City } from './react-classes.js'
 // import functions from './cities.js'
 
 const url = 'http://localhost:5000/';

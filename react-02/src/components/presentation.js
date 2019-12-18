@@ -57,7 +57,8 @@ class PresentationPage extends React.Component {
                 <footer>
                 <img id="previous-slide" src={greenArrow} onClick={this.previousSlide}/>
                 <img id="next-slide" src={greenArrow} onClick={this.nextSlide}/>
-                </footer>                
+                </footer> 
+                {document.addEventListener('keypress', this.nextSlide)}               
             </div>
         )
     }
