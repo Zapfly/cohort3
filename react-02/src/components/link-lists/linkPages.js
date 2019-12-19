@@ -36,8 +36,8 @@ export class ListNode {
 
 export class LinkedList {
   constructor() {
-    this.first = null
-    this.last = null;
+    this.head = null
+    this.tail = null;
     this.next = null;
     this.previous = null;
     this.current = null
@@ -45,56 +45,64 @@ export class LinkedList {
   }
 
   insert(subject, amount) {
-    if (this.first == null) {
-      console.log("this.first == null");
-      const newNode = new ListNode(subject, amount)
-      this.first = newNode;
-      this.last = newNode;
-      this.current = newNode;
-
-      return this.current
-    };
-    if (this.first == this.last) {
-      console.log("this.first == this.last");
-      const newNode = new ListNode(subject, amount)
-
-      this.first = newNode;
-      this.next = this.current;
-      this.current = newNode
-      this.current.forwardNode = this.next;
-      return this.current
-    };
-    if (this.first == this.current) {
-      console.log("this.first == this.current");
+    if (!this.head) {
       const newNode = new ListNode(subject, amount);
-      
-      this.next = this.current;
-      newNode.forwardNode = this.next;
-      this.first = newNode;
+      this.current = newNode;
+      this.head = newNode;
+      this.tail = newNode
+      return this.head;
+    } else {
+      const newNode = new ListNode(subject, amount);
+      newNode.forwardNode = this.current.forwardNode;
+      this.current.forwardNode = newNode
+      this.next = this.current.forwardNode
+      if (this.head === this.tail) {
+        this.tail = newNode;
+      }
       return this.current
     }
-    console.log("None of the above are true");
 
 
 
+    // if (this.head === this.tail) {
+    //   console.log("this.first === this.last");
+    //   const newNode = new ListNode(subject, amount)
 
+    //   this.head = newNode;
+    //   this.next = this.current;
+    //   this.current = newNode
+    //   this.current.forwardNode = this.next;
+    //   return this.current
+    // };
+    // if (this.head == this.current) {
+    //   console.log("this.first == this.current");
+    //   const newNode = new ListNode(subject, amount);
 
-    // if (this.last == null) {
-    //   this.last == a;
+    //   this.next = this.current;
+    //   newNode.forwardNode = this.next;
+    //   this.head = newNode;
+    //   return this.current
     // }
-    // if (this.next == null) {
-    //   this.last == a;
-    // }
-    // if (this.current == null) {
-    //   this.current == a;
-    // }
+    // console.log("None of the above are true");
+
 
 
   }
+  next() {
 
-  // findNode(search) {
-  //   return {}    
-  // }
+  }
+
+  previous() {
+
+  }
+
+  first() {
+
+  }
+
+  last() {
+
+  }
 
   delete(search) {
 
