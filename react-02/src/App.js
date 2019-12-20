@@ -12,8 +12,7 @@ import presentation from './images/playbutt.svg'
 import AccountsPage from './components/accounts/AccountComp'
 import CityPage from './components/cities/cityPage'
 import PresentationPage from './components/presentation'
-// import Node from './components/link-lists/linkPages'
-
+import {LinkListComp} from './components/linkLists/linkComp'
 class App extends React.Component {
 
   constructor() {
@@ -47,9 +46,9 @@ class App extends React.Component {
       presentationPage: (
         <PresentationPage />
       ),
-      // linkPage: (
-      //   <Linklist />
-      // )
+      linkPage: (
+        <LinkListComp />
+      )
     }
       this.imgArr = [
         {key:1, src:house, action:this.startPage},
@@ -57,12 +56,12 @@ class App extends React.Component {
         {key:3, src:money,action:this.accountPage},
         {key:4, src:map, action: this.cityPage},
         {key:5, src:presentation, action: this.presentationPage},
-        {key:6, src:link, action: null/*this.linkPage*/}
+        {key:6, src:link, action: this.linkPage}
     ];
 
     //*********
     this.state = { 
-      page: this.page.startPage,
+      page: this.page.linkPage,
     };
     //******
 
