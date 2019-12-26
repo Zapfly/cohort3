@@ -1,7 +1,7 @@
 import React from 'react'
 import { LinkedList } from './linkPSC'
 
-class CurrentNode extends React.Component {
+class Node extends React.Component {
     constructor(props) {
         super(props)
 
@@ -12,7 +12,7 @@ class CurrentNode extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className={this.props.type}>
                 <p>Subject = {this.props.subject}</p>
                 <p>Amount = {this.props.amount}</p>
             </div>
@@ -20,6 +20,8 @@ class CurrentNode extends React.Component {
     }
 
 }
+
+
 
 
 
@@ -53,12 +55,22 @@ export class LinkListComp extends React.Component {
         this.state.list.insert("Starting Node", 0)
 
         return (
-            <div>
+            <div className = "linked-list">
                 <p >Node List{/*this.state.list.current.subject*/}</p>
-                <CurrentNode 
+                <Node 
                     subject = {this.state.list.current.subject} 
                     amount = {this.state.list.current.amount}
+                    type = {"previous node"}
                 />
+                <Node 
+                    subject = {this.state.list.current.subject} 
+                    amount = {this.state.list.current.amount}
+                    type = {"current node"}
+                /><Node 
+                subject = {this.state.list.current.subject} 
+                amount = {this.state.list.current.amount}
+                type = {"next node"}
+            />
                 <input type="text" name="subInput" value={this.state.subInput} onChange={this.handleChange}></input>
                 <input type="number" name="amountInput" value={this.state.amountInput} onChange={this.handleChange}></input>
                 <button onClick={this.insert}>Insert</button>
