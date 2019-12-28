@@ -31,8 +31,10 @@ export class LinkListComp extends React.Component {
 
         this.state = {
             list: new LinkedList(),
-            subInput: "",
-            amountInput: ""
+            subInput: "Subject",
+            amountInput: "Amount",
+            nextNode: ["No Node Here", "N/A"],
+            previousNode:["No Node Here", "N/A"],
         }
     }
 
@@ -41,8 +43,9 @@ export class LinkListComp extends React.Component {
 
     insert = () => {
         console.log(this.state.list.current.subject);
-        this.state.list.insert()
+        this.state.list.insert(this.state.subInput, this.state.amountInput)
         console.log(this.state.list.current.forwardNode.subject);
+        
     }
 
     handleChange = (event) => {
@@ -58,8 +61,8 @@ export class LinkListComp extends React.Component {
             <div className = "linked-list">
                 <p >Node List{/*this.state.list.current.subject*/}</p>
                 <Node 
-                    subject = {this.state.list.current.subject} 
-                    amount = {this.state.list.current.amount}
+                    subject = {this.state.previousNode[0]} 
+                    amount = {this.state.previousNode[1]}
                     type = {"previous node"}
                 />
                 <Node 
@@ -67,8 +70,8 @@ export class LinkListComp extends React.Component {
                     amount = {this.state.list.current.amount}
                     type = {"current node"}
                 /><Node 
-                subject = {this.state.list.current.subject} 
-                amount = {this.state.list.current.amount}
+                subject = {this.state.nextNode[0]} 
+                amount = {this.state.nextNode[1]}
                 type = {"next node"}
             />
                 <input type="text" name="subInput" value={this.state.subInput} onChange={this.handleChange}></input>

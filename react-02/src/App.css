@@ -641,3 +641,27 @@ body {
   justify-items: left;
   height: 60vh;
 }
+
+/*------------------------------------*/
+/*for LinkLists*/
+.linked-list {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;  
+}
+
+p {
+  grid-column: 1 / 7;  
+}
+
+.node {
+  grid-column: 1 / span 2;
+}
+
+.current {
+  grid-column: 3/ span 2;
+}
+
+.next {
+  grid-column: 5 / span 2;
+}
+
