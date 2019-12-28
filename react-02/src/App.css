@@ -665,3 +665,13 @@ p {
   grid-column: 5 / span 2;
 }
 
+.linked-list input {
+  width: 15vw;
+}
+
+.linked-list .submission {
+  grid-column: 3 / span 2;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+

@@ -31,8 +31,8 @@ export class LinkListComp extends React.Component {
 
         this.state = {
             list: new LinkedList(),
-            subInput: "Subject",
-            amountInput: "Amount",
+            subInput: "",
+            amountInput: "",
             nextNode: ["No Node Here", "N/A"],
             previousNode:["No Node Here", "N/A"],
         }
@@ -44,7 +44,8 @@ export class LinkListComp extends React.Component {
     insert = () => {
         console.log(this.state.list.current.subject);
         this.state.list.insert(this.state.subInput, this.state.amountInput)
-        console.log(this.state.list.current.forwardNode.subject);
+        console.log(this.state.list.current);
+        this.setState({subInput : "", amountInput :""})
         
     }
 
@@ -74,10 +75,14 @@ export class LinkListComp extends React.Component {
                 amount = {this.state.nextNode[1]}
                 type = {"next node"}
             />
-                <input type="text" name="subInput" value={this.state.subInput} onChange={this.handleChange}></input>
-                <input type="number" name="amountInput" value={this.state.amountInput} onChange={this.handleChange}></input>
-                <button onClick={this.insert}>Insert</button>
-                <button>Delete</button>
+                <div className="submission">
+                    Subject
+                    <input type="text" name="subInput" value={this.state.subInput} onChange={this.handleChange}></input>
+                    Amount
+                    <input type="number" name="amountInput" value={this.state.amountInput} onChange={this.handleChange}></input>
+                    <button onClick={this.insert}>Insert</button>
+                    <button>Delete</button>
+                </div>
             </div>
         )
 
