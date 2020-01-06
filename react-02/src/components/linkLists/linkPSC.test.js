@@ -1,4 +1,4 @@
-import { LinkedList } from './link-list-PSC'
+import { LinkedList } from './linkPSC'
 
 const subjectList = (list) => {
     list.first()
@@ -91,5 +91,21 @@ test('delete function', () => {
 
     list.delete();
     expect(subjectList(list)).toEqual(["uno"]);
+
+})
+
+test('total function', () => {
+    let list = new LinkedList();
+    expect(list.total()).toEqual(0)
+
+    list.insert("uno", 100);
+    expect(list.total()).toEqual(100)
+
+    list.insert("dos", 200);
+    list.insert("three", 300);
+
+    expect(list.total()).toEqual(600)
+
+
 
 })

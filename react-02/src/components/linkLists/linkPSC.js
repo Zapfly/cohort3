@@ -49,6 +49,7 @@ export class LinkedList {
 
   previous() {
     if (this.current.backwardNode !== null) {
+
       this.current = this.current.backwardNode;
     }
   }
@@ -62,15 +63,30 @@ export class LinkedList {
   }
 
   delete() {
-    if (this.current.forwardNode === null) {
+    if (this.current.forwardNode === null && this.current.backwardNode === null) {
+      return undefined      
+    } else if (this.current.forwardNode === null) {
       this.current = this.current.backwardNode;
       this.current.forwardNode = null;
+    } else if (this.current.backwardNode === null) {
+      this.current = this.current.forwardNode;
+      this.current.backwardNode = null;
     } else {
       this.current.forwardNode.backwardNode = this.current.backwardNode;
       this.current.backwardNode.forwardNode = this.current.forwardNode;
-      this.current = this.backwardNode
+      this.current = this.current.backwardNode
     }
 
+    
+  }
+  total() {
+    let node = this.head
+    let total = 0
+    while(node) {
+      total += Number(node.amount)
+      node = node.forwardNode
+    }
+    return total
   }
 }
 

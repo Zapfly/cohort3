@@ -59,6 +59,7 @@ export class LinkListComp extends React.Component {
             this.currentNode()
             // console.log(this.list.current.subject)
             // console.log(this.state.currSub)
+            this.total()
     }
 
     // nextNode = () => {
@@ -74,12 +75,30 @@ export class LinkListComp extends React.Component {
         this.list.insert(this.state.subInput, this.state.amountInput)
         console.log(this.list.current);
         this.setState({ subInput: "", amountInput: "" })
+        this.total()
     }
 
     moveForward = () => {
         this.list.next()
         this.setState({currSub : this.list.current})
     }
+
+    moveBackward = () => {
+        this.list.previous()
+        this.setState({currSub : this.list.current})
+    }
+
+    delete = () => {
+        console.log(this.list.current)
+        this.list.delete()
+        this.setState({currSub : this.list.current})
+        this.total()
+    }
+
+    total = () =>  {
+        this.setState({total: `Total = ${this.list.total()}`})
+    }
+
 
 
     handleChange = (event) => {
@@ -92,8 +111,8 @@ export class LinkListComp extends React.Component {
 
         return (
             <div className="linked-list">
-                <p >Node List{/*this.state.list.current.subject*/}</p>
-                <button class="previous node">Previous</button>
+                <p >Node List</p>
+                <button class="previous node" onClick={this.moveBackward}>Previous</button>
                 <Node
                     subject={this.list.current.subject}
                     amount={this.list.current.amount}
@@ -106,7 +125,8 @@ export class LinkListComp extends React.Component {
                     Amount
                     <input type="number" name="amountInput" value={this.state.amountInput} onChange={this.handleChange}></input>
                     <button onClick={this.insert}>Insert</button>
-                    <button>Delete</button>
+                    <button onClick={this.delete}>Delete</button>
+                    <div>{this.state.total}</div>
                 </div>
             </div>
         )
