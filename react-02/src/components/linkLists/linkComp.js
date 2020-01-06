@@ -62,11 +62,11 @@ export class LinkListComp extends React.Component {
     }
 
     // nextNode = () => {
-    //     this.setState({showNext: this.nodes.next})
+    //     this.setState({showNext: this.current.next})
     // }
 
     currentNode = () => {
-        this.setState({showCurrent: this.current})
+        this.setState({showCurrent: this.list.current})
     }
 
     insert = () => {
@@ -75,6 +75,12 @@ export class LinkListComp extends React.Component {
         console.log(this.list.current);
         this.setState({ subInput: "", amountInput: "" })
     }
+
+    moveForward = () => {
+        this.list.next()
+        this.setState({currSub : this.list.current})
+    }
+
 
     handleChange = (event) => {
         const target = event.target;
@@ -87,23 +93,13 @@ export class LinkListComp extends React.Component {
         return (
             <div className="linked-list">
                 <p >Node List{/*this.state.list.current.subject*/}</p>
-                {/* <Node
-                    // subject={this.state.previousNode[0]}
-                    // amount={this.state.previousNode[1]}
-                    // node={this.list.current}
-                    type={"previous node"}
-                /> */}
-                
+                <button class="previous node">Previous</button>
                 <Node
                     subject={this.list.current.subject}
                     amount={this.list.current.amount}
                     type={"current node"}
                 />
-                {/*<Node
-                    // subject={this.state.nextNode[0]}
-                    // amount={this.state.nextNode[1]}
-                    type={"next node"}
-                /> */}
+                <button class="next node" onClick={this.moveForward}>Next</button>                
                 <div className="submission">
                     Subject
                     <input type="text" name="subInput" value={this.state.subInput} onChange={this.handleChange}></input>
