@@ -82,6 +82,7 @@ class App extends React.Component {
   cityPage = () => {
     this.setState({page: this.page.cityPage})
   }
+  
   presentationPage = () => {
     this.setState({page: this.page.presentationPage})
   }

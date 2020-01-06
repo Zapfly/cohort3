@@ -10,6 +10,15 @@ class Node extends React.Component {
         }
     }
 
+    componentDidMount(){
+        let thisNode = this.props.subject
+        console.log(thisNode)
+        if (thisNode == null) {
+            console.log("node is null")
+        }
+
+    }
+
     render() {
         return (
             <div className={this.props.type}>
@@ -28,25 +37,43 @@ class Node extends React.Component {
 export class LinkListComp extends React.Component {
     constructor(props) {
         super(props)
-
+        this.list = new LinkedList();
         this.state = {
-            list: new LinkedList(),
             subInput: "",
             amountInput: "",
-            nextNode: ["No Node Here", "N/A"],
-            previousNode:["No Node Here", "N/A"],
+            showCurrent: "",
+            currSub: this.list.current,
         }
+
+        
     }
 
-    componentDidMount = () => {
+
+
+    componentWillMount() {
+            this.list.insert("Starting Node", 0)
+            let sub = this.list.current.subject
+            console.log(sub)
+            this.setState({currSub: sub})
+            console.log(this.state.currSub)
+            this.currentNode()
+            // console.log(this.list.current.subject)
+            // console.log(this.state.currSub)
+    }
+
+    // nextNode = () => {
+    //     this.setState({showNext: this.nodes.next})
+    // }
+
+    currentNode = () => {
+        this.setState({showCurrent: this.current})
     }
 
     insert = () => {
-        console.log(this.state.list.current.subject);
-        this.state.list.insert(this.state.subInput, this.state.amountInput)
-        console.log(this.state.list.current);
-        this.setState({subInput : "", amountInput :""})
-        
+        console.log(this.list.current.subject);
+        this.list.insert(this.state.subInput, this.state.amountInput)
+        console.log(this.list.current);
+        this.setState({ subInput: "", amountInput: "" })
     }
 
     handleChange = (event) => {
@@ -56,25 +83,27 @@ export class LinkListComp extends React.Component {
     }
 
     render() {
-        this.state.list.insert("Starting Node", 0)
 
         return (
-            <div className = "linked-list">
+            <div className="linked-list">
                 <p >Node List{/*this.state.list.current.subject*/}</p>
-                <Node 
-                    subject = {this.state.previousNode[0]} 
-                    amount = {this.state.previousNode[1]}
-                    type = {"previous node"}
+                {/* <Node
+                    // subject={this.state.previousNode[0]}
+                    // amount={this.state.previousNode[1]}
+                    // node={this.list.current}
+                    type={"previous node"}
+                /> */}
+                
+                <Node
+                    subject={this.list.current.subject}
+                    amount={this.list.current.amount}
+                    type={"current node"}
                 />
-                <Node 
-                    subject = {this.state.list.current.subject} 
-                    amount = {this.state.list.current.amount}
-                    type = {"current node"}
-                /><Node 
-                subject = {this.state.nextNode[0]} 
-                amount = {this.state.nextNode[1]}
-                type = {"next node"}
-            />
+                {/*<Node
+                    // subject={this.state.nextNode[0]}
+                    // amount={this.state.nextNode[1]}
+                    type={"next node"}
+                /> */}
                 <div className="submission">
                     Subject
                     <input type="text" name="subInput" value={this.state.subInput} onChange={this.handleChange}></input>
