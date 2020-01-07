@@ -13,6 +13,7 @@ import AccountsPage from './components/accounts/AccountComp'
 import CityPage from './components/cities/cityPage'
 import PresentationPage from './components/presentation'
 import {LinkListComp} from './components/linkLists/linkComp'
+import linkList from './components/linkLists/hookedLists'
 class App extends React.Component {
 
   constructor() {
@@ -48,6 +49,9 @@ class App extends React.Component {
       ),
       linkPage: (
         <LinkListComp />
+      ),
+      hookedLists: (
+        <linkList />
       )
     }
       this.imgArr = [
@@ -56,7 +60,8 @@ class App extends React.Component {
         {key:3, src:money,action:this.accountPage},
         {key:4, src:map, action: this.cityPage},
         {key:5, src:presentation, action: this.presentationPage},
-        {key:6, src:link, action: this.linkPage}
+        {key:6, src:link, action: this.linkPage},
+        {key:7, src:link, action: this.hookedLists}
     ];
 
     //*********
@@ -89,6 +94,10 @@ class App extends React.Component {
 
   linkPage = () => {
     this.setState({page: this.page.linkPage})
+  }
+
+  hookedLists = () => {
+    this.setState({page: this.page.hookedLists})
   }
 
   
