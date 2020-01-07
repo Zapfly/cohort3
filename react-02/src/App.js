@@ -51,10 +51,7 @@ class App extends React.Component {
         <LinkListComp />
       ),
       hookedLists: (
-        <div>
-          <p>this is working</p>
         <LinkList />
-        </div>
       )
     }
       this.imgArr = [

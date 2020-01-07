@@ -71,9 +71,7 @@ export class LinkListComp extends React.Component {
     }
 
     insert = () => {
-        console.log(this.list.current.subject);
         this.list.insert(this.state.subInput, this.state.amountInput)
-        console.log(this.list.current);
         this.setState({ subInput: "", amountInput: "" })
         this.total()
     }

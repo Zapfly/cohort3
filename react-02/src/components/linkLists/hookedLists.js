@@ -24,18 +24,18 @@ const LinkList = () => {
     const [amountInput, setamountInput] = useState(0)
     const [subject, setSubject] = useState(list.current.subject)
     const [amount, setAmount] = useState(list.current.amount)
+    const [total, setTotal] = useState(0)
 
 
     const insert = () => {
         list.insert(subInput, amountInput);
-        console.log(list)
-        // setSubInput("");
-        // setamountInput(0)
+        setSubInput("");
+        setamountInput(0)
+        totalFunc()
 
     }
 
     const moveBackward = () => {
-        console.log("previous")
 
         list.previous()
         setNode(list.current)
@@ -44,14 +44,25 @@ const LinkList = () => {
     }
 
     const moveForward = () => {
-        console.log("next")
         list.next()
-        console.log(list.current)
 
         setNode(list.current)
         setSubject(list.current.subject)
         setAmount(list.current.amount)
 
+    }
+
+    const deleteFunc = () => {
+        list.delete()
+
+        setNode(list.current)
+        setSubject(list.current.subject)
+        setAmount(list.current.amount)
+        totalFunc()
+    }
+
+    const totalFunc = () => {
+        setTotal(list.total())        
     }
 
     const handleChange = (e) => {
@@ -91,8 +102,8 @@ const LinkList = () => {
                         onChange={handleChange}>
                     </input>
                     <button onClick={insert}>Insert</button>
-                    {/* <button onClick={this.delete}>Delete</button> */}
-                    {/* <div>{this.state.total}</div> */}
+                    <button onClick={deleteFunc}>Delete</button>
+                    <div>{total}</div>
                 </div>
             </div>
     )
