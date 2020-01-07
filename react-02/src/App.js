@@ -13,7 +13,7 @@ import AccountsPage from './components/accounts/AccountComp'
 import CityPage from './components/cities/cityPage'
 import PresentationPage from './components/presentation'
 import {LinkListComp} from './components/linkLists/linkComp'
-import linkList from './components/linkLists/hookedLists'
+import LinkList from './components/linkLists/hookedLists'
 class App extends React.Component {
 
   constructor() {
@@ -51,7 +51,10 @@ class App extends React.Component {
         <LinkListComp />
       ),
       hookedLists: (
-        <linkList />
+        <div>
+          <p>this is working</p>
+        <LinkList />
+        </div>
       )
     }
       this.imgArr = [
@@ -66,7 +69,7 @@ class App extends React.Component {
 
     //*********
     this.state = { 
-      page: this.page.linkPage,
+      page: this.page.hookedLists,
     };
     //******
 

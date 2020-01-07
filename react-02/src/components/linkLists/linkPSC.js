@@ -14,6 +14,7 @@ export class LinkedList {
     this.head = null;
     this.tail = null;
     this.current = null;
+    console.log("new List Alert")
 
   }
 
@@ -41,6 +42,7 @@ export class LinkedList {
   }
 
   next() {
+    console.log("next PSC")
     if (this.current.forwardNode !== null) {
       this.current = this.current.forwardNode;
 
@@ -48,6 +50,8 @@ export class LinkedList {
   }
 
   previous() {
+    console.log("previous PSC")
+
     if (this.current.backwardNode !== null) {
 
       this.current = this.current.backwardNode;
