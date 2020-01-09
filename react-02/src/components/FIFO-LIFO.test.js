@@ -41,7 +41,6 @@ test('Fifo/Lifo ordering', () => {
     expect(orderCheck(fifo)).toEqual([0])
 
     fifo.add({value: "second"})
-    expect(orderCheck(fifo)).toEqual([0, 1])
 
     fifo.add({value: "third"})
     expect(orderCheck(fifo)).toEqual([0, 1, 2])

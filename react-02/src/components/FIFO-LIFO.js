@@ -19,7 +19,7 @@
 //             referrer: 'no-referrer',    // no-referrer, *client
 //             body: JSON.stringify(data)  // body data type must match "Content-Type" header
 //         });
-    
+
 //         const json = await response.json();    // parses JSON response into native JavaScript objects
 //         json.status = response.status;
 //         json.statusText = response.statusText;
@@ -37,14 +37,29 @@
 export class FifoLifo {
     constructor(fifo) {
         this.counter = 0,
-        this.fifo = fifo,
-        this.contents = {}
+            this.fifo = fifo,
+            this.contents = []
     }
-    
+
     add(obj) {
-        this.contents[Number(this.counter)] = obj;
         obj.order = this.counter
-        this.counter ++;
+
+        this.contents.push(obj);
+        this.counter++;
+    }
+
+    findFirst() {
+        let result = []
+        let key
+        let i = 0
+        let smallest = Infinity
+
+        for (key in this.contents) {
+            if (this.contents[i].order < smallest) {
+                return smallest = this.contents[i]
+            }
+            i++
+        }
     }
 }
 
