@@ -28,37 +28,43 @@ const Monster = (props) => {
     )
 
 }
-let monsters = []
+
+
 const Queue = () => {
-    
+    const [monsters, setMonsters] = useState([])
+
+
 
     useEffect(() => {
 
         async function fetchData() {
             const res = await fetch("https://api.open5e.com/monsters/", {
                 method: 'GET',
-                // mode: 'no-cors'
+                // mode: 'no-cors',
             });
-            monsters = await res.json()
-            monsters = monsters.results
-
+            let list = await res.json()
+            setMonsters(list.results)
+            console.log(list.results[0].name)
         }
         fetchData();
-    }, []);
+        console.log(monsters)
 
-    // const makeArray = () => {
-    //     let i = 0
-    //     let key
-    //     for(key in Fifo.contents) {
-    //         const array = []
-    //         array.push(fifo.contents.value)
-    //     return <p>{array}</p>
-    //     }
-    // }
+    }, []);
+        
+
+        // const makeArray = () => {
+        //     let i = 0
+        //     let key
+        //     for(key in Fifo.contents) {
+        //         const array = []
+        //         array.push(fifo.contents.value)
+        //     return <p>{array}</p>
+        //     }
+        // }
     return (
         <div>
             <Monster
-                name="Goblin"
+                name={monsters[0].name}
                 type="Goblinoid Humanoid"
                 cr="1/4"
             />
