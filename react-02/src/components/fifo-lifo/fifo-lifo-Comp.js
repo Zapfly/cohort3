@@ -28,9 +28,9 @@ const Monster = (props) => {
     )
 
 }
-
+let monsters = []
 const Queue = () => {
-    let [pokemon, setPokemon] = useState({});
+    
 
     useEffect(() => {
 
@@ -39,11 +39,8 @@ const Queue = () => {
                 method: 'GET',
                 // mode: 'no-cors'
             });
-            // console.log(res.json())
-            // await res.json()
-            await setPokemon(res.json())
-            // res.json().then(res => setPokemon(res));
-            console.log(pokemon)
+            monsters = await res.json()
+            monsters = monsters.results
 
         }
         fetchData();
