@@ -25,10 +25,19 @@
 //         json.statusText = response.statusText;
 //         // console.log(json, typeof(json));
 //         return json;
-//       },
+//     },
 
-//     url: "http://dnd5eapi.co/api/"
+//     url: "http://dnd5eapi.co/api/",
+//     get: async () => {
+//         const url = "http://dnd5eapi.co/api/monsters/adult-black-dragon"
+//         await fetch(url)
+//         (data =>{return data.json()})
+//         (res =>{console.log(res)})
+//     }
 // }
+
+
+
 
 
 //FIFO QUEUE
@@ -36,31 +45,33 @@
 
 export class FifoLifo {
     constructor(fifo) {
-        this.counter = 0,
-            this.fifo = fifo,
-            this.contents = []
+            this.fifo = fifo;
+            this.contents = [];
     }
 
     add(obj) {
-        obj.order = this.counter
 
         this.contents.push(obj);
         this.counter++;
     }
 
-    findFirst() {
-        let result = []
-        let key
-        let i = 0
-        let smallest = Infinity
-
-        for (key in this.contents) {
-            if (this.contents[i].order < smallest) {
-                return smallest = this.contents[i]
-            }
-            i++
-        }
+    removeFirst(newArr) {
+        newArr.push(this.contents[0])
+        this.contents.shift()
     }
+
+    removeLast(newArr) {
+        newArr.push(this.contents[(this.contents.length - 1)])
+        this.contents.pop()
+    }
+
+    removeItem(newArr) {
+        if (this.fifo === true) return this.removeFirst(newArr);
+        else return this.removeLast(newArr)
+    }
+
 }
+
+
 
 

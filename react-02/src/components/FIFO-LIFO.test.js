@@ -1,21 +1,10 @@
 import {dndApi, FifoLifo} from './FIFO-LIFO'
 
-// test('accessing api', () => {
-//     const monsters = dndApi.postData(dndApi.url + 'monsters/results')
-//     expect(monsters).toEqual("Aboeleth")
-// })
+test('accessing api', () => {
+    const monsters = dndApi.get()
+    expect(monsters).toEqual("Aboeleth")
+})
 
-const orderCheck = (list) => {
-    let result = []
-    let key
-    let i = 0
-
-    for (key in list.contents) {
-        result.push(list.contents[i].order)
-        i++
-    }
-    return result
-}
 
 test('Fifo/Lifo exists', () => {
     const fifo = new FifoLifo(true)
@@ -34,19 +23,74 @@ test('add function', () => {
     expect(fifo.contents[2].value).toEqual("third")
 })
  
-test('Fifo/Lifo ordering', () => {
+
+test('RemoveFirst function', () => {
     const fifo = new FifoLifo(true)
-
     fifo.add({value: "first"})
-    expect(orderCheck(fifo)).toEqual([0])
+    fifo.add({value: 2})
+    fifo.add({value: "C"})
+    expect(fifo.contents).toEqual([{value: "first"}, {value: 2}, {value: "C"}])
+    let deleted = []
 
-    fifo.add({value: "second"})
+    fifo.removeFirst(deleted)
+    expect(fifo.contents).toEqual([{value: 2}, {value: "C"}])
+    expect(deleted).toEqual([{value: "first"}])
 
-    fifo.add({value: "third"})
-    expect(orderCheck(fifo)).toEqual([0, 1, 2])
-
-    fifo.add({value: "fourth"})
-    expect(orderCheck(fifo)).toEqual([0, 1, 2, 3])
-
+    fifo.removeFirst(deleted)
+    expect(fifo.contents).toEqual([ {value: "C"}])
+    expect(deleted).toEqual([{value: "first"}, {value: 2}])
 })
+
+test('RemoveLast function', () => {
+    const fifo = new FifoLifo(true)
+    fifo.add({value: "first"})
+    fifo.add({value: 2})
+    fifo.add({value: "C"})
+    expect(fifo.contents).toEqual([{value: "first"}, {value: 2}, {value: "C"}])
+    let deleted = []
+
+    fifo.removeLast(deleted)
+    expect(fifo.contents).toEqual([{value: "first"}, {value: 2}])
+    expect(deleted).toEqual([{value: "C"}])
+
+    fifo.removeLast(deleted)
+    expect(fifo.contents).toEqual([{value: "first"}])
+    expect(deleted).toEqual([{value: "C"}, {value: 2}])
+})
+
+test('RemoveItem function', () => {
+    const fifo = new FifoLifo(true)
+    fifo.add({value: "first"})
+    fifo.add({value: 2})
+    fifo.add({value: "C"})
+    expect(fifo.contents).toEqual([{value: "first"}, {value: 2}, {value: "C"}])
+    let deleted = []
+
+    fifo.removeItem(deleted)
+    expect(fifo.contents).toEqual([ {value: 2}, {value: "C"}])
+    expect(deleted).toEqual([{value: "first"}])
+
+    fifo.removeItem(deleted)
+    expect(fifo.contents).toEqual([{value: "C"}])
+    expect(deleted).toEqual([{value: "first"}, {value: 2}])
+
+    const lifo = new FifoLifo(false)
+    lifo.add({value: "first"})
+    lifo.add({value: 2})
+    lifo.add({value: "C"})
+    expect(lifo.contents).toEqual([{value: "first"}, {value: 2}, {value: "C"}])
+    deleted = []
+
+    lifo.removeItem(deleted)
+    expect(lifo.contents).toEqual([{value: "first"}, {value: 2}])
+    expect(deleted).toEqual([{value: "C"}])
+
+    lifo.removeItem(deleted)
+    expect(lifo.contents).toEqual([{value: "first"}])
+    expect(deleted).toEqual([{value: "C"}, {value: 2}])
+})
+
+
+
+
 

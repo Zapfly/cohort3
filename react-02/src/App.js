@@ -14,6 +14,9 @@ import CityPage from './components/cities/cityPage'
 import PresentationPage from './components/presentation'
 import {LinkListComp} from './components/linkLists/linkComp'
 import LinkList from './components/linkLists/hookedLists'
+import Queue from './components/fifo-lifo/fifo-lifo-Comp'
+
+
 class App extends React.Component {
 
   constructor() {
@@ -52,6 +55,9 @@ class App extends React.Component {
       ),
       hookedLists: (
         <LinkList />
+      ),
+      FifoLifo: (
+        <Queue />
       )
     }
       this.imgArr = [
@@ -60,13 +66,13 @@ class App extends React.Component {
         {key:3, src:money,action:this.accountPage},
         {key:4, src:map, action: this.cityPage},
         {key:5, src:presentation, action: this.presentationPage},
-        {key:6, src:link, action: this.linkPage},
-        {key:7, src:link, action: this.hookedLists}
+        {key:6, src:link, action: this.hookedLists},
+        {key:7, src:link, action: this.FifoLifo}
     ];
 
     //*********
     this.state = { 
-      page: this.page.hookedLists,
+      page: this.page.FifoLifo,
     };
     //******
 
@@ -99,6 +105,12 @@ class App extends React.Component {
   hookedLists = () => {
     this.setState({page: this.page.hookedLists})
   }
+
+  FifoLifo = () => {
+    this.setState({page: this.page.FifoLifo})
+  }
+
+
 
   
 

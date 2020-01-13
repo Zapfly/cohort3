@@ -29,7 +29,7 @@ class CityCard extends React.Component {
 
     cardMoveIn = (event) => {
         const cardKey = Number(event.target.parentNode.id)
-        this.props.moveIn(cardKey, this.state.value)
+        this.props.moveIn(cardKey, Number(this.state.value))
 
         this.setState({
             value: "",
@@ -59,7 +59,6 @@ class CityCard extends React.Component {
 
     cardWhichHemisphere = (event) => {
         const cardKey = Number(event.target.parentNode.id)
-
         this.setState({ display: `${this.props.object.name} is in the ${this.props.whichHemisphere(cardKey)}` })
     }
 
