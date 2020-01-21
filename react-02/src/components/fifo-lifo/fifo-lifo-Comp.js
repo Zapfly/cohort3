@@ -20,7 +20,7 @@ const Monster = (props) => {
 
 
     return (
-        <div className="monster Card">
+        <div className="monster card">
             <p>Monster Name: {props.name}</p>
             <p>Type: {props.type}</p>
             <p>CR: {props.cr}</p>
@@ -30,41 +30,14 @@ const Monster = (props) => {
 }
 
 
-const Queue = () => {
-    const [monsters, setMonsters] = useState([])
+const Stack = () => {
 
 
-
-    useEffect(() => {
-
-        async function fetchData() {
-            const res = await fetch("https://api.open5e.com/monsters/", {
-                method: 'GET',
-                // mode: 'no-cors',
-            });
-            let list = await res.json()
-            setMonsters(list.results)
-            console.log(list.results[0].name)
-        }
-        fetchData();
-        console.log(monsters)
-
-    }, []);
-        
-
-        // const makeArray = () => {
-        //     let i = 0
-        //     let key
-        //     for(key in Fifo.contents) {
-        //         const array = []
-        //         array.push(fifo.contents.value)
-        //     return <p>{array}</p>
-        //     }
-        // }
     return (
         <div>
+            <h3>Lifo Stack</h3>
             <Monster
-                name={monsters[0].name}
+                name={/*monsters[0].name*/ "Goblin"}
                 type="Goblinoid Humanoid"
                 cr="1/4"
             />
@@ -72,5 +45,105 @@ const Queue = () => {
     )
 }
 
+const Deleted = () => {
 
-export default Queue
+    return (
+        <div>
+            <h3>Deleted Items</h3>
+            <Monster
+                name={/*monsters[0].name*/ "Goblin"}
+                type="Goblinoid Humanoid"
+                cr="1/4"
+            />
+        </div>
+    )
+}
+const monstersArr = []
+
+const FifoLifoApp = () => {
+    const [monsters, setMonsters] = useState([])
+    let monsterComps;
+
+    useEffect(() => {
+        async function fetchData() {
+            const res = await fetch("https://api.open5e.com/monsters/", {
+                method: 'GET',
+                // mode: 'no-cors',
+            });
+            let list = await res.json()
+            setMonsters(list.results)
+            // console.log(list.results[0].name)
+            // console.log(monstersArr)
+        }
+        fetchData();
+        // console.log(monsters)
+
+    }, []);
+    let key
+    // for (key in monsters) {
+    //     monstersArr.push(
+    //         <Monster
+    //             name={monsters[key].name}
+    //             type={monsters[key].type}
+    //             cr={monsters[key].challenge_rating}
+    //             key={key}
+    //         />
+    //     )
+    // }
+    for (key in monsters) {
+        monstersArr.push(monsters[key])
+    }
+
+
+
+    console.log(monsters)
+
+
+
+
+    return (
+        <div className="fifo-lifo">
+            <Queue
+            />
+            {/* <Stack />
+            <Deleted /> */}
+        </div>
+    )
+}
+
+
+const Queue = (props) => {
+
+    // let [myFifo, setMyFifo] = useState(Fifo.contents)
+    let [counter, setCounter] = useState(0)
+
+    let add = () => {
+        Fifo.add(monstersArr[counter]);
+        // console.log(Fifo.contents)
+        // setMyFifo(Fifo.contents)
+        setCounter(counter + 1)
+        console.log(counter)
+        console.log(Fifo.contents)
+    }
+
+    // useEffect(() => {
+
+    // })
+
+   const monsterComps =  Fifo.contents.map((item, i) => {
+        return <Monster
+            name={item.name}
+            type={item.type}
+            cr={item.challenge_rating}
+            key={i}
+        />
+    })
+
+    return (
+        <div>
+            {monsterComps}
+            <button onClick={add}>Add Monster</button>
+        </div>
+    )
+}
+export default FifoLifoApp

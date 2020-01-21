@@ -676,3 +676,11 @@ p {
   grid-template-columns: 1fr 1fr;
 }
 
+/*--------------------*/
+/*LIFO FIFO APP */
+
+.fifo-lifo {
+  display: grid;
+  grid-template-columns: 3;
+
+}

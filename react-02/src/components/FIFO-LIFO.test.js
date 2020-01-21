@@ -1,9 +1,6 @@
 import {dndApi, FifoLifo} from './FIFO-LIFO'
 
-test('accessing api', () => {
-    const monsters = dndApi.get()
-    expect(monsters).toEqual("Aboeleth")
-})
+
 
 
 test('Fifo/Lifo exists', () => {

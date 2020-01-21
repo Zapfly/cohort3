@@ -14,7 +14,7 @@ import CityPage from './components/cities/cityPage'
 import PresentationPage from './components/presentation'
 import {LinkListComp} from './components/linkLists/linkComp'
 import LinkList from './components/linkLists/hookedLists'
-import Queue from './components/fifo-lifo/fifo-lifo-Comp'
+import FifoLifoApp  from './components/fifo-lifo/fifo-lifo-Comp'
 
 
 class App extends React.Component {
@@ -57,7 +57,7 @@ class App extends React.Component {
         <LinkList />
       ),
       FifoLifo: (
-        <Queue />
+        <FifoLifoApp />
       )
     }
       this.imgArr = [

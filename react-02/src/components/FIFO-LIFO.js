@@ -1,3 +1,5 @@
+import { LinkedList } from "./linkLists/linkPSC";
+
 // FIFO = First In First Out
 // LIFO = Last In First Out
 
@@ -43,16 +45,14 @@
 //FIFO QUEUE
 
 
-export class FifoLifo {
+export class FifoLifo extends LinkedList {
     constructor(fifo) {
+        super()
             this.fifo = fifo;
-            this.contents = [];
+            this.contents = []
     }
-
     add(obj) {
-
-        this.contents.push(obj);
-        this.counter++;
+        this.contents.push(obj)
     }
 
     removeFirst(newArr) {
