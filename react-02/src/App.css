@@ -681,6 +681,10 @@ p {
 
 .fifo-lifo {
   display: grid;
-  grid-template-columns: 3;
+  grid-template-columns: 1fr 1fr 1fr;
+}
 
+.fifo-lifo .list {
+  height: 50vh;
+  overflow-y: scroll;
 }
