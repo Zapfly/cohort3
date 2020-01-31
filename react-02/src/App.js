@@ -12,9 +12,13 @@ import presentation from './images/playbutt.svg'
 import AccountsPage from './components/accounts/AccountComp'
 import CityPage from './components/cities/cityPage'
 import PresentationPage from './components/presentation'
-import {LinkListComp} from './components/linkLists/linkComp'
+import { LinkListComp } from './components/linkLists/linkComp'
 import LinkList from './components/linkLists/hookedLists'
-import FifoLifoApp  from './components/fifo-lifo/fifo-lifo-Comp'
+import FifoLifoApp from './components/fifo-lifo/fifo-lifo-Comp'
+import Settings from './components/Settings'
+import ThemeContext from './contexts/ThemeContext';
+
+
 
 
 class App extends React.Component {
@@ -42,7 +46,7 @@ class App extends React.Component {
         <Game />
       ),
       accountPage: (
-        <AccountsPage />
+          <AccountsPage />
       ),
       cityPage: (
         <CityPage />
@@ -58,20 +62,25 @@ class App extends React.Component {
       ),
       FifoLifo: (
         <FifoLifoApp />
-      )
+      ),
+      Settings: (
+        <Settings />
+      ),
+      
     }
-      this.imgArr = [
-        {key:1, src:house, action:this.startPage},
-        {key:2, src:play, action:this.gameStart},
-        {key:3, src:money,action:this.accountPage},
-        {key:4, src:map, action: this.cityPage},
-        {key:5, src:presentation, action: this.presentationPage},
-        {key:6, src:link, action: this.hookedLists},
-        {key:7, src:link, action: this.FifoLifo}
+    this.imgArr = [
+      { key: 1, src: house, action: this.startPage },
+      { key: 2, src: play, action: this.gameStart },
+      { key: 3, src: money, action: this.accountPage },
+      { key: 4, src: map, action: this.cityPage },
+      { key: 5, src: presentation, action: this.presentationPage },
+      { key: 6, src: link, action: this.hookedLists },
+      { key: 7, src: link, action: this.FifoLifo },
+      { key: 8, src: link, action: this.Settings }
     ];
 
     //*********
-    this.state = { 
+    this.state = {
       page: this.page.FifoLifo,
     };
     //******
@@ -79,67 +88,74 @@ class App extends React.Component {
   }
 
   gameStart = () => {
-    this.setState({page: this.page.gamePage });
+    this.setState({ page: this.page.gamePage });
   }
 
   startPage = () => {
-    this.setState({page: this.page.startPage });
+    this.setState({ page: this.page.startPage });
   }
 
   accountPage = () => {
-    this.setState({page: this.page.accountPage})
+    this.setState({ page: this.page.accountPage })
   }
 
   cityPage = () => {
-    this.setState({page: this.page.cityPage})
+    this.setState({ page: this.page.cityPage })
   }
-  
+
   presentationPage = () => {
-    this.setState({page: this.page.presentationPage})
+    this.setState({ page: this.page.presentationPage })
   }
 
   linkPage = () => {
-    this.setState({page: this.page.linkPage})
+    this.setState({ page: this.page.linkPage })
   }
 
   hookedLists = () => {
-    this.setState({page: this.page.hookedLists})
+    this.setState({ page: this.page.hookedLists })
   }
 
   FifoLifo = () => {
-    this.setState({page: this.page.FifoLifo})
+    this.setState({ page: this.page.FifoLifo })
+  }
+
+  Settings = () => {
+    this.setState({ page: this.page.Settings })
   }
 
 
 
-  
+
 
   renderImages = () => {
     return (
 
       this.imgArr.map((x, index) => {
-      return (
-        <Image 
-        key={index}
-        imageId={index}
-        src={x.src}
-        onClick={x.action} 
-      />
-      )
-    })
-      
+        return (
+          <Image
+            key={index}
+            imageId={index}
+            src={x.src}
+            onClick={x.action}
+          />
+        )
+      })
+
 
     )
   }
 
+
+
   render() {
     return (
       <div className="App">
+      <ThemeContext.Provider value="green">
         <header>
           {this.renderImages()}
         </header>
-
         <div>{this.state.page}</div>
+      </ThemeContext.Provider>
       </div>
     );
   }

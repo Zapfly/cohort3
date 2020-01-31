@@ -60,13 +60,22 @@ const FifoLifoApp = () => {
     const deleteItem = (list) => {
         list.removeItem(DeletedList.contents)
         toggle()
-        
-
     }
 
     const toggle = () => {
         if (state == true) return setState(false)
         else return setState(true)
+    }
+
+    const moveToStack = (list) => {
+        Fifo.removeItem(list)
+        toggle()
+    }
+
+    const clear = () => {
+        // console.log(Deleted.contents)
+        DeletedList.contents = []
+        toggle()
     }
 
 
@@ -75,14 +84,19 @@ const FifoLifoApp = () => {
             <Queue
                 fifo={myFifo}
                 stack= {myLifo}
+                moveToStack = {moveToStack}
                 deleted = {deleteItem}
                 add={add}
             />
             <Stack
                 lifo={myLifo}
+                deleted = {deleteItem}
+
             />
             <Deleted 
-            deletedList = {DeletedList}/>
+            deletedList = {DeletedList}
+            clear = {clear}
+            />
         </div>
     )
 }
@@ -93,18 +107,13 @@ const Queue = (props) => {
     // let [myFifo, setMyFifo] = useState(Fifo.contents)
     let [counter, setCounter] = useState(0)
 
-
-
     let moveToStack = () => {
-        Fifo.removeItem(Lifo.contents)
-        setCounter(counter + 1)
-        setCounter(counter - 1)
+        props.moveToStack(Lifo.contents)
     }
 
 
     const monsterComps =
         props.fifo.contents.map((item, i) => {
-            // console.log(Fifo.contents)
             return(
                 <Monster
                     name={item.name}
@@ -128,7 +137,7 @@ const Queue = (props) => {
             </div>
             <button onClick={props.add}>Add Monster</button>
             <button onClick={deleteThis}>Delete</button>
-            {/* <button onClick={moveToStack}>Move to Stack</button> */}
+            <button onClick={moveToStack}>Move to Stack</button>
         </div>
     )
 }
@@ -137,12 +146,10 @@ const Queue = (props) => {
 const Stack = (props) => {
     let [counter, setCounter] = useState(0)
 
-    let add = () => {
-        props.lifo.add(monstersArr[counter]);
-        setCounter(counter + 1)
-        // console.log(counter)
-        // console.log(Fifo.contents)
+    const deleteThis = () => {
+        props.deleted(props.lifo)
     }
+
 
 
 
@@ -161,7 +168,7 @@ const Stack = (props) => {
         <div className="list">
                 {monsterComps}
             </div>
-            <button onClick={add}>Delete</button>
+            <button onClick={deleteThis}>Delete</button>
         </div>
     )
 }
@@ -169,6 +176,10 @@ const Stack = (props) => {
 const Deleted = (props) => {
 
     let [counter, setCounter] = useState(0)
+
+    const clearList = () => {
+        props.clear()
+    }
 
 
     const monsterComps =
@@ -190,7 +201,7 @@ const Deleted = (props) => {
         <div className="list">
                 {monsterComps}
             </div>
-            {/* <button onClick={add}>Delete</button> */}
+            <button onClick={clearList}>Clear</button>
         </div>
     )
 }
