@@ -1,11 +1,19 @@
 import React, { createContext } from 'react'
 
-const ThemeContext = createContext();
+export const themes = {
+  light: {
+    foreground: '#000000',
+    background: '#eeeeee',
+  },
+  dark: {
+    foreground: '#ffffff',
+    background: '#222222',
+  },
+};
 
-const A = (props) => (
-    <ThemeContext.Provider value="green">
-      {props.children}
-    </ThemeContext.Provider>
-  );
+const ThemeContext = React.createContext({
+  theme: themes.dark,
+  toggleTheme: () => {},
+});
 
   export default ThemeContext

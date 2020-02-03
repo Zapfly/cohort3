@@ -16,7 +16,7 @@ import { LinkListComp } from './components/linkLists/linkComp'
 import LinkList from './components/linkLists/hookedLists'
 import FifoLifoApp from './components/fifo-lifo/fifo-lifo-Comp'
 import Settings from './components/Settings'
-import ThemeContext from './contexts/ThemeContext';
+import ThemeContext, {themes} from './contexts/ThemeContext';
 
 
 
@@ -46,7 +46,7 @@ class App extends React.Component {
         <Game />
       ),
       accountPage: (
-          <AccountsPage />
+        <AccountsPage />
       ),
       cityPage: (
         <CityPage />
@@ -79,12 +79,22 @@ class App extends React.Component {
       { key: 8, src: link, action: this.Settings }
     ];
 
+    this.toggleTheme = () => {
+      this.setState(state => ({
+        theme:
+          state.theme === themes.dark
+            ? themes.light
+            : themes.dark,
+      }));
+    };
+
     //*********
     this.state = {
       page: this.page.FifoLifo,
+      theme: themes.light,
+      toggleTheme: this.toggleTheme,
     };
     //******
-
   }
 
   gameStart = () => {
@@ -123,13 +133,8 @@ class App extends React.Component {
     this.setState({ page: this.page.Settings })
   }
 
-
-
-
-
   renderImages = () => {
     return (
-
       this.imgArr.map((x, index) => {
         return (
           <Image
@@ -140,25 +145,19 @@ class App extends React.Component {
           />
         )
       })
-
-
     )
   }
 
-  
-
-
-
   render() {
     return (
+      <ThemeContext.Provider value={this.state}>
       <div className="App">
-      <ThemeContext.Provider value="green">
         <header>
           {this.renderImages()}
         </header>
         <div>{this.state.page}</div>
-      </ThemeContext.Provider>
       </div>
+      </ThemeContext.Provider>
     );
   }
 }
