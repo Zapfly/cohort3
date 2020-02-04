@@ -1,0 +1,207 @@
+
+/*this is for cities*/
+
+.cities div {
+    border-style: solid;
+}
+
+.cities body {
+    font-family: Arial, Helvetica, sans-serif;
+  }
+  
+  .cities  .header,
+ .footer {
+      /* color: white;
+      background-color: #78cf50; */
+      padding: 2%;
+  }
+  
+  .cities  .header {
+    grid-area: header;
+    text-align: left;
+    font-size: 100%;
+  }
+  
+  .cities  .footer {
+    grid-area: footer;
+    text-align: center;
+    width: 100%;
+    bottom: 0;
+  }
+  
+  .city-wrapper {
+    display: grid;
+    grid-template-columns: 20% 30% 30% 20%;
+    grid-template-areas: 
+      'header header header header' 
+      'left  middle middle right' 
+      'footer footer footer footer';
+      /* background-image: url("https://image.shutterstock.com/image-photo/oklahoma-city-highlighted-push-pin-600w-400498315.jpg");
+      background-size: cover; */
+  
+  }
+  
+  .cities  .container-left,
+  .container-middle,
+  .container-right {
+    margin: 2%;
+    padding: 2%;
+    /* border: solid 3px #78cf50;
+    background-color: #b0cc97; */
+    opacity: 90%;
+  
+  }
+  
+  .cities .display-header {
+    font-size: 100%;
+  }
+  
+  .cities  .create-city-display,
+  .city-display,
+  .balances-display {
+    /* border: solid 3px #78cf50; */
+    margin: 5%;
+    padding: 2%;
+  }
+  
+  .cities  .container-left {
+    grid-area: left;
+    height: 350px;
+  }
+  
+  .cities  .create-city-display {
+    display: grid;
+    grid-template-columns: repeat(2, 50%);
+    height: fit-content;
+    opacity: 100%;
+  }
+  
+  .cities  .create-city-text,
+  .create-city-name-input,
+  .create-city-balance-input {
+    margin: 5px;
+    padding: 5px;
+    grid-column-start: 1;
+    grid-column-end: 3
+  }
+  
+  .cities  .create-city-button {
+    margin: 10px 5px 5px 5px;
+  }
+  
+  .cities  .container-middle {
+    grid-area: middle;
+    height: 550px;
+  }
+  
+  .cities  .city-display {
+    display: grid;
+    height: 450px;
+    overflow-y: scroll;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: auto;
+    align-items: end;
+  }
+  
+  .cities  .city-card {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr;
+    height: fit-content;
+    width: 1fr;
+    padding: 10px 10px 5px 10px;
+    align-items: center;
+    margin: 2px;
+    align-self: stretch;
+  }
+  
+  .cities  .city-name {
+    grid-column: 1 /span 2;
+  }
+  
+  .cities  .city-show {
+    font-size: 12px;
+    grid-column: 1 /span 2;
+    height: 30 px; 
+  }
+  
+  .cities  .city-input {
+    grid-column: 1 /span 2;
+    
+  }
+  
+  .cities  .city-info {
+    border-style: solid;
+    grid-row-start: 2;
+    
+  }
+  
+  /* .cities  .city-card:nth-child(odd) {background-color:  grey;}
+  .cities  .city-card:nth-child(even) {background-color:  #78cf50;} */
+  
+  .cities  .city-input {
+    margin: 0px 5px 0px 15px;
+  }
+  
+  .cities  .city-button {
+    margin: 5px 5px 0px 5px;
+    font-size: 12px;
+  }
+  
+  .cities  .create-city-text,
+  .city-name,
+  .city-balance {
+    float: left;
+    margin: 0px 5px 0px 5px;
+  }
+  
+  .cities  .dollar {
+    justify-self: right;
+    margin: 0px 0px 0px 15px;
+  }
+  
+  .cities  .container-right {
+    grid-area: right;
+    height: 94vh;
+  }
+  
+  .cities .balances-display {
+    height: 10vh;
+    padding: 14%;
+    text-align: center;
+  }
+  
+  .cities .balances-display-balance {
+    font-size: 75%;
+  }
+  
+  .cities .create-city-display-header,
+  .city-display-header,
+  .citys-information-display-header {
+    font-size: 75%;
+    margin: 2%;
+  }
+  
+  .cities .right-display {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+  
+    border-style: solid;
+    /* border-color: #78cf50; */
+    height: 29vh;
+    width: auto;
+    margin: 2px;
+  }
+  
+  .cities .right-display-text {
+    display: grid;
+    justify-self: center;
+    align-self: center;
+    font-size: 20px;
+    margin:10px;
+  }
+  
+  .cities .right-display-output {
+    display: grid;
+    justify-self: center;
+  }

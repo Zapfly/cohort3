@@ -1,5 +1,8 @@
 import React from 'react';
 import { AccountController } from './account-react';
+import './accounts.css'
+import ThemeContext from '../../contexts/ThemeContext'
+
 // import { conditionalExpression } from '@babel/types';
 
 const bankAccounts = new AccountController("bankAccounts")
@@ -29,12 +32,12 @@ class AccountContainer extends React.Component {
         const isTaken = this.state.controller.findAccount(this.state.newAccountName)
         let accountList = this.state.controller
 
-        isTaken === -1 
-        ? accountList.addAccount(this.state.newAccountName, this.state.newAccountBallance) 
-        : alert("That account name is already in use. Please choose another.")
-        this.setState({ 
+        isTaken === -1
+            ? accountList.addAccount(this.state.newAccountName, this.state.newAccountBallance)
+            : alert("That account name is already in use. Please choose another.")
+        this.setState({
             newAccountName: "",
-            newAccountBallance: "",            
+            newAccountBallance: "",
         })
         this.highest()
         this.lowest()
@@ -127,17 +130,17 @@ class AccountContainer extends React.Component {
         })
 
         return (
-            <div className="wrapper">
+            <div className="account account-wrapper wrapper">
                 <div className="container left">
                     <span className="create-card-display-header">Create New Account</span>
                     <div className="create-card-display">
                         <span className="create-card-text">Account Name:</span>
-                        <input 
-                            type="text" 
-                            className="create-card-input" 
-                            id="idAccountNameInput" 
-                            value={this.state.newAccountName} 
-                            onChange={this.handleChange} 
+                        <input
+                            type="text"
+                            className="create-card-input"
+                            id="idAccountNameInput"
+                            value={this.state.newAccountName}
+                            onChange={this.handleChange}
                             name="newAccountName"></input>
                         <span className="create-card-text">Opening Balance:</span>
                         <input type="number" className="create-card-input" id="idAccountBalanceInput" value={this.state.newAccountBallance} onChange={this.handleChange} name="newAccountBallance"></input>
@@ -194,7 +197,7 @@ class AccountCard extends React.Component {
     }
 
     handleClick = () => {
-        this.setState({changeBalance: ''})
+        this.setState({ changeBalance: '' })
     }
 
     render() {
@@ -243,13 +246,17 @@ class AccountsPage extends React.Component {
 
     render() {
         return (
-            <div>
-                <div className="header">
-                    <h1>Welcome to Calgary Domestic Bank</h1>
-                </div>
-                <AccountContainer />
-                <Footer />
-            </div>
+            <ThemeContext.Consumer>
+                {value => (
+                    <div style={{ color: value.theme.foreground, background: value.theme.background }}>
+                        <div className="header">
+                            <h1>Welcome to Calgary Domestic Bank</h1>
+                        </div>
+                        <AccountContainer />
+                        {/* <Footer /> */}
+                    </div>
+                )}
+            </ThemeContext.Consumer>
 
         );
     }

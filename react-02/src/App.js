@@ -2,7 +2,7 @@ import React from 'react';
 import logo from './logo.svg';
 import './App.css';
 import Image from "./components/image"
-import Game from "./components/Game"
+import Game from "./components/game/Game"
 import house from './images/House14.svg'
 import money from './images/accounts.svg'
 import map from './images/city-map.svg'
@@ -11,7 +11,7 @@ import link from './images/link.svg'
 import presentation from './images/playbutt.svg'
 import AccountsPage from './components/accounts/AccountComp'
 import CityPage from './components/cities/cityPage'
-import PresentationPage from './components/presentation'
+import PresentationPage from './components/presentation/presentation'
 import { LinkListComp } from './components/linkLists/linkComp'
 import LinkList from './components/linkLists/hookedLists'
 import FifoLifoApp from './components/fifo-lifo/fifo-lifo-Comp'
@@ -150,8 +150,8 @@ class App extends React.Component {
 
   render() {
     return (
-      <ThemeContext.Provider value={this.state}>
-      <div className="App">
+      <ThemeContext.Provider value={this.state}>        
+      <div className="App" style={{ color: this.state.theme.foreground, background: this.state.theme.background }}>
         <header>
           {this.renderImages()}
         </header>

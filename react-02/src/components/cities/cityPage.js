@@ -1,6 +1,7 @@
 import React from 'react'
 import { Community } from './react-classes.js'
 import { serverFunctions } from './api'
+import './cities.css'
 
 const comm = new Community("theGreaterArea");
 
@@ -195,7 +196,7 @@ class CityPage extends React.Component {
         }
 
         return (
-            <div className="wrapper">
+            <div className="cities city-wrapper wrapper">
                 <span className="header">
                     <h1>Community Management System</h1>
                 </span>
