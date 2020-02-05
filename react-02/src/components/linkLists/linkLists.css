@@ -1,0 +1,45 @@
+/*for LinkLists*/
+.linked-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;  
+  }
+  
+  p {
+    grid-column: 1 / 7;  
+  }
+  
+  .node {
+    grid-column: 1 / span 2;
+  }
+  
+  .current {
+    grid-column: 3/ span 2;
+  }
+  
+  .next {
+    grid-column: 5 / span 2;
+  }
+  
+  .linked-list input {
+    width: 15vw;
+  }
+  
+  .linked-list .submission {
+    grid-column: 3 / span 2;
+    grid-row: 3;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+  
+  /*--------------------*/
+  /*LIFO FIFO APP */
+  
+  .fifo-lifo {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+  }
+  
+  .fifo-lifo .list {
+    height: 50vh;
+    overflow-y: scroll;
+  }

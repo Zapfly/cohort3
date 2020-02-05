@@ -1,5 +1,6 @@
 import React from 'react'
 import greenArrow from './green-arrow.svg'
+import './presentation.css'
 
 
 class PresentationPage extends React.Component {
