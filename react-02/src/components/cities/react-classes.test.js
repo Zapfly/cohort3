@@ -28,10 +28,8 @@ test('testing createCity', () => {
 
 test('testing show', () => {
     const cityList5 = new Community("pittsburge")
-    cityList5.createCity("CruellaStevil", 7, 9000, 500)
-
-
-    expect(cityList5.cities[1].show()).toEqual("Latitude: 7 Longitude: 9000 Population: 500");
+    cityList5.createCity("CruellaStevil", 7, 90, 90)
+    expect(cityList5.cities[1].show()).toEqual("Latitude: 7 Longitude: 90 Population: 90");
 })
 
 test('testing movedIn', () => {

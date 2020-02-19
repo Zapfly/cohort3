@@ -16,7 +16,9 @@ import { LinkListComp } from './components/linkLists/linkComp'
 import LinkList from './components/linkLists/hookedLists'
 import FifoLifoApp from './components/fifo-lifo/fifo-lifo-Comp'
 import Settings from './components/Settings'
-import ThemeContext, {themes} from './contexts/ThemeContext';
+import ThemeContext, { themes } from './contexts/ThemeContext';
+import GameContext from './contexts/GameContext'
+import pro from './images/pro.svg'
 
 
 
@@ -43,7 +45,12 @@ class App extends React.Component {
         </div>
       ),
       gamePage: (
-        <Game />
+        <GameContext.Provider
+          // history={this.state.history}
+          // stepNumber = {this.state.stepNumber}
+          >
+          <Game />
+        </GameContext.Provider>
       ),
       accountPage: (
         <AccountsPage />
@@ -66,7 +73,7 @@ class App extends React.Component {
       Settings: (
         <Settings />
       ),
-      
+
     }
     this.imgArr = [
       { key: 1, src: house, action: this.startPage },
@@ -76,7 +83,7 @@ class App extends React.Component {
       { key: 5, src: presentation, action: this.presentationPage },
       { key: 6, src: link, action: this.hookedLists },
       { key: 7, src: link, action: this.FifoLifo },
-      { key: 8, src: link, action: this.Settings }
+      { key: 8, src: pro, action: this.Settings }
     ];
 
     this.toggleTheme = () => {
@@ -90,9 +97,16 @@ class App extends React.Component {
 
     //*********
     this.state = {
-      page: this.page.FifoLifo,
+      page: this.page.startPage,
       theme: themes.light,
       toggleTheme: this.toggleTheme,
+      // history: [
+      //   {
+      //     squares: Array(9).fill(null)
+      //   }
+      // ],
+      // stepNumber: 0,
+      // xIsNext: true
     };
     //******
   }
@@ -150,13 +164,19 @@ class App extends React.Component {
 
   render() {
     return (
-      <ThemeContext.Provider value={this.state}>        
-      <div className="App" style={{ color: this.state.theme.foreground, background: this.state.theme.background }}>
-        <header>
-          {this.renderImages()}
-        </header>
-        <div>{this.state.page}</div>
-      </div>
+      <ThemeContext.Provider value={this.state}>
+        <div className="App" 
+        style={{
+          color: this.state.theme.foreground,
+          background: this.state.theme.background,
+          borderStyle: this.state.theme.foreground
+        }}
+        >
+          <header>
+            {this.renderImages()}
+          </header>
+          <div>{this.state.page}</div>
+        </div>
       </ThemeContext.Provider>
     );
   }

@@ -91,7 +91,10 @@ class AccountContainer extends React.Component {
         const withdrawal = event.target.parentNode.childNodes[2].value
         obj.accountWithdraw(withdrawal)
         this.setState({ message: "low" })
-        event.target.parentNode.childNodes[2].textContent = 0
+        this.highest()
+        this.lowest()
+        this.total()
+
     }
 
     highest = () => {

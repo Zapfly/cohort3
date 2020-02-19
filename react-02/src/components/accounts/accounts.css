@@ -15,6 +15,7 @@
     text-align: left;
     font-size: 100%;
     height: 10vh;
+    max-height: 100%;
   }
   
   .account footer {
@@ -25,7 +26,8 @@
   }
   
   .account-wrapper {
-    height: 50vh;
+    max-height: 100%;
+
     display: grid;
     grid-template-columns: 20% 30% 30% 20%;
     grid-template-areas: 
@@ -42,6 +44,7 @@
     /* border: solid 3px #78cf50;
     background-color: #b0cc97; */
     opacity: 90%;
+    height: 100%;
   
   }
   
@@ -50,23 +53,29 @@
   }
   
   .account
-    .create-display,
+  .create-display,
   .main-display,
   .balances-display {
     /* border: solid 3px #78cf50; */
     margin: 5%;
     padding: 2%;
+    max-height: 100%;
+
   }
   
   .account  .left {
     grid-area: left;
-    height: 150px;
+    /* height: 150px; */
+    max-height: 100%;
+
   }
   
   .account  .create-card-display {
     display: grid;
     grid-template-columns: repeat(2, 50%);
     height: fit-content;
+    max-height: 100%;
+
     opacity: 100%;
   }
   

@@ -20,12 +20,12 @@ export class City {
     }
 
     movedIn(num) {
-        this.population = this.population + num
+        this.population = Number(this.population) + Number(num)
         return this.population;
     }
 
     movedOut(num) {
-        this.population = this.population - num
+        this.population = Number(this.population) - Number(num)
         return this.population;
     }
 
@@ -53,10 +53,16 @@ export class Community {
     }
 
     createCity(name, lat, long, pop) {
-        this.counter++;
-        const a = new City(name, lat, long, pop, this.counter);
-        this.cities[this.counter] = a;
-        serverFunctions.postData('http://localhost:5000/add', a)
+        if ((lat <= 90 && lat >= -90) && (long <= 180 && long >= -180)){
+                this.counter++;
+                const a = new City(name, lat, long, pop, this.counter);
+                this.cities[this.counter] = a;
+                serverFunctions.postData('http://localhost:5000/add', a)
+        }else {
+            alert("Sorry, must enter a valid Latitude and Longtitiude")
+
+        }
+
     }
 
     deleteCity(key) {
@@ -97,12 +103,12 @@ export class Community {
     }
 
     totalPopulation() {
-        let total;
+        let total = 0;
         const obj = this.cities;
         let key;
 
-        for (key in this.cities) {
-            total =+ obj[key].population;
+        for (key in obj) {
+            total = total + obj[key].population;
         }
         return total
 

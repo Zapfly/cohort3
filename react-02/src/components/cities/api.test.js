@@ -50,11 +50,6 @@ test('server setup', async () => {
 
 
 test('test that the fetch works?', async () => {
-
-   
-
-    
-
     // Check that the server is running and clear any data
     let data = await serverFunctions.postData(url + 'clear');
 

@@ -20,15 +20,17 @@ export class FifoLifo extends LinkedList {
         newArr.push(this.contents[0])
         this.contents.shift()
     }
-
+    
     removeLast(newArr) {
         newArr.push(this.contents[(this.contents.length - 1)])
         this.contents.pop()
     }
-
+    
     removeItem(newArr) {
-        if (this.fifo === true) return this.removeFirst(newArr);
-        else return this.removeLast(newArr)
+        if(this.contents.length > 0){
+            if (this.fifo === true) return this.removeFirst(newArr);
+            else return this.removeLast(newArr)
+        }
     }
 
 }

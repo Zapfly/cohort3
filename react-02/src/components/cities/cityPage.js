@@ -73,7 +73,7 @@ class CityCard extends React.Component {
                 <button className="move-in-button city-button" onClick={this.cardMoveIn}>Move In</button>
                 <button className="move-out-button city-button" onClick={this.cardMoveOut}>Move Out</button>
                 <button className="how-big-button city-button" onClick={this.cardHowBig}>How Big</button>
-                <button className="which-sphere city-button" onClick={this.cardWhichHemisphere}>Which Hemisphere</button>
+                <button className="which-sphere city-button" onClick={this.cardWhichHemisphere}>Hemisphere</button>
                 <button className="delete city-button" onClick={this.cardDelete}>Delete</button>
             </div>
         )
@@ -89,12 +89,12 @@ class CityPage extends React.Component {
         this.state = {
             theGreaterArea: comm,
             cityName: "",
-            cityPopulation: "",
-            cityLat: "",
-            cityLong: "",
+            cityPopulation: 0,
+            cityLat: 0,
+            cityLong: 0,
             mostNorthern: "",
             mostSouthern: "",
-            totalPopulation: "",
+            totalPopulation: 0,
         }
     }
 
@@ -116,28 +116,26 @@ class CityPage extends React.Component {
             this.state.cityName,
             this.state.cityLat,
             this.state.cityLong,
-            this.state.cityPopulation
+            Number(this.state.cityPopulation)
         )
 
-        this.setState({
-            cityName: "",
-            cityPopulation: "",
-            cityLat: "",
-            cityLong: "",
-        })
+        this.citiesInformation()
+
+
     }
 
     moveIn = (cardKey, num) => {
         const cityObj = this.state.theGreaterArea.cities[cardKey]
         cityObj.movedIn(Number(num))
         serverFunctions.update(cityObj)
-
+        this.citiesInformation()
     }
 
     moveOut = (cardKey, num) => {
         const cityObj = this.state.theGreaterArea.cities[cardKey]
         cityObj.movedOut(Number(num))
         serverFunctions.update(cityObj)
+        this.citiesInformation()
     }
 
     howBig = (cardKey) => {
@@ -151,6 +149,7 @@ class CityPage extends React.Component {
             'http://localhost:5000/delete',
             { key: Number(cardKey) }
         )
+        this.citiesInformation()
         this.setState({ message: `city number ${cardKey} has been deleted` })
     }
 
@@ -166,7 +165,11 @@ class CityPage extends React.Component {
         this.setState({
             mostNorthern: mostNorth.name,
             mostSouthern: mostSouth.name,
-            totalPopulation: total
+            totalPopulation: total,
+            cityName: "",
+            cityPopulation: "",
+            cityLat: "",
+            cityLong: "",
          })
     }
 
