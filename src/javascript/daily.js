@@ -76,6 +76,11 @@ export const functions = {
         return map1.reduce(reducer)
     },
 
+    newBalanceTotal: (array) => {
+        const reducer = (accumulator, currentValue) => accumulator + currentValue.balance;
+        return array.reduce(reducer, 0)
+    },
+
     balanceAverage: (array) => {
         let total = functions.balanceTotal(array);
         return total / array.length;

@@ -58,6 +58,7 @@ const people = [
 	{fname:"Tylor", lname:"Torres", province:"MN", age:98}
 ];
 
+
 //2019-11-21
 
 test('total province stats', () => {
@@ -118,6 +119,7 @@ test("find the balance >= 1000",() => {
 test('test getBalance', () => {
     expect(functions.getBalance(data.staff[2])).toEqual(1330)
 })
+
 const staffBalances = functions.balanceTotal(data.staff);
 test('total staff balances', () => {
     expect(staffBalances).toEqual(3823)
@@ -125,6 +127,10 @@ test('total staff balances', () => {
 
     expect(avgBalances).toEqual(546.1428571428571)
 
+})
+
+test('newBalance', () => {
+    expect(functions.newBalanceTotal(data.staff)).toEqual(3823)
 })
 
 

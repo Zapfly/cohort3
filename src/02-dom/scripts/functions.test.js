@@ -62,11 +62,6 @@ test('Card checking', () => {
     functions.addBelow(oneCard(3).children[2], functions.cardCount)
     expect(whatCards(houseOfCards))
         .toEqual(["7", "2", "3",  "8", "9", "4", "6"])
-
-    
-    
-
-    
     
 })
 
