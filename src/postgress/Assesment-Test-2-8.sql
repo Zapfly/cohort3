@@ -1,0 +1,2 @@
+SELECT DISTINCT(surname) FROM cd.members
+LIMIT 10

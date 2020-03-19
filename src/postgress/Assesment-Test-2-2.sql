@@ -1,0 +1,1 @@
+SELECT facid, name, membercost FROM cd.facilities
