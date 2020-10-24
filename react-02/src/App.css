@@ -14,7 +14,7 @@ body {
   margin: -3%;
   padding: 1%;
   width: 103.75%;
-  height: 103.75%;
+  height:100vh;
   min-height: 90vh;
 }
 
