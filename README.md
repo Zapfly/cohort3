@@ -1,4 +1,19 @@
+Hello and Welcome to my project from the EvolveU Fast Track Full Stack Developer Program!
 
+Here you'll see all the work I accomplished during my 6 months studying with them. 
+
+To demo the final project:
+
+1) Clone the repository to your computer
+2)
+```sh
+cd react-02
+npm i
+npm start
+```
+3) Have fun exploring the final project!
+
+#-- Below this line is the original README downloaded with the project --#
 This project is the "Getting Started" project for EvovleU Full Stack Development program. It is a baseline to demonstrate:
 
 - development environment
