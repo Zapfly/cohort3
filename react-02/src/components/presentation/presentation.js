@@ -1,5 +1,5 @@
 import React from 'react'
-import greenArrow from './green-arrow.svg'
+import greenArrow from './green-arrow.png'
 import './presentation.css'
 
 

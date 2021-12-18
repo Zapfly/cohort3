@@ -3,12 +3,12 @@ import logo from './logo.svg';
 import './App.css';
 import Image from "./components/image"
 import Game from "./components/game/Game"
-import house from './images/House14.svg'
-import money from './images/accounts.svg'
-import map from './images/city-map.svg'
-import play from './images/joystick_black_red_petri_01.svg'
-import link from './images/link.svg'
-import presentation from './images/playbutt.svg'
+import house from './images/House14.png'
+import money from './images/accounts.png'
+import map from './images/city-map.png'
+import play from './images/joystick_black_red_petri_01.png'
+import link from './images/link.png'
+import presentation from './images/playbutt.png'
 import AccountsPage from './components/accounts/AccountComp'
 import CityPage from './components/cities/cityPage'
 import PresentationPage from './components/presentation/presentation'
@@ -18,7 +18,7 @@ import FifoLifoApp from './components/fifo-lifo/fifo-lifo-Comp'
 import Settings from './components/Settings'
 import ThemeContext, { themes } from './contexts/ThemeContext';
 import GameContext from './contexts/GameContext'
-import pro from './images/pro.svg'
+import pro from './images/pro.png'
 
 
 
