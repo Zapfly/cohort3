@@ -16,6 +16,7 @@ import { LinkListComp } from './components/linkLists/linkComp'
 import LinkList from './components/linkLists/hookedLists'
 import FifoLifoApp from './components/fifo-lifo/fifo-lifo-Comp'
 import Settings from './components/Settings'
+import HomePage from './components/home/Home'
 import ThemeContext, { themes } from './contexts/ThemeContext';
 import GameContext from './contexts/GameContext'
 import pro from './images/pro.png'
@@ -27,7 +28,22 @@ class App extends React.Component {
 
   constructor() {
     super()
+    this.imgArr = [
+      { key: 1, src: house, action: this.startPage },
+      { key: 2, src: play, action: this.gameStart },
+      { key: 3, src: money, action: this.accountPage },
+      { key: 4, src: map, action: this.cityPage },
+      { key: 5, src: presentation, action: this.presentationPage },
+      { key: 6, src: link, action: this.hookedLists },
+      { key: 7, src: link, action: this.FifoLifo },
+      { key: 8, src: pro, action: this.Settings }
+    ];
     this.page = {
+      homePage: (
+        <HomePage
+        images={this.imgArr}
+        />
+      ),
       startPage: (
         <div className="App-header">
           <img src={logo} className="App-logo" alt="logo" />
@@ -75,16 +91,6 @@ class App extends React.Component {
       ),
 
     }
-    this.imgArr = [
-      { key: 1, src: house, action: this.startPage },
-      { key: 2, src: play, action: this.gameStart },
-      { key: 3, src: money, action: this.accountPage },
-      { key: 4, src: map, action: this.cityPage },
-      { key: 5, src: presentation, action: this.presentationPage },
-      { key: 6, src: link, action: this.hookedLists },
-      { key: 7, src: link, action: this.FifoLifo },
-      { key: 8, src: pro, action: this.Settings }
-    ];
 
     this.toggleTheme = () => {
       this.setState(state => ({
@@ -97,7 +103,7 @@ class App extends React.Component {
 
     //*********
     this.state = {
-      page: this.page.startPage,
+      page: this.page.homePage,
       theme: themes.light,
       toggleTheme: this.toggleTheme,
       // history: [
@@ -152,6 +158,7 @@ class App extends React.Component {
       this.imgArr.map((x, index) => {
         return (
           <Image
+          imageClassName={'navbarImg'}
             key={index}
             imageId={index}
             src={x.src}

@@ -11,7 +11,7 @@ class Image extends React.Component {
     render() {
 
         return (
-            <div onClick={this.props.onClick}>
+            <div onClick={this.props.onClick} className={this.props.imageClassName}>
                 <img 
                     id={"idImg" + this.props.imageId} 
                     src={this.props.src} 

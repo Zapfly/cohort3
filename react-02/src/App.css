@@ -1,21 +1,23 @@
 
 html {
   min-height: 100%;
+  padding: 0px;
 }
 body {
   height: 100%;
+  margin: 0px;
 }
 #root {
-  height:100%;
+  height:fit-content;
 }
 
 .App {
   text-align: center;
-  margin: -3%;
-  padding: 1%;
-  width: 103.75%;
-  height:100vh;
-  min-height: 90vh;
+  margin: auto;
+  padding:auto;
+  margin: auto;
+  height:fit-content;
+  min-height: 100vh;
 }
 
 .App-logo {
@@ -40,6 +42,13 @@ body {
 header {
   display:grid;
   grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 1fr 1fr;
+  width: 90vw;
+  margin: auto;
+}
+
+.navbarImg {
+  margin-top: 8%;
+  padding-bottom: 8%;
 }
 
 img {
